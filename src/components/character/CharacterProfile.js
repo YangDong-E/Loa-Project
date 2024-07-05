@@ -37,8 +37,6 @@ function CharacterProfile({ characterName }) {
         fetchCharacterProfiles() // characterName이 변경될 때마다 호출
     }, [characterName])
 
-    const getStatus = () => {}
-
     return (
         <div className="character-profile">
             {characterData ? (
@@ -46,12 +44,16 @@ function CharacterProfile({ characterName }) {
                     <h2>{characterData.CharacterName}</h2>
                     <p>서버: {characterData.ServerName}</p>
                     <p>직업: {characterData.CharacterClassName}</p>
+                    <p>칭호: {characterData.Title}</p>
                     <p>레벨 : {characterData.ItemMaxLevel}</p>
                     <p>길드: {characterData.GuildName}</p>
-                    <p>스텟: {characterData.Status[0].Type}</p>
+                    <p>특화: {characterData.Stats[1].Value}</p>
+                    <p>치명: {characterData.Stats[0].Value}</p>
+                    <p>신속: {characterData.Stats[2].Value}</p>
                     <img
                         src={characterData.CharacterImage}
                         alt={characterData.CharacterName}
+                        style={{ width: '512px', height: '420px' }}
                     />
 
                     {/* 다른 캐릭터 프로필 정보 표시 */}
