@@ -43,6 +43,7 @@ function CharacterProfile({ characterName }) {
                 <div>
                     <h2>{characterData.CharacterName}</h2>
                     <p>서버: {characterData.ServerName}</p>
+                    <p>원정대: {characterData.ExpeditionLevel}</p>
                     <p>직업: {characterData.CharacterClassName}</p>
                     <p>칭호: {characterData.Title}</p>
                     <p>레벨 : {characterData.ItemMaxLevel}</p>

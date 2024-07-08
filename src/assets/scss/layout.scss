@@ -1,0 +1,24 @@
+#header {
+    width: 100%;
+}
+
+.logo {
+    width: 15rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav {
+    &-wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-inner {
+        display: flex;
+    }
+}
