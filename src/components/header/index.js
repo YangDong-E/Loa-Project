@@ -16,12 +16,12 @@ const Header = () => {
                         />
                     </Link>
                 </h1>
-                <div className="nav-inner">
+                <nav>
                     <div className="menu">
                         <NavMenu path={'/'}>홈</NavMenu>
                         <NavMenu path={'/character'}>캐릭터검색</NavMenu>
                     </div>
-                </div>
+                </nav>
             </div>
         </header>
     )

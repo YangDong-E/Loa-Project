@@ -38,7 +38,7 @@ const Island = () => {
     )
 
     return (
-        <section id="island">
+        <section>
             <div className="island-inner">
                 <h3>오늘의 모험 섬</h3>
                 <div className="island-list">

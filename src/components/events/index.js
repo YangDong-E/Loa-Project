@@ -41,7 +41,7 @@ const Events = () => {
     console.log(eventList)
 
     return (
-        <section id="event">
+        <section>
             <div className="event-inner">
                 <h3>로스트아크 이벤트</h3>
                 <ul className="event-list">

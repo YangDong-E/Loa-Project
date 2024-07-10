@@ -3,7 +3,7 @@ import axiosDefault from '../../config/axios'
 import { Link } from 'react-router-dom'
 
 const Notice = () => {
-    const [newsList, setNewsList] = useState(null)
+    const [noticeList, setNewsList] = useState(null)
 
     useEffect(() => {
         const fetchNewsData = async () => {
@@ -50,11 +50,11 @@ const Notice = () => {
     }
 
     return (
-        <section id="news">
-            <div className="news-inner">
+        <section id="notice">
+            <div className="notice-inner">
                 <h3>로스트아크 공지사항</h3>
-                <ul className="news-list">
-                    {newsList?.map((notice, idx) => {
+                <ul className="notice-list">
+                    {noticeList?.map((notice, idx) => {
                         return (
                             <li key={`news_${idx}`}>
                                 <Link
