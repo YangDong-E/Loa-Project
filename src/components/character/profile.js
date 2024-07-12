@@ -33,36 +33,123 @@ const Profile = () => {
                     <p className="class">{profileData.CharacterClassName}</p>
                 </div>
                 <div className="info-box">
-                    <p className="level">{profileData.ItemAvgLevel}</p>
-                    <p>{profileData.CharacterLevel}</p>
-                    <p className="name">{profileData.CharacterName}</p>
-                    <p className="title">{profileData.Title}</p>
-                    <div className="stats">
-                        <p>특화: {profileData.Stats[1].Value}</p>
-                        <p>치명: {profileData.Stats[0].Value}</p>
-                        <p>신속: {profileData.Stats[3].Value}</p>
-                        <p>인내: {profileData.Stats[4].Value}</p>
-                        <p>제압: {profileData.Stats[2].Value}</p>
-                        <p>숙련: {profileData.Stats[5].Value}</p>
-                        <p>공격력: {profileData.Stats[7].Value}</p>
+                    <div className="info-title">
+                        <p className="sub-title">아이템 레벨</p>
+                        <p className="sub-title">전투 레벨</p>
+                        <p className="sub-title">원정대 레벨</p>
                     </div>
-                    <div className="ark">
-                        <p>진화:{profileData.ArkPassive.Points[0].Value}</p>
-                        <p>깨달음:{profileData.ArkPassive.Points[1].Value}</p>
+                    <div className="info-level">
+                        <p className="level">{profileData.ItemAvgLevel}</p>
+                        <p className="level">{profileData.CharacterLevel}</p>
+                        <p className="level">{profileData.ExpeditionLevel}</p>
                     </div>
-                    <div className="equipment">
-                        <p>
-                            {equipData[0].Name}
-                            <img src={equipData[0].Icon} />
-                        </p>
-                    </div>
-                    <div className="skill">
-                        <p>{skillData[0].Name}</p>
-                        <img src={skillData[0].Tripods[0].Icon} />
-                        <p>{skillData[0].Rune.Name}</p>
+                    <div className="info-name">
+                        <p className="title">{profileData.Title}</p>
+                        <p className="name">{profileData.CharacterName}</p>
                     </div>
                 </div>
             </div>
+            <section className="stats">
+                <div className="stats-inner">
+                    <div className="stats-info">
+                        <p>
+                            특화{' '}
+                            <div className="value">
+                                {profileData.Stats[1].Value}
+                            </div>
+                        </p>
+                        <p>
+                            치명{' '}
+                            <div className="value">
+                                {profileData.Stats[0].Value}
+                            </div>
+                        </p>
+                        <p>
+                            신속
+                            <div className="value">
+                                {profileData.Stats[3].Value}
+                            </div>
+                        </p>
+                    </div>
+                    <div className="sub-stats">
+                        <p>
+                            인내{' '}
+                            <div className="value">
+                                {profileData.Stats[4].Value}
+                            </div>
+                        </p>
+                        <p>
+                            제압{' '}
+                            <div className="value">
+                                {profileData.Stats[2].Value}
+                            </div>
+                        </p>
+                        <p>
+                            숙련{' '}
+                            <div className="value">
+                                {' '}
+                                {profileData.Stats[5].Value}
+                            </div>
+                        </p>
+                    </div>
+                    <div className="ark">
+                        <p>
+                            진화{' '}
+                            <div className="value">
+                                {profileData.ArkPassive.Points[0] ==
+                                    undefined || null
+                                    ? '0'
+                                    : profileData.ArkPassive.Points[0].Value}
+                            </div>
+                        </p>
+                        <p>
+                            깨달음{' '}
+                            <div className="value">
+                                {profileData.ArkPassive.Points[1] ==
+                                    undefined || null
+                                    ? '0'
+                                    : profileData.ArkPassive.Points[1].Value}
+                            </div>
+                        </p>
+                        <p>
+                            도약{' '}
+                            <div className="value">
+                                {profileData.ArkPassive.Points[2] ==
+                                    undefined || null
+                                    ? '0'
+                                    : profileData.ArkPassive.Points[2].Value}
+                            </div>
+                        </p>
+                    </div>
+                    <div className="char-stats">
+                        <p>
+                            최대 생명력{' '}
+                            <div className="value">
+                                {profileData.Stats[6].Value}
+                            </div>
+                        </p>
+                        <p>
+                            공격력{' '}
+                            <div className="value">
+                                {profileData.Stats[7].Value}
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* 
+            <div className="equipment">
+                <p>
+                    {equipData[0].Name}
+                    <img src={equipData[0].Icon} />
+                </p>
+            </div>
+            <div className="skill">
+                <p>{skillData[0].Name}</p>
+                <img src={skillData[0].Tripods[0].Icon} />
+                <p>{skillData[0].Rune.Name}</p>
+            </div> */}
         </article>
     )
 }

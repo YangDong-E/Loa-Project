@@ -1,21 +1,17 @@
 import { useState } from 'react'
 import { getCharacter } from '../../store/characterSlice'
 import { useDispatch } from 'react-redux'
+import '../../assets/scss/search.scss'
 
 const Search = () => {
-    // ** state
     const [charName, setCharName] = useState('')
 
-    // ** hooks
     const dispatch = useDispatch()
 
-    // ** variables
     const handleSubmit = (value) => {
         dispatch(getCharacter(value))
             .unwrap()
-            .catch((error) => {
-                // 에러 분석
-            })
+            .catch((error) => {})
     }
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -33,9 +29,7 @@ const Search = () => {
                     onChange={(e) => setCharName(e.target.value)}
                     onKeyUp={(e) => handleKeyDown(e)}
                 />
-                <button type="button" onClick={() => handleSubmit(charName)}>
-                    검색하기
-                </button>
+                <button type="button" onClick={() => handleSubmit(charName)} />
             </div>
         </section>
     )
