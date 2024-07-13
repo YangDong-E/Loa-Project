@@ -129,7 +129,7 @@
     box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
     width: 35%;
     &-inner {
-        @include boxItem(80px, 28px);
+        @include boxItem(40px, 28px);
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -141,6 +141,9 @@
         font-size: 1.5rem;
         font-weight: 300;
         text-align: left;
+        // .value {
+        //     font-size: 15px;
+        // }
         .stats-info {
             flex: 1;
             display: flex;
@@ -148,18 +151,16 @@
             flex-wrap: wrap;
             justify-content: flex-start;
             align-content: space-around;
-            border: solid 1px red;
-
+            // border: solid 1px red;
             p {
                 display: flex;
                 flex-wrap: wrap;
                 flex-direction: column;
                 gap: 5px;
                 text-align: left;
-                margin-bottom: 20%;
+                margin-bottom: 30%;
                 font-weight: 600;
                 font-size: 15px;
-                color: black;
             }
         }
         .sub-stats {
@@ -169,7 +170,7 @@
             flex-wrap: wrap;
             justify-content: flex-start;
             align-content: space-around;
-            border: solid 1px blue;
+            // border: solid 1px blue;
             margin-bottom: 0;
 
             p {
@@ -178,7 +179,7 @@
                 flex-direction: column;
                 gap: 5px;
                 text-align: left;
-                margin-bottom: 20%;
+                margin-bottom: 30%;
                 font-weight: 600;
                 font-size: 15px;
                 color: black;
@@ -191,7 +192,7 @@
             flex-wrap: wrap;
             justify-content: center;
             align-content: space-around;
-            border: solid 1px green;
+            // border: solid 1px green;
             // width: 100%;
             // gap: 2px;
             p {
@@ -200,7 +201,7 @@
                 flex-wrap: wrap;
                 flex-direction: column;
                 gap: 5px;
-                margin-bottom: 20%;
+                margin-bottom: 30%;
                 align-items: center;
                 font-weight: 600;
                 font-size: 15px;

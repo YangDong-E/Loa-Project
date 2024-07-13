@@ -5,6 +5,14 @@ const Profile = () => {
     const equipData = data?.ArmoryEquipment
     const skillData = data?.ArmorySkills
 
+    const a = parseInt(profileData.Stats[1].Value)
+    const b = parseInt(profileData.Stats[0].Value)
+    const c = parseInt(profileData.Stats[3].Value)
+
+    const max = a > b && a > c ? a : c > b ? c : b
+    const min = b > a && c > a ? a : b > c ? c : b
+    const middle = a + b + c - max - min
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -54,34 +62,64 @@ const Profile = () => {
                     <div className="stats-info">
                         <p>
                             특화{' '}
-                            <div className="value">
+                            <div
+                                className="value"
+                                style={{
+                                    color:
+                                        a == max
+                                            ? 'purple'
+                                            : a == middle
+                                            ? 'blue'
+                                            : 'black',
+                                }}
+                            >
                                 {profileData.Stats[1].Value}
                             </div>
                         </p>
                         <p>
                             치명{' '}
-                            <div className="value">
+                            <div
+                                className="value"
+                                style={{
+                                    color:
+                                        b == max
+                                            ? 'purple'
+                                            : b == middle
+                                            ? 'blue'
+                                            : 'black',
+                                }}
+                            >
                                 {profileData.Stats[0].Value}
                             </div>
                         </p>
                         <p>
                             신속
-                            <div className="value">
+                            <div
+                                className="value"
+                                style={{
+                                    color:
+                                        c == max
+                                            ? 'purple'
+                                            : c == middle
+                                            ? 'blue'
+                                            : 'black',
+                                }}
+                            >
                                 {profileData.Stats[3].Value}
                             </div>
                         </p>
                     </div>
                     <div className="sub-stats">
                         <p>
-                            인내{' '}
-                            <div className="value">
-                                {profileData.Stats[4].Value}
-                            </div>
-                        </p>
-                        <p>
                             제압{' '}
                             <div className="value">
                                 {profileData.Stats[2].Value}
+                            </div>
+                        </p>
+                        <p>
+                            인내{' '}
+                            <div className="value">
+                                {profileData.Stats[4].Value}
                             </div>
                         </p>
                         <p>
@@ -96,8 +134,9 @@ const Profile = () => {
                         <p>
                             진화{' '}
                             <div className="value">
-                                {profileData.ArkPassive.Points[0] ==
-                                    undefined || null
+                                {profileData.ItemAvgLevel < '1620' ||
+                                profileData.ArkPassive.Points[0] == undefined ||
+                                null
                                     ? '0'
                                     : profileData.ArkPassive.Points[0].Value}
                             </div>
@@ -105,8 +144,9 @@ const Profile = () => {
                         <p>
                             깨달음{' '}
                             <div className="value">
-                                {profileData.ArkPassive.Points[1] ==
-                                    undefined || null
+                                {profileData.ItemAvgLevel < '1620' ||
+                                profileData.ArkPassive.Points[1] == undefined ||
+                                null
                                     ? '0'
                                     : profileData.ArkPassive.Points[1].Value}
                             </div>
@@ -114,8 +154,9 @@ const Profile = () => {
                         <p>
                             도약{' '}
                             <div className="value">
-                                {profileData.ArkPassive.Points[2] ==
-                                    undefined || null
+                                {profileData.ItemAvgLevel < '1620' ||
+                                profileData.ArkPassive.Points[2] == undefined ||
+                                null
                                     ? '0'
                                     : profileData.ArkPassive.Points[2].Value}
                             </div>
@@ -137,7 +178,6 @@ const Profile = () => {
                     </div>
                 </div>
             </section>
-
             {/* 
             <div className="equipment">
                 <p>
