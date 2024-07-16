@@ -228,6 +228,27 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div>{equipData[0].Name}</div>
+                                <div>
+                                    {equipData[0].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(
+                                            /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace('Element', '')
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/\s/gi, '')}
+                                    {/* HTML 태그 제거 */}
+                                </div>
                             </p>
                             <p>
                                 <img
