@@ -13,6 +13,35 @@ const Profile = () => {
     const min = b > a && c > a ? a : b > c ? c : b
     const middle = a + b + c - max - min
 
+    function equipMap(idx) {
+        return equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+            .replace(
+                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
+                ''
+            )
+            .replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
+            .replace('Element', '')
+            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+            .replace(/\s/gi, '')
+            .substring(
+                equipData[0].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .indexOf('아이템레벨')
+            )
+            .slice(0, 10)
+            .replace(/[^0-9]/gi, '')
+    }
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -229,24 +258,7 @@ const Profile = () => {
                                 </div>
                                 <div>{equipData[0].Name}</div>
                                 <div>
-                                    {equipData[0].Tooltip.replace(
-                                        /(<([^>]+)>)/g,
-                                        ''
-                                    )
-                                        .replace(
-                                            /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
-                                            ''
-                                        )
-                                        .replace(
-                                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                            ''
-                                        )
-                                        .replace('Element', '')
-                                        .replace(
-                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi,
-                                            ''
-                                        )
-                                        .replace(/\s/gi, '')}
+                                    {equipMap(0)}
                                     {/* HTML 태그 제거 */}
                                 </div>
                             </p>
