@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux'
+import transcend from '../../assets/images/character/transcendence.png'
+
 const Profile = () => {
     const data = useSelector((state) => state.character.characterProfile)
     const profileData = data?.ArmoryProfile
@@ -13,7 +15,7 @@ const Profile = () => {
     const min = b > a && c > a ? a : b > c ? c : b
     const middle = a + b + c - max - min
 
-    function equipMap(idx) {
+    function equipLevel(idx) {
         return equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
             .replace(
                 /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
@@ -24,7 +26,7 @@ const Profile = () => {
             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
             .replace(/\s/gi, '')
             .substring(
-                equipData[0].Tooltip.replace(/(<([^>]+)>)/g, '')
+                equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(
                         /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
                         ''
@@ -40,6 +42,118 @@ const Profile = () => {
             )
             .slice(0, 10)
             .replace(/[^0-9]/gi, '')
+    }
+    function equipHighLevel(idx) {
+        return equipData[idx].Tooltip.includes('상급 재련') ? (
+            <>
+                +
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('상급재련')
+                    )
+                    .slice(0, 9)
+                    .replace(/[^0-9]/gi, '')}
+            </>
+        ) : (
+            ''
+        )
+    }
+    function equiptranscend(idx) {
+        return equipData[idx].Tooltip.includes('[초월]')
+            ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                  .replace(
+                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                      ''
+                  )
+                  .replace(
+                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                      ''
+                  )
+                  .replace('Element', '')
+                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                  .replace(/\s/gi, '')
+                  .substring(
+                      equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          .replace(
+                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                              ''
+                          )
+                          .replace(
+                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              ''
+                          )
+                          .replace('Element', '')
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                          .replace(/\s/gi, '')
+                          .indexOf('슬롯효과초월')
+                  )
+                  .slice(0, 9)
+                  .replace(/[^0-9\단계]/gi, '')
+            : ''
+    }
+    function equiptranscendcount(idx) {
+        return equipData[idx].Tooltip.includes('[초월]') ? (
+            <>
+                <img
+                    src={transcend}
+                    style={{ width: '15px', height: '15px' }}
+                />
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('슬롯효과초월')
+                    )
+                    .slice(3, 8)
+                    .replace(/[^0-9]/gi, '')}
+            </>
+        ) : (
+            ''
+        )
     }
 
     const randomColor = () => {
@@ -77,8 +191,10 @@ const Profile = () => {
                     </div>
                     <div className="info-level">
                         <p className="level">{profileData.ItemAvgLevel}</p>
-                        <p className="level">{profileData.CharacterLevel}</p>
-                        <p className="level">{profileData.ExpeditionLevel}</p>
+                        <p className="level">Lv {profileData.CharacterLevel}</p>
+                        <p className="level">
+                            Lv {profileData.ExpeditionLevel}
+                        </p>
                     </div>
                     <div className="info-name">
                         <p className="title">{profileData.Title}</p>
@@ -256,72 +372,320 @@ const Profile = () => {
                                             .replace(',', '')}
                                     </div>
                                 </div>
-                                <div>{equipData[0].Name}</div>
-                                <div>
-                                    {equipMap(0)}
-                                    {/* HTML 태그 제거 */}
+                                <div className="nametag">
+                                    <div className="leveltag">
+                                        <div>
+                                            <div className="transcend-info">
+                                                {equiptranscendcount(0)}{' '}
+                                                {equiptranscend(0)}
+                                            </div>
+                                            <div className="level-info">
+                                                {equipLevel(0)}{' '}
+                                                <span className="highlevel">
+                                                    {equipHighLevel(0)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="equip-name">
+                                        {equipData[0].Name}
+                                    </div>
                                 </div>
                             </p>
                             <p>
-                                <img
-                                    src={equipData[1].Icon}
-                                    value={equipData[2].Grade}
+                                <div
+                                    className="img-quality"
                                     style={{
-                                        backgroundImage:
-                                            equipData[1].Grade === '유물'
-                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        display: 'flex',
+                                        width: '48px',
+                                        height: '56px',
+                                        // borderRadius: '8px',
+                                        flexDirection: 'column',
                                     }}
-                                />
-                                <div>{equipData[1].Name}</div>
+                                >
+                                    <img
+                                        src={equipData[1].Icon}
+                                        value={equipData[1].Grade}
+                                        style={{
+                                            backgroundImage:
+                                                equipData[1].Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        }}
+                                    />
+                                    <div
+                                        className="qualityValue"
+                                        style={{
+                                            // width: '48px',
+                                            backgroundColor: 'green',
+                                            fontSize: '12px',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {equipData[1].Tooltip.substring(
+                                            equipData[1].Tooltip.indexOf(
+                                                'qualityValue'
+                                            )
+                                        )
+                                            .slice(14, 18)
+                                            .replace(',', '')}
+                                    </div>
+                                </div>
+                                <div className="nametag">
+                                    <div className="leveltag">
+                                        <div>
+                                            <div className="transcend-info">
+                                                {equiptranscendcount(1)}{' '}
+                                                {equiptranscend(1)}
+                                            </div>
+                                            <div className="level-info">
+                                                {equipLevel(1)}{' '}
+                                                <span className="highlevel">
+                                                    {equipHighLevel(1)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="equip-name">
+                                        {equipData[1].Name}
+                                    </div>
+                                </div>
                             </p>
                             <p>
-                                <img
-                                    src={equipData[2].Icon}
+                                <div
+                                    className="img-quality"
                                     style={{
-                                        backgroundImage:
-                                            equipData[2].Grade === '유물'
-                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        display: 'flex',
+                                        width: '48px',
+                                        height: '56px',
+                                        // borderRadius: '8px',
+                                        flexDirection: 'column',
                                     }}
-                                />
-                                <div>{equipData[2].Name}</div>
+                                >
+                                    <img
+                                        src={equipData[2].Icon}
+                                        value={equipData[2].Grade}
+                                        style={{
+                                            backgroundImage:
+                                                equipData[2].Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        }}
+                                    />
+                                    <div
+                                        className="qualityValue"
+                                        style={{
+                                            // width: '48px',
+                                            backgroundColor: 'green',
+                                            fontSize: '12px',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {equipData[2].Tooltip.substring(
+                                            equipData[2].Tooltip.indexOf(
+                                                'qualityValue'
+                                            )
+                                        )
+                                            .slice(14, 18)
+                                            .replace(',', '')}
+                                    </div>
+                                </div>
+                                <div className="nametag">
+                                    <div className="leveltag">
+                                        <div>
+                                            <div className="transcend-info">
+                                                {equiptranscendcount(2)}{' '}
+                                                {equiptranscend(2)}
+                                            </div>
+                                            <div className="level-info">
+                                                {equipLevel(2)}{' '}
+                                                <span className="highlevel">
+                                                    {equipHighLevel(2)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="equip-name">
+                                        {equipData[2].Name}
+                                    </div>
+                                </div>
                             </p>
                             <p>
-                                <img
-                                    src={equipData[3].Icon}
+                                <div
+                                    className="img-quality"
                                     style={{
-                                        backgroundImage:
-                                            equipData[3].Grade === '유물'
-                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        display: 'flex',
+                                        width: '48px',
+                                        height: '56px',
+                                        // borderRadius: '8px',
+                                        flexDirection: 'column',
                                     }}
-                                />
-                                <div>{equipData[3].Name}</div>
+                                >
+                                    <img
+                                        src={equipData[3].Icon}
+                                        value={equipData[3].Grade}
+                                        style={{
+                                            backgroundImage:
+                                                equipData[3].Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        }}
+                                    />
+                                    <div
+                                        className="qualityValue"
+                                        style={{
+                                            // width: '48px',
+                                            backgroundColor: 'green',
+                                            fontSize: '12px',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {equipData[3].Tooltip.substring(
+                                            equipData[3].Tooltip.indexOf(
+                                                'qualityValue'
+                                            )
+                                        )
+                                            .slice(14, 18)
+                                            .replace(',', '')}
+                                    </div>
+                                </div>
+                                <div className="nametag">
+                                    <div className="leveltag">
+                                        <div>
+                                            <div className="transcend-info">
+                                                {equiptranscendcount(3)}{' '}
+                                                {equiptranscend(3)}
+                                            </div>
+                                            <div className="level-info">
+                                                {equipLevel(3)}{' '}
+                                                <span className="highlevel">
+                                                    {equipHighLevel(3)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="equip-name">
+                                        {equipData[3].Name}
+                                    </div>
+                                </div>
                             </p>
                             <p>
-                                <img
-                                    src={equipData[4].Icon}
+                                <div
+                                    className="img-quality"
                                     style={{
-                                        backgroundImage:
-                                            equipData[4].Grade === '유물'
-                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        display: 'flex',
+                                        width: '48px',
+                                        height: '56px',
+                                        // borderRadius: '8px',
+                                        flexDirection: 'column',
                                     }}
-                                />
-                                <div>{equipData[4].Name}</div>
+                                >
+                                    <img
+                                        src={equipData[4].Icon}
+                                        value={equipData[4].Grade}
+                                        style={{
+                                            backgroundImage:
+                                                equipData[4].Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        }}
+                                    />
+                                    <div
+                                        className="qualityValue"
+                                        style={{
+                                            // width: '48px',
+                                            backgroundColor: 'green',
+                                            fontSize: '12px',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {equipData[4].Tooltip.substring(
+                                            equipData[4].Tooltip.indexOf(
+                                                'qualityValue'
+                                            )
+                                        )
+                                            .slice(14, 18)
+                                            .replace(',', '')}
+                                    </div>
+                                </div>
+                                <div className="nametag">
+                                    <div className="leveltag">
+                                        <div>
+                                            <div className="transcend-info">
+                                                {equiptranscendcount(4)}{' '}
+                                                {equiptranscend(4)}
+                                            </div>
+                                            <div className="level-info">
+                                                {equipLevel(4)}{' '}
+                                                <span className="highlevel">
+                                                    {equipHighLevel(4)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="equip-name">
+                                        {equipData[4].Name}
+                                    </div>
+                                </div>
                             </p>
                             <p>
-                                <img
-                                    src={equipData[5].Icon}
+                                <div
+                                    className="img-quality"
                                     style={{
-                                        backgroundImage:
-                                            equipData[5].Grade === '유물'
-                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        display: 'flex',
+                                        width: '48px',
+                                        height: '56px',
+                                        // borderRadius: '8px',
+                                        flexDirection: 'column',
                                     }}
-                                />
-                                <div>{equipData[5].Name}</div>
+                                >
+                                    <img
+                                        src={equipData[5].Icon}
+                                        value={equipData[5].Grade}
+                                        style={{
+                                            backgroundImage:
+                                                equipData[5].Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        }}
+                                    />
+                                    <div
+                                        className="qualityValue"
+                                        style={{
+                                            // width: '48px',
+                                            backgroundColor: 'green',
+                                            fontSize: '12px',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {equipData[5].Tooltip.substring(
+                                            equipData[5].Tooltip.indexOf(
+                                                'qualityValue'
+                                            )
+                                        )
+                                            .slice(14, 18)
+                                            .replace(',', '')}
+                                    </div>
+                                </div>
+                                <div className="nametag">
+                                    <div className="leveltag">
+                                        <div>
+                                            <div className="transcend-info">
+                                                {equiptranscendcount(5)}{' '}
+                                                {equiptranscend(5)}
+                                            </div>
+                                            <div className="level-info">
+                                                {equipLevel(5)}{' '}
+                                                <span className="highlevel">
+                                                    {equipHighLevel(5)}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="equip-name">
+                                        {equipData[5].Name}
+                                    </div>
+                                </div>
                             </p>
                         </div>
                     </div>

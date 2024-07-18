@@ -56,6 +56,7 @@
             }
         }
         .info-box {
+            left: 17px;
             bottom: 27px;
             .info-title {
                 display: flex;
@@ -65,14 +66,15 @@
                 .sub-title {
                     flex: 1;
                     font-weight: 600;
+                    text-align: center;
                     font-size: medium;
                     color: rgba(255, 255, 255, 0.8);
                 }
             }
             .info-level {
                 display: flex;
-                width: 250px;
-                text-align: left;
+                width: 235px;
+                text-align: center;
                 margin-bottom: 3%;
                 .level {
                     flex: 1;
@@ -273,6 +275,28 @@
                     border-bottom-right-radius: 8px;
                     font-size: 12px;
                     text-align: center;
+                }
+                .nametag {
+                    display: flex;
+                    flex-direction: column;
+                    .leveltag {
+                        display: flex;
+                        gap: 5px;
+                        .transcend-info {
+                            font-size: 15px;
+                        }
+                        .level-info {
+                            font-size: 13px;
+                            .highlevel {
+                                color: rgba(0, 0, 0, 0.335);
+                                text-decoration: underline;
+                                text-decoration-thickness: 1.5px;
+                            }
+                        }
+                    }
+                    .equip-name {
+                        font-size: 13px;
+                    }
                 }
             }
         }
