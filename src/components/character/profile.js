@@ -156,6 +156,360 @@ const Profile = () => {
         )
     }
 
+    function accfirststat(idx) {
+        return equipData[idx].Tooltip.includes('추가 효과') ? (
+            <>
+                {
+                    equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(
+                            /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                            ''
+                        )
+                        .replace(
+                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                        .replace(/\s/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(
+                                    /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                .replace(/\s/gi, '')
+                                .indexOf('추가효과')
+                        )
+                        .slice(4, 10)
+                    // .replace(/[^0-9]/gi, '')}
+                }
+            </>
+        ) : (
+            ''
+        )
+    }
+    function accsecondstat(idx) {
+        return equipData[idx].Tooltip.includes('추가 효과') ? (
+            <>
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('추가효과')
+                    )
+                    .slice(10, 16)
+                    .replace(/[^0-9]/gi, '') == 0
+                    ? ''
+                    : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          .replace(
+                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                              ''
+                          )
+                          .replace(
+                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              ''
+                          )
+                          .replace('Element', '')
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                          .replace(/\s/gi, '')
+                          .substring(
+                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(
+                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                      ''
+                                  )
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace('Element', '')
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                  .replace(/\s/gi, '')
+                                  .indexOf('추가효과')
+                          )
+                          .slice(10, 16)}
+            </>
+        ) : (
+            ''
+        )
+    }
+
+    function accengravingeffect(idx) {
+        return equipData[idx].Tooltip ? (
+            <>
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('추가효과')
+                    )
+                    .slice(10, 16)
+                    .replace(/[^0-9]/gi, '') == 0
+                    ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          .replace(
+                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                              ''
+                          )
+                          .replace(
+                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              ''
+                          )
+                          .replace('Element', '')
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                          .replace(/\s/gi, '')
+                          .substring(
+                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(
+                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                      ''
+                                  )
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace('Element', '')
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                  .replace(/\s/gi, '')
+                                  .indexOf('추가효과')
+                          )
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                          .slice(6)
+                          .split('활성도', 1)
+                    : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          .replace(
+                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                              ''
+                          )
+                          .replace(
+                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              ''
+                          )
+                          .replace('Element', '')
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                          .replace(/\s/gi, '')
+                          .substring(
+                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(
+                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                      ''
+                                  )
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace('Element', '')
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                  .replace(/\s/gi, '')
+                                  .indexOf('추가효과')
+                          )
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                          .slice(8)
+                          .split('활성도', 1)}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('활성도')
+                    )
+                    .replace(/[활성도]/gi, '')
+                    .slice(0, 2)}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('추가효과')
+                    )
+                    .slice(10, 16)
+                    .replace(/[^0-9]/gi, '') == 0
+                    ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          .replace(
+                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                              ''
+                          )
+                          .replace(
+                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              ''
+                          )
+                          .replace('Element', '')
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                          .replace(/\s/gi, '')
+                          .substring(
+                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(
+                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                      ''
+                                  )
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace('Element', '')
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                  .replace(/\s/gi, '')
+                                  .indexOf('추가효과')
+                          )
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                          .split('활성도', 2)
+                          .pop()
+                    : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          .replace(
+                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                              ''
+                          )
+                          .replace(
+                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              ''
+                          )
+                          .replace('Element', '')
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                          .replace(/\s/gi, '')
+                          .substring(
+                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(
+                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                      ''
+                                  )
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace('Element', '')
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                  .replace(/\s/gi, '')
+                                  .indexOf('추가효과')
+                          )
+                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                          .split('활성도', 2)
+                          .pop()}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(
+                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                        ''
+                    )
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(
+                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                ''
+                            )
+                            .replace(
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('활성도')
+                    )
+                    .split('활성도', 3)
+                    .pop()
+                    .toString()
+                    .replace(/[활성도]/gi, '')
+                    .slice(0, 2)}
+            </>
+        ) : (
+            ''
+        )
+    }
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -687,6 +1041,329 @@ const Profile = () => {
                                     </div>
                                 </div>
                             </p>
+                        </div>
+
+                        <div className="acc-inner">
+                            <div className="equipment">
+                                <p>
+                                    <div
+                                        className="img-quality"
+                                        style={{
+                                            display: 'flex',
+                                            width: '48px',
+                                            height: '56px',
+                                            // borderRadius: '8px',
+                                            flexDirection: 'column',
+                                        }}
+                                    >
+                                        <img
+                                            src={equipData[6].Icon}
+                                            value={equipData[6].Grade}
+                                            style={{
+                                                backgroundImage:
+                                                    equipData[6].Grade ===
+                                                    '유물'
+                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            }}
+                                        />
+                                        <div
+                                            className="qualityValue"
+                                            style={{
+                                                // width: '48px',
+                                                backgroundColor: 'green',
+                                                fontSize: '12px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            {equipData[6].Tooltip.substring(
+                                                equipData[6].Tooltip.indexOf(
+                                                    'qualityValue'
+                                                )
+                                            )
+                                                .slice(14, 18)
+                                                .replace(',', '')}
+                                        </div>
+                                    </div>
+                                    <div className="nametag">
+                                        <div className="equip-name">
+                                            {equipData[6].Name}
+                                        </div>
+                                        <div className="stat-info">
+                                            <span>{accfirststat(6)}</span>{' '}
+                                            <span>{accsecondstat(6)}</span>
+                                        </div>
+                                        <div className="engraving-info">
+                                            {accengravingeffect(6)}
+                                        </div>
+                                    </div>
+                                </p>
+                                <p>
+                                    <div
+                                        className="img-quality"
+                                        style={{
+                                            display: 'flex',
+                                            width: '48px',
+                                            height: '56px',
+                                            // borderRadius: '8px',
+                                            flexDirection: 'column',
+                                        }}
+                                    >
+                                        <img
+                                            src={equipData[7].Icon}
+                                            value={equipData[7].Grade}
+                                            style={{
+                                                backgroundImage:
+                                                    equipData[7].Grade ===
+                                                    '유물'
+                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            }}
+                                        />
+                                        <div
+                                            className="qualityValue"
+                                            style={{
+                                                // width: '48px',
+                                                backgroundColor: 'green',
+                                                fontSize: '12px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            {equipData[7].Tooltip.substring(
+                                                equipData[7].Tooltip.indexOf(
+                                                    'qualityValue'
+                                                )
+                                            )
+                                                .slice(14, 18)
+                                                .replace(',', '')}
+                                        </div>
+                                    </div>
+                                    <div className="nametag">
+                                        <div className="equip-name">
+                                            {equipData[7].Name}
+                                        </div>
+                                        <div className="stat-info">
+                                            <span>{accfirststat(7)}</span>{' '}
+                                            <span>{accsecondstat(7)}</span>
+                                        </div>
+                                        <div className="engraving-info">
+                                            {accengravingeffect(7)}
+                                        </div>
+                                    </div>
+                                </p>
+                                <p>
+                                    <div
+                                        className="img-quality"
+                                        style={{
+                                            display: 'flex',
+                                            width: '48px',
+                                            height: '56px',
+                                            // borderRadius: '8px',
+                                            flexDirection: 'column',
+                                        }}
+                                    >
+                                        <img
+                                            src={equipData[8].Icon}
+                                            value={equipData[8].Grade}
+                                            style={{
+                                                backgroundImage:
+                                                    equipData[8].Grade ===
+                                                    '유물'
+                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            }}
+                                        />
+                                        <div
+                                            className="qualityValue"
+                                            style={{
+                                                // width: '48px',
+                                                backgroundColor: 'green',
+                                                fontSize: '12px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            {equipData[8].Tooltip.substring(
+                                                equipData[8].Tooltip.indexOf(
+                                                    'qualityValue'
+                                                )
+                                            )
+                                                .slice(14, 18)
+                                                .replace(',', '')}
+                                        </div>
+                                    </div>
+                                    <div className="nametag">
+                                        <div className="equip-name">
+                                            {equipData[8].Name}
+                                        </div>
+                                        <div className="stat-info">
+                                            <span>{accfirststat(8)}</span>{' '}
+                                            <span>{accsecondstat(8)}</span>
+                                        </div>
+                                        <div className="engraving-info">
+                                            {accengravingeffect(8)}
+                                        </div>
+                                    </div>
+                                </p>
+                                <p>
+                                    <div
+                                        className="img-quality"
+                                        style={{
+                                            display: 'flex',
+                                            width: '48px',
+                                            height: '56px',
+                                            // borderRadius: '8px',
+                                            flexDirection: 'column',
+                                        }}
+                                    >
+                                        <img
+                                            src={equipData[9].Icon}
+                                            value={equipData[9].Grade}
+                                            style={{
+                                                backgroundImage:
+                                                    equipData[9].Grade ===
+                                                    '유물'
+                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            }}
+                                        />
+                                        <div
+                                            className="qualityValue"
+                                            style={{
+                                                // width: '48px',
+                                                backgroundColor: 'green',
+                                                fontSize: '12px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            {equipData[9].Tooltip.substring(
+                                                equipData[9].Tooltip.indexOf(
+                                                    'qualityValue'
+                                                )
+                                            )
+                                                .slice(14, 18)
+                                                .replace(',', '')}
+                                        </div>
+                                    </div>
+                                    <div className="nametag">
+                                        <div className="equip-name">
+                                            {equipData[9].Name}
+                                        </div>
+                                        <div className="stat-info">
+                                            <span>{accfirststat(9)}</span>{' '}
+                                            <span>{accsecondstat(9)}</span>
+                                        </div>
+                                        <div className="engraving-info">
+                                            {accengravingeffect(9)}
+                                        </div>
+                                    </div>
+                                </p>
+                                <p>
+                                    <div
+                                        className="img-quality"
+                                        style={{
+                                            display: 'flex',
+                                            width: '48px',
+                                            height: '56px',
+                                            // borderRadius: '8px',
+                                            flexDirection: 'column',
+                                        }}
+                                    >
+                                        <img
+                                            src={equipData[10].Icon}
+                                            value={equipData[10].Grade}
+                                            style={{
+                                                backgroundImage:
+                                                    equipData[10].Grade ===
+                                                    '유물'
+                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            }}
+                                        />
+                                        <div
+                                            className="qualityValue"
+                                            style={{
+                                                // width: '48px',
+                                                backgroundColor: 'green',
+                                                fontSize: '12px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            {equipData[10].Tooltip.substring(
+                                                equipData[10].Tooltip.indexOf(
+                                                    'qualityValue'
+                                                )
+                                            )
+                                                .slice(14, 18)
+                                                .replace(',', '')}
+                                        </div>
+                                    </div>
+                                    <div className="nametag">
+                                        <div className="equip-name">
+                                            {equipData[10].Name}
+                                        </div>
+                                        <div className="stat-info">
+                                            <span>{accfirststat(10)}</span>{' '}
+                                            <span>{accsecondstat(10)}</span>
+                                        </div>
+                                        <div className="engraving-info">
+                                            {accengravingeffect(10)}
+                                        </div>
+                                    </div>
+                                </p>
+                                {/* <p>
+                                    <div
+                                        className="img-quality"
+                                        style={{
+                                            display: 'flex',
+                                            width: '48px',
+                                            height: '56px',
+                                            // borderRadius: '8px',
+                                            flexDirection: 'column',
+                                        }}
+                                    >
+                                        <img
+                                            src={equipData[11].Icon}
+                                            value={equipData[11].Grade}
+                                            style={{
+                                                backgroundImage:
+                                                    equipData[11].Grade ===
+                                                    '유물'
+                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            }}
+                                        />
+                                        <div
+                                            className="qualityValue"
+                                            style={{
+                                                // width: '48px',
+                                                backgroundColor: 'green',
+                                                fontSize: '12px',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            {equipData[11].Tooltip.substring(
+                                                equipData[11].Tooltip.indexOf(
+                                                    'qualityValue'
+                                                )
+                                            )
+                                                .slice(14, 18)
+                                                .replace(',', '')}
+                                        </div>
+                                    </div>
+                                    <div className="nametag">
+                                        <div className="equip-name">
+                                            {equipData[11].Name}
+                                        </div>
+                                        <div className="stat-info">
+                                            <span>{accfirststat(11)}</span>{' '}
+                                            <span>{accsecondstat(11)}</span>
+                                        </div>
+                                        <div className="engraving-info">
+                                            {accengravingeffect(11)}
+                                        </div>
+                                    </div>
+                                </p> */}
+                            </div>
                         </div>
                     </div>
                 </div>
