@@ -510,6 +510,53 @@ const Profile = () => {
         )
     }
 
+    function stonestat(idx) {
+        return equipData[idx].Tooltip ? (
+            <>
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .slice(0, 8)
+                    .replace(/[0-9]/gi, '')}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(
+                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                    .replace(/:[0-9]+/gi, '')
+                    .replace(/:/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, '')
+                            .replace(/:/gi, '')
+                            .indexOf('보너스체력')
+                    )
+                    .replace(/보너스체력\+/gi, '')
+                    .replace(/[0-9]+/, '')
+                    .replace(/활성도/gi, '+')
+                    .replace(/무작위각인효과.*$/gi, '')}
+            </>
+        ) : (
+            ''
+        )
+    }
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -1310,7 +1357,7 @@ const Profile = () => {
                                         </div>
                                     </div>
                                 </p>
-                                {/* <p>
+                                <p>
                                     <div
                                         className="img-quality"
                                         style={{
@@ -1350,7 +1397,8 @@ const Profile = () => {
                                                 .replace(',', '')}
                                         </div>
                                     </div>
-                                    <div className="nametag">
+                                    <div>{stonestat(11)}</div>
+                                    {/* <div className="nametag">
                                         <div className="equip-name">
                                             {equipData[11].Name}
                                         </div>
@@ -1361,8 +1409,8 @@ const Profile = () => {
                                         <div className="engraving-info">
                                             {accengravingeffect(11)}
                                         </div>
-                                    </div>
-                                </p> */}
+                                    </div> */}
+                                </p>
                             </div>
                         </div>
                     </div>
