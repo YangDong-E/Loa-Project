@@ -1,4 +1,4 @@
-@mixin boxItem($paddingV: 0, $paddingH: 0, $shadowOpacity: 0.02) {
+@mixin boxStyle($paddingV: 0, $paddingH: 0, $shadowOpacity: 0.02) {
     padding: $paddingV $paddingH;
     background: #fff;
     box-shadow: 0 0 15px 2px rgba(0, 0, 0, $shadowOpacity);
@@ -22,7 +22,7 @@
         width: 290px;
     }
     &-error-area {
-        @include boxItem(80px, 28px);
+        @include boxStyle(80px, 28px);
         color: #585b6a;
         font-size: 1.8rem;
         font-weight: 300;
@@ -134,7 +134,7 @@
     width: 35%;
     height: 280px;
     &-inner {
-        @include boxItem(40px, 28px);
+        @include boxStyle(40px, 28px);
         box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: row;
@@ -240,17 +240,12 @@
     box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
 
     &-inner {
-        @include boxItem(40px, 28px);
-        // display: flex;
-        // flex-direction: row;
-        // flex-wrap: wrap;
-        // justify-content: space-around;
-        // align-content: space-around;
-        // align-items: flex-start;
-        // gap: 5px;
-        // color: #585b6a;
-        // font-size: 1.5rem;
-        // font-weight: 300;
+        background: #fff;
+        box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.02);
+        padding-top: 40px;
+        padding-bottom: 75px;
+        padding-left: 20px;
+        border-radius: 8px;
         display: flex;
         width: 100%;
         height: 512px;
@@ -263,6 +258,7 @@
                 width: 100%;
                 column-gap: 0.5rem;
                 margin-bottom: 1rem;
+                margin-right: 0px;
                 img {
                     width: 4.8rem;
                     height: 56px;
@@ -281,6 +277,7 @@
                 .nametag {
                     display: flex;
                     flex-direction: column;
+                    // border: solid 2px red;
                     .leveltag {
                         display: flex;
                         gap: 5px;
@@ -303,6 +300,72 @@
             }
         }
         .acc-inner {
+            .equipment {
+                .effect-info-inner {
+                    display: flex;
+                    gap: 2px;
+                }
+                .effect-info {
+                    margin-top: 3px;
+                    font-size: 1rem;
+                    // line-height: 5rem;
+                    line-height: 1.4rem;
+                    font-weight: bold;
+                    // border: solid 1px red;
+                    background-color: rgb(203, 213, 233);
+                    border-radius: 5px;
+                    padding-left: 0.3rem;
+                    padding-right: 0.15rem;
+                    padding-top: 0.125rem;
+                }
+                .nametag {
+                    font-weight: 600;
+                    .stat-info {
+                        .accstat {
+                            line-height: 1.8rem;
+                            font-size: 1rem;
+                            font-weight: bold;
+                        }
+                    }
+                    .effect-info-reduction {
+                        margin-top: 3px;
+                        font-size: 1rem;
+                        // line-height: 5rem;
+                        line-height: 1.4rem;
+                        font-weight: bold;
+                        // border: solid 1px red;
+                        background-color: rgb(203, 213, 233);
+                        border-radius: 5px;
+                        padding-left: 0.3rem;
+                        padding-right: 0.15rem;
+                        padding-top: 0.125rem;
+                        color: rgb(248, 31, 31);
+                    }
+                }
+            }
+        }
+
+        .stone-info {
+            .stone-inner {
+                display: flex;
+                gap: 2px;
+                span {
+                    margin-top: 3px;
+                    font-size: 1rem;
+                    // line-height: 5rem;
+                    line-height: 1.4rem;
+                    font-weight: bold;
+                    // border: solid 1px red;
+                    background-color: rgb(203, 213, 233);
+                    border-radius: 5px;
+                    padding-left: 0.3rem;
+                    padding-right: 0.3rem;
+                    padding-top: 0.125rem;
+                }
+                .effect-info-reduction {
+                    color: rgb(248, 31, 31);
+                }
+            }
         }
     }
 }

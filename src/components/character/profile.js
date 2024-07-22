@@ -17,20 +17,14 @@ const Profile = () => {
 
     function equipLevel(idx) {
         return equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-            .replace(
-                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
-                ''
-            )
+            .replace(/Element_[0-9]+/g, '')
             .replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
             .replace('Element', '')
             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
             .replace(/\s/gi, '')
             .substring(
                 equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
-                        ''
-                    )
+                    .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                         ''
@@ -48,10 +42,7 @@ const Profile = () => {
             <>
                 +
                 {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
-                        ''
-                    )
+                    .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                         ''
@@ -61,10 +52,7 @@ const Profile = () => {
                     .replace(/\s/gi, '')
                     .substring(
                         equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|)/gi,
-                                ''
-                            )
+                            .replace(/Element_[0-9]+/g, '')
                             .replace(
                                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                 ''
@@ -84,10 +72,7 @@ const Profile = () => {
     function equiptranscend(idx) {
         return equipData[idx].Tooltip.includes('[초월]')
             ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                  .replace(
-                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                      ''
-                  )
+                  .replace(/Element_[0-9]+/g, '')
                   .replace(
                       /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                       ''
@@ -97,10 +82,7 @@ const Profile = () => {
                   .replace(/\s/gi, '')
                   .substring(
                       equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(
-                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                              ''
-                          )
+                          .replace(/Element_[0-9]+/g, '')
                           .replace(
                               /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                               ''
@@ -122,10 +104,7 @@ const Profile = () => {
                     style={{ width: '15px', height: '15px' }}
                 />
                 {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                        ''
-                    )
+                    .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                         ''
@@ -135,10 +114,7 @@ const Profile = () => {
                     .replace(/\s/gi, '')
                     .substring(
                         equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                ''
-                            )
+                            .replace(/Element_[0-9]+/g, '')
                             .replace(
                                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                 ''
@@ -159,50 +135,8 @@ const Profile = () => {
     function accfirststat(idx) {
         return equipData[idx].Tooltip.includes('추가 효과') ? (
             <>
-                {
-                    equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(
-                            /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                            ''
-                        )
-                        .replace(
-                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                            ''
-                        )
-                        .replace('Element', '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                        .replace(/\s/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(
-                                    /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                    ''
-                                )
-                                .replace('Element', '')
-                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                                .replace(/\s/gi, '')
-                                .indexOf('추가효과')
-                        )
-                        .slice(4, 10)
-                    // .replace(/[^0-9]/gi, '')}
-                }
-            </>
-        ) : (
-            ''
-        )
-    }
-    function accsecondstat(idx) {
-        return equipData[idx].Tooltip.includes('추가 효과') ? (
-            <>
                 {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                        ''
-                    )
+                    .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                         ''
@@ -212,10 +146,37 @@ const Profile = () => {
                     .replace(/\s/gi, '')
                     .substring(
                         equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
                             .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
+                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                 ''
                             )
+                            .replace('Element', '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                            .replace(/\s/gi, '')
+                            .indexOf('추가효과')
+                    )
+                    .slice(4, 10)}
+            </>
+        ) : (
+            ''
+        )
+    }
+    function accsecondstat(idx) {
+        return equipData[idx].Tooltip.includes('추가 효과') ? (
+            <>
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                    .replace(/\s/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
                             .replace(
                                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                 ''
@@ -229,10 +190,7 @@ const Profile = () => {
                     .replace(/[^0-9]/gi, '') == 0
                     ? ''
                     : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(
-                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                              ''
-                          )
+                          .replace(/Element_[0-9]+/g, '')
                           .replace(
                               /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                               ''
@@ -242,10 +200,7 @@ const Profile = () => {
                           .replace(/\s/gi, '')
                           .substring(
                               equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                  .replace(
-                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                      ''
-                                  )
+                                  .replace(/Element_[0-9]+/g, '')
                                   .replace(
                                       /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                       ''
@@ -265,277 +220,51 @@ const Profile = () => {
     function accengravingeffect(idx) {
         return equipData[idx].Tooltip ? (
             <>
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                        ''
-                    )
-                    .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace('Element', '')
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                ''
-                            )
-                            .replace(
-                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace('Element', '')
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                            .replace(/\s/gi, '')
-                            .indexOf('추가효과')
-                    )
-                    .slice(10, 16)
-                    .replace(/[^0-9]/gi, '') == 0
-                    ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(
-                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                              ''
-                          )
-                          .replace(
-                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                              ''
-                          )
-                          .replace('Element', '')
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                          .replace(/\s/gi, '')
-                          .substring(
-                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                  .replace(
-                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                      ''
-                                  )
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                      ''
-                                  )
-                                  .replace('Element', '')
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                                  .replace(/\s/gi, '')
-                                  .indexOf('추가효과')
-                          )
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
-                          .slice(6)
-                          .split('활성도', 1)
-                    : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(
-                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                              ''
-                          )
-                          .replace(
-                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                              ''
-                          )
-                          .replace('Element', '')
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                          .replace(/\s/gi, '')
-                          .substring(
-                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                  .replace(
-                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                      ''
-                                  )
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                      ''
-                                  )
-                                  .replace('Element', '')
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                                  .replace(/\s/gi, '')
-                                  .indexOf('추가효과')
-                          )
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
-                          .slice(8)
-                          .split('활성도', 1)}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                        ''
-                    )
-                    .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace('Element', '')
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                ''
-                            )
-                            .replace(
-                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace('Element', '')
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                            .replace(/\s/gi, '')
-                            .indexOf('활성도')
-                    )
-                    .replace(/[활성도]/gi, '')
-                    .slice(0, 2)}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                        ''
-                    )
-                    .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace('Element', '')
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                ''
-                            )
-                            .replace(
-                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace('Element', '')
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                            .replace(/\s/gi, '')
-                            .indexOf('추가효과')
-                    )
-                    .slice(10, 16)
-                    .replace(/[^0-9]/gi, '') == 0
-                    ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(
-                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                              ''
-                          )
-                          .replace(
-                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                              ''
-                          )
-                          .replace('Element', '')
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                          .replace(/\s/gi, '')
-                          .substring(
-                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                  .replace(
-                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                      ''
-                                  )
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                      ''
-                                  )
-                                  .replace('Element', '')
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                                  .replace(/\s/gi, '')
-                                  .indexOf('추가효과')
-                          )
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
-                          .split('활성도', 2)
-                          .pop()
-                    : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(
-                              /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                              ''
-                          )
-                          .replace(
-                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                              ''
-                          )
-                          .replace('Element', '')
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                          .replace(/\s/gi, '')
-                          .substring(
-                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                  .replace(
-                                      /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                      ''
-                                  )
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                      ''
-                                  )
-                                  .replace('Element', '')
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                                  .replace(/\s/gi, '')
-                                  .indexOf('추가효과')
-                          )
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
-                          .split('활성도', 2)
-                          .pop()}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(
-                        /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                        ''
-                    )
-                    .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace('Element', '')
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(
-                                /(Element_000|Element_001|Element_002|Element_003|Element_004|Element_005|Element_006|Element_007|Element_008|Element_009|Element_010|Element_011|Element_012|Element_013|Element_014|Element_015|Element_016|Element_017|Element_018|Element_019|Element_020|)/gi,
-                                ''
-                            )
-                            .replace(
-                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace('Element', '')
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                            .replace(/\s/gi, '')
-                            .indexOf('활성도')
-                    )
-                    .split('활성도', 3)
-                    .pop()
-                    .toString()
-                    .replace(/[활성도]/gi, '')
-                    .slice(0, 2)}
-            </>
-        ) : (
-            ''
-        )
-    }
-
-    function stonestat(idx) {
-        return equipData[idx].Tooltip ? (
-            <>
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(/Element_[0-9]+/g, '')
-                    .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .slice(0, 8)
-                    .replace(/[0-9]/gi, '')}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(/Element_[0-9]+/g, '')
-                    .replace(/\s/gi, '')
-                    .replace(
-                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                    .replace(/:[0-9]+/gi, '')
-                    .replace(/:/gi, '')
-                    .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
+                <div className="effect-info-inner">
+                    <span className="effect-info">
+                        {
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .substring(
+                                    equipData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        .replace(/:/gi, '')
+                                        .indexOf('추가효과')
+                                )
+                                .replace(
+                                    /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                    ''
+                                )
+                                .replace(/추가효과[0-9]/gi, '')
+                                .replace(/[0-9]+/, '')
+                                .replace(/활성도/gi, '')
+                                .replace(/무작위각인효과.*$/gi, '')
+                                .split(' ')[1]
+                        }
+                    </span>
+                    <span className="effect-info">
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -543,17 +272,398 @@ const Profile = () => {
                                 ''
                             )
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
                             .replace(/:/gi, '')
-                            .indexOf('보너스체력')
-                    )
-                    .replace(/보너스체력\+/gi, '')
-                    .replace(/[0-9]+/, '')
-                    .replace(/활성도/gi, '+')
-                    .replace(/무작위각인효과.*$/gi, '')}
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .indexOf('추가효과')
+                            )
+                            .replace(
+                                /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                ''
+                            )
+                            .replace(/추가효과[0-9]/gi, '')
+                            .replace(/[0-9]+/, '')
+                            .replace(/활성도/gi, '')
+                            .replace(/무작위각인효과.*$/gi, '')
+                            .split(' ')[3] == null && undefined
+                            ? ''
+                            : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(/Element_[0-9]+/g, '')
+                                  .replace(/\s/gi, '')
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                  .replace(/:[0-9]+/gi, ' ')
+                                  .replace(/:/gi, '')
+                                  .substring(
+                                      equipData[idx].Tooltip.replace(
+                                          /(<([^>]+)>)/g,
+                                          ''
+                                      )
+                                          .replace(/Element_[0-9]+/g, '')
+                                          .replace(/\s/gi, '')
+                                          .replace(
+                                              /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                              ''
+                                          )
+                                          .replace(
+                                              /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                              ''
+                                          )
+                                          .replace(/:[0-9]+/gi, ' ')
+                                          .replace(/:/gi, '')
+                                          .indexOf('추가효과')
+                                  )
+                                  .replace(
+                                      /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                      ''
+                                  )
+                                  .replace(/추가효과[0-9]/gi, '')
+                                  .replace(/[0-9]+/, '')
+                                  .replace(/활성도/gi, '')
+                                  .replace(/무작위각인효과.*$/gi, '')
+                                  .split(' ')[3]}
+                    </span>
+                    <span className="effect-info-reduction">
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .replace(/:/gi, '')
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .indexOf('추가효과')
+                            )
+                            .replace(
+                                /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                ''
+                            )
+                            .replace(/추가효과[0-9]/gi, '')
+                            .replace(/[0-9]+/, '')
+                            .replace(/활성도/gi, '')
+                            .replace(/무작위각인효과.*$/gi, '')
+                            .split(' ')[5] == null && undefined
+                            ? ''
+                            : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                  .replace(/Element_[0-9]+/g, '')
+                                  .replace(/\s/gi, '')
+                                  .replace(
+                                      /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      ''
+                                  )
+                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                  .replace(/:[0-9]+/gi, ' ')
+                                  .replace(/:/gi, '')
+                                  .substring(
+                                      equipData[idx].Tooltip.replace(
+                                          /(<([^>]+)>)/g,
+                                          ''
+                                      )
+                                          .replace(/Element_[0-9]+/g, '')
+                                          .replace(/\s/gi, '')
+                                          .replace(
+                                              /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                              ''
+                                          )
+                                          .replace(
+                                              /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                              ''
+                                          )
+                                          .replace(/:[0-9]+/gi, ' ')
+                                          .replace(/:/gi, '')
+                                          .indexOf('추가효과')
+                                  )
+                                  .replace(
+                                      /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                      ''
+                                  )
+                                  .replace(/추가효과[0-9]/gi, '')
+                                  .replace(/[0-9]+/, '')
+                                  .replace(/활성도/gi, '')
+                                  .replace(/무작위각인효과.*$/gi, '')
+                                  .split(' ')[5]}
+                    </span>
+                </div>
             </>
         ) : (
             ''
+        )
+    }
+
+    function stonestat(idx) {
+        return equipData[idx].Grade == '영웅' ? (
+            <>
+                <div className="stone-inner">
+                    <span>
+                        {
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .substring(
+                                    equipData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        .replace(/:/gi, '')
+                                        .indexOf('기본효과체력')
+                                )
+                                .replace(/기본효과체력\+/gi, '')
+                                .replace(/[0-9]+/, '')
+                                .replace(/활성도/gi, '+')
+                                .replace(/무작위각인효과.*$/gi, '')
+                                .split(' ')[1]
+                        }
+                    </span>
+                    <span>
+                        {
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .substring(
+                                    equipData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        .replace(/:/gi, '')
+                                        .indexOf('기본효과체력')
+                                )
+                                .replace(/기본효과체력\+/gi, '')
+                                .replace(/[0-9]+/, '')
+                                .replace(/활성도/gi, '+')
+                                .replace(/무작위각인효과.*$/gi, '')
+                                .split(' ')[3]
+                        }
+                    </span>
+                    <span className="effect-info-reduction">
+                        {
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .substring(
+                                    equipData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        .replace(/:/gi, '')
+                                        .indexOf('기본효과체력')
+                                )
+                                .replace(/기본효과체력\+/gi, '')
+                                .replace(/[0-9]+/, '')
+                                .replace(/활성도/gi, '+')
+                                .replace(/무작위각인효과.*$/gi, '')
+                                .split(' ')[5]
+                        }
+                    </span>
+                </div>
+            </>
+        ) : (
+            <>
+                <div className="stone-inner">
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .replace(/:/gi, '')
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .indexOf('보너스체력')
+                            )
+                            .replace(/보너스체력\+/gi, '')
+                            .replace(/활성도/gi, '+')
+                            .replace(/[0-9]+/, '')
+                            .replace(/무작위각인효과.*$/gi, '')
+                            .split(' ')[1]
+                            .toString()}
+                    </span>{' '}
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .replace(/:/gi, '')
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .indexOf('보너스체력')
+                            )
+                            .replace(/보너스체력\+/gi, '')
+                            .replace(/활성도/gi, '+')
+                            .replace(/[0-9]+/, '')
+                            .replace(/무작위각인효과.*$/gi, '')
+                            .split(' ')[3]
+                            .toString()}
+                    </span>{' '}
+                    <span className="effect-info-reduction">
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .replace(/:/gi, '')
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .indexOf('보너스체력')
+                            )
+                            .replace(/보너스체력\+/gi, '')
+                            .replace(/활성도/gi, '+')
+                            .replace(/[0-9]+/, '')
+                            .replace(/무작위각인효과.*$/gi, '')
+                            .split(' ')[5]
+                            .toString()}
+                    </span>
+                </div>
+            </>
         )
     }
 
@@ -1137,8 +1247,12 @@ const Profile = () => {
                                             {equipData[6].Name}
                                         </div>
                                         <div className="stat-info">
-                                            <span>{accfirststat(6)}</span>{' '}
-                                            <span>{accsecondstat(6)}</span>
+                                            <span className="accstat">
+                                                {accfirststat(6)}
+                                            </span>{' '}
+                                            <span className="accstat">
+                                                {accsecondstat(6)}
+                                            </span>
                                         </div>
                                         <div className="engraving-info">
                                             {accengravingeffect(6)}
@@ -1190,8 +1304,12 @@ const Profile = () => {
                                             {equipData[7].Name}
                                         </div>
                                         <div className="stat-info">
-                                            <span>{accfirststat(7)}</span>{' '}
-                                            <span>{accsecondstat(7)}</span>
+                                            <span className="accstat">
+                                                {accfirststat(7)}
+                                            </span>{' '}
+                                            <span className="accstat">
+                                                {accsecondstat(7)}
+                                            </span>
                                         </div>
                                         <div className="engraving-info">
                                             {accengravingeffect(7)}
@@ -1243,8 +1361,12 @@ const Profile = () => {
                                             {equipData[8].Name}
                                         </div>
                                         <div className="stat-info">
-                                            <span>{accfirststat(8)}</span>{' '}
-                                            <span>{accsecondstat(8)}</span>
+                                            <span className="accstat">
+                                                {accfirststat(8)}
+                                            </span>{' '}
+                                            <span className="accstat">
+                                                {accsecondstat(8)}
+                                            </span>
                                         </div>
                                         <div className="engraving-info">
                                             {accengravingeffect(8)}
@@ -1296,8 +1418,12 @@ const Profile = () => {
                                             {equipData[9].Name}
                                         </div>
                                         <div className="stat-info">
-                                            <span>{accfirststat(9)}</span>{' '}
-                                            <span>{accsecondstat(9)}</span>
+                                            <span className="accstat">
+                                                {accfirststat(9)}
+                                            </span>{' '}
+                                            <span className="accstat">
+                                                {accsecondstat(9)}
+                                            </span>
                                         </div>
                                         <div className="engraving-info">
                                             {accengravingeffect(9)}
@@ -1349,8 +1475,12 @@ const Profile = () => {
                                             {equipData[10].Name}
                                         </div>
                                         <div className="stat-info">
-                                            <span>{accfirststat(10)}</span>{' '}
-                                            <span>{accsecondstat(10)}</span>
+                                            <span className="accstat">
+                                                {accfirststat(10)}
+                                            </span>{' '}
+                                            <span className="accstat">
+                                                {accsecondstat(10)}
+                                            </span>
                                         </div>
                                         <div className="engraving-info">
                                             {accengravingeffect(10)}
@@ -1377,6 +1507,16 @@ const Profile = () => {
                                                     '유물'
                                                         ? 'linear-gradient(135deg, #341a09, #a24006)'
                                                         : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                borderBottomLeftRadius:
+                                                    equipData[11].Grade ===
+                                                    '영웅'
+                                                        ? '8px'
+                                                        : '0px',
+                                                borderBottomRightRadius:
+                                                    equipData[11].Grade ===
+                                                    '영웅'
+                                                        ? '8px'
+                                                        : '0px',
                                             }}
                                         />
                                         <div
@@ -1388,28 +1528,156 @@ const Profile = () => {
                                                 textAlign: 'center',
                                             }}
                                         >
-                                            {equipData[11].Tooltip.substring(
-                                                equipData[11].Tooltip.indexOf(
-                                                    'qualityValue'
-                                                )
+                                            {equipData[11].Tooltip.replace(
+                                                /(<([^>]+)>)/g,
+                                                ''
                                             )
-                                                .slice(14, 18)
-                                                .replace(',', '')}
+                                                .replace(/Element_[0-9]+/g, '')
+                                                .replace(/\s/gi, '')
+                                                .replace(
+                                                    /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                    ''
+                                                )
+                                                .replace(/[^\w]/gi, '')
+                                                // .replace(/:[0-9]+/gi, '')
+                                                // .replace(/:/gi, '')
+                                                .substring(
+                                                    equipData[11].Tooltip.replace(
+                                                        /(<([^>]+)>)/g,
+                                                        ''
+                                                    )
+                                                        .replace(
+                                                            /Element_[0-9]+/g,
+                                                            ''
+                                                        )
+                                                        .replace(/\s/gi, '')
+                                                        .replace(
+                                                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                            ''
+                                                        )
+                                                        .indexOf('value')
+                                                )
+                                                .slice(0, 8)
+                                                .replace(/[a-z]*/g, '') ==
+                                            'I' ? (
+                                                <>LV. 1</>
+                                            ) : equipData[11].Tooltip.replace(
+                                                  /(<([^>]+)>)/g,
+                                                  ''
+                                              )
+                                                  .replace(
+                                                      /Element_[0-9]+/g,
+                                                      ''
+                                                  )
+                                                  .replace(/\s/gi, '')
+                                                  .replace(
+                                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                      ''
+                                                  )
+                                                  .replace(/[^\w]/gi, '')
+                                                  .substring(
+                                                      equipData[11].Tooltip.replace(
+                                                          /(<([^>]+)>)/g,
+                                                          ''
+                                                      )
+                                                          .replace(
+                                                              /Element_[0-9]+/g,
+                                                              ''
+                                                          )
+                                                          .replace(/\s/gi, '')
+                                                          .replace(
+                                                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                              ''
+                                                          )
+                                                          .indexOf('value')
+                                                  )
+                                                  .slice(0, 8)
+                                                  .replace(/[a-z]*/g, '') ==
+                                              'II' ? (
+                                                <>Lv. 2</>
+                                            ) : equipData[11].Tooltip.replace(
+                                                  /(<([^>]+)>)/g,
+                                                  ''
+                                              )
+                                                  .replace(
+                                                      /Element_[0-9]+/g,
+                                                      ''
+                                                  )
+                                                  .replace(/\s/gi, '')
+                                                  .replace(
+                                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                      ''
+                                                  )
+                                                  .replace(/[^\w]/gi, '')
+                                                  .substring(
+                                                      equipData[11].Tooltip.replace(
+                                                          /(<([^>]+)>)/g,
+                                                          ''
+                                                      )
+                                                          .replace(
+                                                              /Element_[0-9]+/g,
+                                                              ''
+                                                          )
+                                                          .replace(/\s/gi, '')
+                                                          .replace(
+                                                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                              ''
+                                                          )
+                                                          .indexOf('value')
+                                                  )
+                                                  .slice(0, 8)
+                                                  .replace(/[a-z]*/g, '') ==
+                                              'III' ? (
+                                                <>Lv. 3</>
+                                            ) : equipData[11].Tooltip.replace(
+                                                  /(<([^>]+)>)/g,
+                                                  ''
+                                              )
+                                                  .replace(
+                                                      /Element_[0-9]+/g,
+                                                      ''
+                                                  )
+                                                  .replace(/\s/gi, '')
+                                                  .replace(
+                                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                      ''
+                                                  )
+                                                  .replace(/[^\w]/gi, '')
+                                                  // .replace(/:[0-9]+/gi, '')
+                                                  // .replace(/:/gi, '')
+                                                  .substring(
+                                                      equipData[11].Tooltip.replace(
+                                                          /(<([^>]+)>)/g,
+                                                          ''
+                                                      )
+                                                          .replace(
+                                                              /Element_[0-9]+/g,
+                                                              ''
+                                                          )
+                                                          .replace(/\s/gi, '')
+                                                          .replace(
+                                                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                              ''
+                                                          )
+                                                          .indexOf('value')
+                                                  )
+                                                  .slice(0, 8)
+                                                  .replace(/[a-z]*/g, '') ==
+                                              'IV' ? (
+                                                <>Lv. 4</>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </div>
-                                    <div>{stonestat(11)}</div>
-                                    {/* <div className="nametag">
+                                    <div className="nametag">
                                         <div className="equip-name">
                                             {equipData[11].Name}
                                         </div>
-                                        <div className="stat-info">
-                                            <span>{accfirststat(11)}</span>{' '}
-                                            <span>{accsecondstat(11)}</span>
+                                        <div className="stone-info">
+                                            {stonestat(11)}
                                         </div>
-                                        <div className="engraving-info">
-                                            {accengravingeffect(11)}
-                                        </div>
-                                    </div> */}
+                                    </div>
                                 </p>
                             </div>
                         </div>
