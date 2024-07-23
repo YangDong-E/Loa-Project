@@ -15,6 +15,14 @@ const Profile = () => {
     const min = b > a && c > a ? a : b > c ? c : b
     const middle = a + b + c - max - min
 
+    function qualityValue(idx) {
+        return equipData[idx].Tooltip.substring(
+            equipData[idx].Tooltip.indexOf('qualityValue')
+        )
+            .slice(14, 18)
+            .replace(',', '')
+    }
+
     function equipLevel(idx) {
         return equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
             .replace(/Element_[0-9]+/g, '')
@@ -869,18 +877,29 @@ const Profile = () => {
                                         className="qualityValue"
                                         style={{
                                             // width: '48px',
-                                            backgroundColor: 'green',
+                                            backgroundColor:
+                                                qualityValue(0) == 100
+                                                    ? 'rgb(255, 106, 0)'
+                                                    : qualityValue(0) >= 90 &&
+                                                      qualityValue(0) < 100
+                                                    ? 'rgb(138, 43, 226)'
+                                                    : qualityValue(0) >= 70 &&
+                                                      qualityValue(0) < 90
+                                                    ? 'rgb(81, 162, 254)'
+                                                    : qualityValue(0) >= 30 &&
+                                                      qualityValue(0) < 70
+                                                    ? 'rgb(36, 157, 46)'
+                                                    : qualityValue(0) >= 10 &&
+                                                      qualityValue(0) < 30
+                                                    ? 'rgb(214, 214, 0)'
+                                                    : 'rgb(216, 38, 38)',
+                                            color: 'white',
+                                            fontWeight: '600',
                                             fontSize: '12px',
                                             textAlign: 'center',
                                         }}
                                     >
-                                        {equipData[0].Tooltip.substring(
-                                            equipData[0].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
+                                        {qualityValue(0)}
                                     </div>
                                 </div>
                                 <div className="nametag">
@@ -928,8 +947,25 @@ const Profile = () => {
                                         className="qualityValue"
                                         style={{
                                             // width: '48px',
-                                            backgroundColor: 'green',
+                                            backgroundColor:
+                                                qualityValue(1) == 100
+                                                    ? 'rgb(255, 106, 0)'
+                                                    : qualityValue(1) >= 90 &&
+                                                      qualityValue(1) < 100
+                                                    ? 'rgb(138, 43, 226)'
+                                                    : qualityValue(1) >= 70 &&
+                                                      qualityValue(1) < 90
+                                                    ? 'rgb(81, 162, 254)'
+                                                    : qualityValue(1) >= 30 &&
+                                                      qualityValue(1) < 70
+                                                    ? 'rgb(36, 157, 46)'
+                                                    : qualityValue(1) >= 10 &&
+                                                      qualityValue(1) < 30
+                                                    ? 'rgb(214, 214, 0)'
+                                                    : 'rgb(216, 38, 38)',
                                             fontSize: '12px',
+                                            fontWeight: '600',
+                                            color: 'white',
                                             textAlign: 'center',
                                         }}
                                     >
@@ -987,7 +1023,24 @@ const Profile = () => {
                                         className="qualityValue"
                                         style={{
                                             // width: '48px',
-                                            backgroundColor: 'green',
+                                            backgroundColor:
+                                                qualityValue(2) == 100
+                                                    ? 'rgb(255, 106, 0)'
+                                                    : qualityValue(2) >= 90 &&
+                                                      qualityValue(2) < 100
+                                                    ? 'rgb(138, 43, 226)'
+                                                    : qualityValue(2) >= 70 &&
+                                                      qualityValue(2) < 90
+                                                    ? 'rgb(81, 162, 254)'
+                                                    : qualityValue(2) >= 30 &&
+                                                      qualityValue(2) < 70
+                                                    ? 'rgb(36, 157, 46)'
+                                                    : qualityValue(2) >= 10 &&
+                                                      qualityValue(2) < 30
+                                                    ? 'rgb(214, 214, 0)'
+                                                    : 'rgb(216, 38, 38)',
+                                            color: 'white',
+                                            fontWeight: '600',
                                             fontSize: '12px',
                                             textAlign: 'center',
                                         }}
@@ -1046,7 +1099,24 @@ const Profile = () => {
                                         className="qualityValue"
                                         style={{
                                             // width: '48px',
-                                            backgroundColor: 'green',
+                                            backgroundColor:
+                                                qualityValue(3) == 100
+                                                    ? 'rgb(255, 106, 0)'
+                                                    : qualityValue(3) >= 90 &&
+                                                      qualityValue(3) < 100
+                                                    ? 'rgb(138, 43, 226)'
+                                                    : qualityValue(3) >= 70 &&
+                                                      qualityValue(3) < 90
+                                                    ? 'rgb(81, 162, 254)'
+                                                    : qualityValue(3) >= 30 &&
+                                                      qualityValue(3) < 70
+                                                    ? 'rgb(36, 157, 46)'
+                                                    : qualityValue(3) >= 10 &&
+                                                      qualityValue(3) < 30
+                                                    ? 'rgb(214, 214, 0)'
+                                                    : 'rgb(216, 38, 38)',
+                                            color: 'white',
+                                            fontWeight: '600',
                                             fontSize: '12px',
                                             textAlign: 'center',
                                         }}
@@ -1105,7 +1175,24 @@ const Profile = () => {
                                         className="qualityValue"
                                         style={{
                                             // width: '48px',
-                                            backgroundColor: 'green',
+                                            backgroundColor:
+                                                qualityValue(4) == 100
+                                                    ? 'rgb(255, 106, 0)'
+                                                    : qualityValue(4) >= 90 &&
+                                                      qualityValue(4) < 100
+                                                    ? 'rgb(138, 43, 226)'
+                                                    : qualityValue(4) >= 70 &&
+                                                      qualityValue(4) < 90
+                                                    ? 'rgb(81, 162, 254)'
+                                                    : qualityValue(4) >= 30 &&
+                                                      qualityValue(4) < 70
+                                                    ? 'rgb(36, 157, 46)'
+                                                    : qualityValue(4) >= 10 &&
+                                                      qualityValue(4) < 30
+                                                    ? 'rgb(214, 214, 0)'
+                                                    : 'rgb(216, 38, 38)',
+                                            color: 'white',
+                                            fontWeight: '600',
                                             fontSize: '12px',
                                             textAlign: 'center',
                                         }}
@@ -1164,7 +1251,24 @@ const Profile = () => {
                                         className="qualityValue"
                                         style={{
                                             // width: '48px',
-                                            backgroundColor: 'green',
+                                            backgroundColor:
+                                                qualityValue(5) == 100
+                                                    ? 'rgb(255, 106, 0)'
+                                                    : qualityValue(5) >= 90 &&
+                                                      qualityValue(5) < 100
+                                                    ? 'rgb(138, 43, 226)'
+                                                    : qualityValue(5) >= 70 &&
+                                                      qualityValue(5) < 90
+                                                    ? 'rgb(81, 162, 254)'
+                                                    : qualityValue(5) >= 30 &&
+                                                      qualityValue(5) < 70
+                                                    ? 'rgb(36, 157, 46)'
+                                                    : qualityValue(5) >= 10 &&
+                                                      qualityValue(5) < 30
+                                                    ? 'rgb(214, 214, 0)'
+                                                    : 'rgb(216, 38, 38)',
+                                            color: 'white',
+                                            fontWeight: '600',
                                             fontSize: '12px',
                                             textAlign: 'center',
                                         }}
@@ -1228,7 +1332,28 @@ const Profile = () => {
                                             className="qualityValue"
                                             style={{
                                                 // width: '48px',
-                                                backgroundColor: 'green',
+                                                backgroundColor:
+                                                    qualityValue(6) == 100
+                                                        ? 'rgb(255, 106, 0)'
+                                                        : qualityValue(6) >=
+                                                              90 &&
+                                                          qualityValue(6) < 100
+                                                        ? 'rgb(138, 43, 226)'
+                                                        : qualityValue(6) >=
+                                                              70 &&
+                                                          qualityValue(6) < 90
+                                                        ? 'rgb(81, 162, 254)'
+                                                        : qualityValue(6) >=
+                                                              30 &&
+                                                          qualityValue(6) < 70
+                                                        ? 'rgb(36, 157, 46)'
+                                                        : qualityValue(6) >=
+                                                              10 &&
+                                                          qualityValue(6) < 30
+                                                        ? 'rgb(214, 214, 0)'
+                                                        : 'rgb(216, 38, 38)',
+                                                color: 'white',
+                                                fontWeight: '600',
                                                 fontSize: '12px',
                                                 textAlign: 'center',
                                             }}
@@ -1285,7 +1410,28 @@ const Profile = () => {
                                             className="qualityValue"
                                             style={{
                                                 // width: '48px',
-                                                backgroundColor: 'green',
+                                                backgroundColor:
+                                                    qualityValue(7) == 100
+                                                        ? 'rgb(255, 106, 0)'
+                                                        : qualityValue(7) >=
+                                                              90 &&
+                                                          qualityValue(7) < 100
+                                                        ? 'rgb(138, 43, 226)'
+                                                        : qualityValue(7) >=
+                                                              70 &&
+                                                          qualityValue(7) < 90
+                                                        ? 'rgb(81, 162, 254)'
+                                                        : qualityValue(7) >=
+                                                              30 &&
+                                                          qualityValue(7) < 70
+                                                        ? 'rgb(36, 157, 46)'
+                                                        : qualityValue(7) >=
+                                                              10 &&
+                                                          qualityValue(7) < 30
+                                                        ? 'rgb(214, 214, 0)'
+                                                        : 'rgb(216, 38, 38)',
+                                                color: 'white',
+                                                fontWeight: '600',
                                                 fontSize: '12px',
                                                 textAlign: 'center',
                                             }}
@@ -1342,7 +1488,28 @@ const Profile = () => {
                                             className="qualityValue"
                                             style={{
                                                 // width: '48px',
-                                                backgroundColor: 'green',
+                                                backgroundColor:
+                                                    qualityValue(8) == 100
+                                                        ? 'rgb(255, 106, 0)'
+                                                        : qualityValue(8) >=
+                                                              90 &&
+                                                          qualityValue(8) < 100
+                                                        ? 'rgb(138, 43, 226)'
+                                                        : qualityValue(8) >=
+                                                              70 &&
+                                                          qualityValue(8) < 90
+                                                        ? 'rgb(49, 49, 252)'
+                                                        : qualityValue(8) >=
+                                                              30 &&
+                                                          qualityValue(8) < 70
+                                                        ? 'rgb(36, 157, 46)'
+                                                        : qualityValue(8) >=
+                                                              10 &&
+                                                          qualityValue(8) < 30
+                                                        ? 'rgb(214, 214, 0)'
+                                                        : 'rgb(216, 38, 38)',
+                                                color: 'white',
+                                                fontWeight: '600',
                                                 fontSize: '12px',
                                                 textAlign: 'center',
                                             }}
@@ -1399,7 +1566,28 @@ const Profile = () => {
                                             className="qualityValue"
                                             style={{
                                                 // width: '48px',
-                                                backgroundColor: 'green',
+                                                backgroundColor:
+                                                    qualityValue(9) == 100
+                                                        ? 'rgb(255, 106, 0)'
+                                                        : qualityValue(9) >=
+                                                              90 &&
+                                                          qualityValue(9) < 100
+                                                        ? 'rgb(138, 43, 226)'
+                                                        : qualityValue(9) >=
+                                                              70 &&
+                                                          qualityValue(9) < 90
+                                                        ? 'rgb(81, 162, 254)'
+                                                        : qualityValue(9) >=
+                                                              30 &&
+                                                          qualityValue(9) < 70
+                                                        ? 'rgb(36, 157, 46)'
+                                                        : qualityValue(9) >=
+                                                              10 &&
+                                                          qualityValue(9) < 30
+                                                        ? 'rgb(214, 214, 0)'
+                                                        : 'rgb(216, 38, 38)',
+                                                color: 'white',
+                                                fontWeight: '600',
                                                 fontSize: '12px',
                                                 textAlign: 'center',
                                             }}
@@ -1456,7 +1644,28 @@ const Profile = () => {
                                             className="qualityValue"
                                             style={{
                                                 // width: '48px',
-                                                backgroundColor: 'green',
+                                                backgroundColor:
+                                                    qualityValue(10) == 100
+                                                        ? 'rgb(255, 106, 0)'
+                                                        : qualityValue(10) >=
+                                                              90 &&
+                                                          qualityValue(10) < 100
+                                                        ? 'rgb(138, 43, 226)'
+                                                        : qualityValue(10) >=
+                                                              70 &&
+                                                          qualityValue(10) < 90
+                                                        ? 'rgb(81, 162, 254)'
+                                                        : qualityValue(10) >=
+                                                              30 &&
+                                                          qualityValue(10) < 70
+                                                        ? 'rgb(36, 157, 46)'
+                                                        : qualityValue(10) >=
+                                                              10 &&
+                                                          qualityValue(10) < 30
+                                                        ? 'rgb(214, 214, 0)'
+                                                        : 'rgb(216, 38, 38)',
+                                                color: 'white',
+                                                fontWeight: '600',
                                                 fontSize: '12px',
                                                 textAlign: 'center',
                                             }}
@@ -1509,12 +1718,12 @@ const Profile = () => {
                                                         : 'linear-gradient(135deg, #3d3325, #dcc999)',
                                                 borderBottomLeftRadius:
                                                     equipData[11].Grade ===
-                                                    '영웅'
+                                                        '영웅' || '유물'
                                                         ? '8px'
                                                         : '0px',
                                                 borderBottomRightRadius:
                                                     equipData[11].Grade ===
-                                                    '영웅'
+                                                        '영웅' || '유물'
                                                         ? '8px'
                                                         : '0px',
                                             }}
@@ -1523,7 +1732,9 @@ const Profile = () => {
                                             className="qualityValue"
                                             style={{
                                                 // width: '48px',
-                                                backgroundColor: 'green',
+                                                backgroundColor:
+                                                    'rgb(255, 255, 0)',
+                                                fontWeight: '600',
                                                 fontSize: '12px',
                                                 textAlign: 'center',
                                             }}

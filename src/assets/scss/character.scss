@@ -8,7 +8,7 @@
 .character {
     &-inner {
         display: flex;
-        gap: 0 28px;
+        gap: 0 50px;
         justify-content: center;
     }
     &-area {
@@ -34,6 +34,7 @@
 .profile {
     display: flex;
     flex-direction: column;
+    width: 740px;
     &-inner {
         position: relative;
         width: 100%;
@@ -97,6 +98,7 @@
                     font-weight: 300;
                     opacity: 0.7;
                     padding-top: 6px;
+                    margin-left: 7px;
                 }
             }
         }
@@ -244,12 +246,13 @@
         box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.02);
         padding-top: 40px;
         padding-bottom: 75px;
-        padding-left: 20px;
+        padding-left: 3px;
         border-radius: 8px;
         display: flex;
         width: 100%;
         height: 512px;
         text-align: left;
+        gap: 0 5px;
         .equipment {
             margin-top: 0.5rem;
             p {
