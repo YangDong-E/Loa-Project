@@ -675,6 +675,697 @@ const Profile = () => {
         )
     }
 
+    function elixirfirststat(idx) {
+        return equipData[idx].Tooltip.includes('[초월]') &&
+            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                .replace(/Element_[0-9]+/g, '')
+                .replace(/\s/gi, '')
+                .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                .replace(/:[0-9]+/gi, ' ')
+                .replace(/:/gi, '')
+                .replace(/[0-9]/gi, '')
+                .substring(
+                    equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .replace(/[0-9]/gi, '')
+                        .indexOf('초월단계')
+                )
+                .slice(0, 6)
+                .replace(/초월단계/, '') == '투구' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('투구')
+                        )
+                        .replace(/투구/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('투구')
+                        )
+                        .replace(/투구/gi, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.includes('[초월]') &&
+          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .replace(/[0-9]/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .replace(/[0-9]/gi, '')
+                      .indexOf('초월단계')
+              )
+              .slice(0, 6)
+              .replace(/초월단계/, '') == '상의' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('상의')
+                        )
+                        .replace(/상의/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('상의')
+                        )
+                        .replace(/상의/gi, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.includes('[초월]') &&
+          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .replace(/[0-9]/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .replace(/[0-9]/gi, '')
+                      .indexOf('초월단계')
+              )
+              .slice(0, 6)
+              .replace(/초월단계/, '') == '하의' ? (
+            <>
+                <span>
+                    {
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .replace(/:/gi, '')
+                            .replace(/\s/gi, '')
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .replace(/\s/gi, '')
+                                    .indexOf('초월')
+                            )
+                            .slice(5)
+                            .replace(/[0-9]/g, ' ')
+                            .split(' ')[2]
+                            .replace(/하의/gi, '')
+                        // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')
+                    }
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .replace(/\s/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .replace(/\s/gi, '')
+                                .indexOf('초월')
+                        )
+                        .slice(5)
+                        .replace(/[0-9]/, ' ')
+                        .slice(3)
+                        .match(/[0-9]/)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.includes('[초월]') &&
+          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .replace(/[0-9]/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .replace(/[0-9]/gi, '')
+                      .indexOf('초월단계')
+              )
+              .slice(0, 6)
+              .replace(/초월단계/, '') == '어깨' ? (
+            <>
+                <span>
+                    {
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .replace(/:/gi, '')
+                            .replace(/\s/gi, '')
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .replace(/\s/gi, '')
+                                    .indexOf('초월')
+                            )
+                            .slice(5)
+                            .replace(/[0-9]/g, ' ')
+                            .split(' ')[2]
+                            .replace(/어깨/gi, '')
+                        // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')
+                    }
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .replace(/\s/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .replace(/\s/gi, '')
+                                .indexOf('초월')
+                        )
+                        .slice(5)
+                        .replace(/[0-9]/, ' ')
+                        .slice(3)
+                        .match(/[0-9]/)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.includes('[초월]') &&
+          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .replace(/[0-9]/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .replace(/[0-9]/gi, '')
+                      .indexOf('초월단계')
+              )
+              .slice(0, 6)
+              .replace(/초월단계/, '') == '장갑' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('장갑')
+                        )
+                        .replace(/장갑/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('장갑')
+                        )
+                        .replace(/장갑/gi, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.includes('[초월]') &&
+          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .replace(/[0-9]/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .replace(/[0-9]/gi, '')
+                      .indexOf('초월단계')
+              )
+              .slice(0, 6)
+              .replace(/초월단계/, '') == '공용' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('공용')
+                        )
+                        .replace(/공용/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('공용')
+                        )
+                        .replace(/공용/gi, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : (
+            ''
+        )
+    }
+
+    function elixirsecondstat(idx) {
+        return equipData[idx].Tooltip.includes('[초월]') ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        // .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                // .replace(/:/gi, '')
+                                .indexOf('단계')
+                        )
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                // .replace(/:/gi, '')
+                                .substring(
+                                    equipData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        // .replace(/:/gi, '')
+                                        .indexOf('단계')
+                                )
+                                .indexOf('슬롯효과')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/\:{4}/g, '')
+                        .split(':::')[1]
+                        .slice(2)
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        // .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                // .replace(/:/gi, '')
+                                .indexOf('단계')
+                        )
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                // .replace(/:/gi, '')
+                                .substring(
+                                    equipData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        // .replace(/:/gi, '')
+                                        .indexOf('단계')
+                                )
+                                .indexOf('슬롯효과')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/\:{4}/g, '')
+                        .split(':::')[1]
+                        .slice(2)
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : (
+            ''
+        )
+    }
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -716,7 +1407,11 @@ const Profile = () => {
                         </p>
                     </div>
                     <div className="info-name">
-                        <p className="title">{profileData.Title}</p>
+                        <p className="title">
+                            {profileData.Title !== null
+                                ? profileData.Title
+                                : ''}
+                        </p>
                         <p className="name">{profileData.CharacterName}</p>
                     </div>
                 </div>
@@ -799,37 +1494,25 @@ const Profile = () => {
                             <p>
                                 진화{' '}
                                 <div className="value">
-                                    {profileData.ItemAvgLevel < '1620' ||
-                                    profileData.ArkPassive.Points[0] ==
-                                        undefined ||
-                                    null
-                                        ? '0'
-                                        : profileData.ArkPassive.Points[0]
-                                              .Value}
+                                    {profileData.ArkPassive.Points[0]
+                                        ? profileData.ArkPassive.Points[0].Value
+                                        : '0'}
                                 </div>
                             </p>
                             <p>
                                 깨달음{' '}
                                 <div className="value">
-                                    {profileData.ItemAvgLevel < '1620' ||
-                                    profileData.ArkPassive.Points[1] ==
-                                        undefined ||
-                                    null
-                                        ? '0'
-                                        : profileData.ArkPassive.Points[1]
-                                              .Value}
+                                    {profileData.ArkPassive.Points[1]
+                                        ? profileData.ArkPassive.Points[1].Value
+                                        : '0'}
                                 </div>
                             </p>
                             <p>
                                 도약{' '}
                                 <div className="value">
-                                    {profileData.ItemAvgLevel < '1620' ||
-                                    profileData.ArkPassive.Points[2] ==
-                                        undefined ||
-                                    null
-                                        ? '0'
-                                        : profileData.ArkPassive.Points[2]
-                                              .Value}
+                                    {profileData.ArkPassive.Points[2]
+                                        ? profileData.ArkPassive.Points[2].Value
+                                        : '0'}
                                 </div>
                             </p>
                         </div>
@@ -996,6 +1679,10 @@ const Profile = () => {
                                     <div className="equip-name">
                                         {equipData[1].Name}
                                     </div>
+                                    <div>
+                                        {elixirfirststat(1)}{' '}
+                                        {elixirsecondstat(1)}
+                                    </div>
                                 </div>
                             </p>
                             <p>
@@ -1005,7 +1692,6 @@ const Profile = () => {
                                         display: 'flex',
                                         width: '48px',
                                         height: '56px',
-                                        // borderRadius: '8px',
                                         flexDirection: 'column',
                                     }}
                                 >
@@ -1071,6 +1757,10 @@ const Profile = () => {
                                     </div>
                                     <div className="equip-name">
                                         {equipData[2].Name}
+                                    </div>
+                                    <div>
+                                        {elixirfirststat(2)}{' '}
+                                        {elixirsecondstat(2)}
                                     </div>
                                 </div>
                             </p>
@@ -1148,6 +1838,10 @@ const Profile = () => {
                                     <div className="equip-name">
                                         {equipData[3].Name}
                                     </div>
+                                    <div>
+                                        {elixirfirststat(3)}{' '}
+                                        {elixirsecondstat(3)}
+                                    </div>
                                 </div>
                             </p>
                             <p>
@@ -1224,6 +1918,10 @@ const Profile = () => {
                                     <div className="equip-name">
                                         {equipData[4].Name}
                                     </div>
+                                    <div>
+                                        {elixirfirststat(4)}{' '}
+                                        {elixirsecondstat(4)}
+                                    </div>
                                 </div>
                             </p>
                             <p>
@@ -1299,6 +1997,10 @@ const Profile = () => {
                                     </div>
                                     <div className="equip-name">
                                         {equipData[5].Name}
+                                    </div>
+                                    <div>
+                                        {elixirfirststat(5)}{' '}
+                                        {elixirsecondstat(5)}
                                     </div>
                                 </div>
                             </p>
