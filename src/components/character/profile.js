@@ -971,44 +971,37 @@ const Profile = () => {
               .replace(/초월단계/, '') == '어깨' ? (
             <>
                 <span>
-                    {
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            .replace(/\s/gi, '')
-                            .replace(
-                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                ''
-                            )
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, ' ')
-                            .replace(/:/gi, '')
-                            .replace(/\s/gi, '')
-                            .substring(
-                                equipData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                     ''
                                 )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                        ''
-                                    )
-                                    .replace(/:[0-9]+/gi, ' ')
-                                    .replace(/:/gi, '')
-                                    .replace(/\s/gi, '')
-                                    .indexOf('초월')
-                            )
-                            .slice(5)
-                            .replace(/[0-9]/g, ' ')
-                            .split(' ')[2]
-                            .replace(/어깨/gi, '')
-                        // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')
-                    }
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+
+                                .indexOf('초월')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/\:{4}/g, ' ')
+                        .split(' ')[2]
+                        .replace(/어깨/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
                 </span>{' '}
                 <span>
                     {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
@@ -1366,6 +1359,643 @@ const Profile = () => {
         )
     }
 
+    function elixirNotransstat(idx) {
+        return equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+            .replace(/Element_[0-9]+/g, '')
+            .replace(/\s/gi, '')
+            .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+            .replace(/:[0-9]+/gi, ' ')
+            .replace(/:/gi, '')
+            .substring(
+                equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                    .replace(/:[0-9]+/gi, ' ')
+                    .replace(/:/gi, '')
+                    .indexOf('재련경험치')
+            )
+            .replace(/\s/gi, '')
+            .replace(/재련경험치/gi, '')
+            .slice(0, 2) == '공용' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/재련경험치/gi, '')
+                        .replace(/공용/, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+
+                        .replace(/재련경험치/gi, '')
+                        .replace(/공용/, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .indexOf('재련경험치')
+              )
+              .replace(/\s/gi, '')
+              .replace(/재련경험치/gi, '')
+              .slice(0, 2) == '투구' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/재련경험치/gi, '')
+                        .replace(/투구/, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+
+                        .replace(/재련경험치/gi, '')
+                        .replace(/투구/, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .indexOf('재련경험치')
+              )
+              .replace(/\s/gi, '')
+              .replace(/재련경험치/gi, '')
+              .slice(0, 2) == '상의' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/재련경험치/gi, '')
+                        .replace(/상의/, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+
+                        .replace(/재련경험치/gi, '')
+                        .replace(/상의/, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .indexOf('재련경험치')
+              )
+              .replace(/\s/gi, '')
+              .replace(/재련경험치/gi, '')
+              .slice(0, 2) == '하의' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/재련경험치/gi, '')
+                        .replace(/하의/, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+
+                        .replace(/재련경험치/gi, '')
+                        .replace(/하의/, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .indexOf('재련경험치')
+              )
+              .replace(/\s/gi, '')
+              .replace(/재련경험치/gi, '')
+              .slice(0, 2) == '어깨' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/재련경험치/gi, '')
+                        .replace(/어깨/, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+
+                        .replace(/재련경험치/gi, '')
+                        .replace(/어깨/, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              .replace(/\s/gi, '')
+              .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+              .replace(/:[0-9]+/gi, ' ')
+              .replace(/:/gi, '')
+              .substring(
+                  equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                      .replace(/:[0-9]+/gi, ' ')
+                      .replace(/:/gi, '')
+                      .indexOf('재련경험치')
+              )
+              .replace(/\s/gi, '')
+              .replace(/재련경험치/gi, '')
+              .slice(0, 2) == '장갑' ? (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+                        .replace(/\s/gi, '')
+                        .replace(/재련경험치/gi, '')
+                        .replace(/장갑/, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .indexOf('재련경험치')
+                        )
+
+                        .replace(/재련경험치/gi, '')
+                        .replace(/장갑/, '')
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        ) : (
+            ''
+        )
+    }
+    function elixirNotranssecondstat(idx) {
+        return (
+            <>
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+
+                                .indexOf('단계')
+                        )
+
+                        .replace(/\s/gi, '')
+                        .replace(/\:{4}/g, '')
+                        .split(':::')[1]
+                        .slice(2)
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\(\)].*$/, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(/\s/gi, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                            ''
+                        )
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                        .replace(/:[0-9]+/gi, ' ')
+                        // .replace(/:/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                // .replace(/:/gi, '')
+                                .indexOf('단계')
+                        )
+                        // .substring(
+                        //     equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        //         .replace(/Element_[0-9]+/g, '')
+                        //         .replace(/\s/gi, '')
+                        //         .replace(
+                        //             /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                        //             ''
+                        //         )
+                        //         .replace(
+                        //             /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                        //             ''
+                        //         )
+                        //         .replace(/:[0-9]+/gi, ' ')
+                        //         // .replace(/:/gi, '')
+                        //         .substring(
+                        //             equipData[idx].Tooltip.replace(
+                        //                 /(<([^>]+)>)/g,
+                        //                 ''
+                        //             )
+                        //                 .replace(/Element_[0-9]+/g, '')
+                        //                 .replace(/\s/gi, '')
+                        //                 .replace(
+                        //                     /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                        //                     ''
+                        //                 )
+                        //                 .replace(
+                        //                     /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                        //                     ''
+                        //                 )
+                        //                 .replace(/:[0-9]+/gi, ' ')
+                        //                 // .replace(/:/gi, '')
+                        //                 .indexOf('단계')
+                        //         )
+                        //         .indexOf('슬롯효과')
+                        // )
+                        .replace(/\s/gi, '')
+                        .replace(/\:{4}/g, '')
+                        .split(':::')[1]
+                        .slice(2)
+                        .replace(/[^0-9]/g, '')
+                        .charAt(0)}
+                </span>
+            </>
+        )
+    }
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -1680,8 +2310,22 @@ const Profile = () => {
                                         {equipData[1].Name}
                                     </div>
                                     <div>
-                                        {elixirfirststat(1)}{' '}
-                                        {elixirsecondstat(1)}
+                                        {equipData[1].Tooltip.includes(
+                                            '[초월]'
+                                        ) ? (
+                                            <>
+                                                {elixirfirststat(1)}{' '}
+                                                {elixirsecondstat(1)}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {elixirNotransstat(1)}{' '}
+                                                {elixirNotranssecondstat(1)}
+                                            </>
+                                        )}
+                                        {/* {elixirNotransstat(1)} */}
+                                        {/* {elixirfirststat(1)}{' '}
+                                        {elixirsecondstat(1)} */}
                                     </div>
                                 </div>
                             </p>
@@ -1759,8 +2403,22 @@ const Profile = () => {
                                         {equipData[2].Name}
                                     </div>
                                     <div>
-                                        {elixirfirststat(2)}{' '}
-                                        {elixirsecondstat(2)}
+                                        {equipData[2].Tooltip.includes(
+                                            '[초월]'
+                                        ) ? (
+                                            <>
+                                                {elixirfirststat(2)}{' '}
+                                                {elixirsecondstat(2)}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {elixirNotransstat(2)}{' '}
+                                                {elixirNotranssecondstat(2)}
+                                            </>
+                                        )}
+                                        {/* {elixirNotransstat(2)} */}
+                                        {/* {elixirfirststat(2)}{' '} */}
+                                        {/* {elixirsecondstat(2)} */}
                                     </div>
                                 </div>
                             </p>
@@ -1839,8 +2497,22 @@ const Profile = () => {
                                         {equipData[3].Name}
                                     </div>
                                     <div>
-                                        {elixirfirststat(3)}{' '}
-                                        {elixirsecondstat(3)}
+                                        {equipData[3].Tooltip.includes(
+                                            '[초월]'
+                                        ) ? (
+                                            <>
+                                                {elixirfirststat(3)}{' '}
+                                                {elixirsecondstat(3)}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {elixirNotransstat(3)}{' '}
+                                                {elixirNotranssecondstat(3)}
+                                            </>
+                                        )}
+                                        {/* {elixirNotransstat(3)} */}
+                                        {/* {elixirfirststat(3)}{' '}
+                                        {elixirsecondstat(3)} */}
                                     </div>
                                 </div>
                             </p>
@@ -1919,8 +2591,22 @@ const Profile = () => {
                                         {equipData[4].Name}
                                     </div>
                                     <div>
-                                        {elixirfirststat(4)}{' '}
-                                        {elixirsecondstat(4)}
+                                        {equipData[4].Tooltip.includes(
+                                            '[초월]'
+                                        ) ? (
+                                            <>
+                                                {elixirfirststat(4)}{' '}
+                                                {elixirsecondstat(4)}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {elixirNotransstat(4)}{' '}
+                                                {elixirNotranssecondstat(4)}
+                                            </>
+                                        )}
+                                        {/* {elixirNotransstat(4)} */}
+                                        {/* {elixirfirststat(4)}{' '}
+                                        {elixirsecondstat(4)} */}
                                     </div>
                                 </div>
                             </p>
@@ -1999,8 +2685,22 @@ const Profile = () => {
                                         {equipData[5].Name}
                                     </div>
                                     <div>
-                                        {elixirfirststat(5)}{' '}
-                                        {elixirsecondstat(5)}
+                                        {equipData[5].Tooltip.includes(
+                                            '[초월]'
+                                        ) ? (
+                                            <>
+                                                {elixirfirststat(5)}{' '}
+                                                {elixirsecondstat(5)}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {elixirNotransstat(5)}{' '}
+                                                {elixirNotranssecondstat(5)}
+                                            </>
+                                        )}
+                                        {/* {elixirNotransstat(5)} */}
+                                        {/* {elixirfirststat(5)}{' '}
+                                        {elixirsecondstat(5)} */}
                                     </div>
                                 </div>
                             </p>
