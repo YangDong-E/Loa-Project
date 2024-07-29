@@ -278,8 +278,10 @@
         height: auto;
         text-align: left;
         gap: 0 5px;
+        flex-wrap: wrap;
         .equipment {
             margin-top: 0.5rem;
+            width: 48%;
             p {
                 display: flex;
                 align-items: center;
@@ -364,6 +366,7 @@
         .acc-inner {
             display: flex;
             flex-direction: column;
+            width: 50%;
             p {
                 display: flex;
                 align-items: center;

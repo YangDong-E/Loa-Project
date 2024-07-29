@@ -1951,6 +1951,210 @@ const Profile = () => {
         )
     }
 
+    function braceletstat(idx) {
+        return (
+            <>
+                <span>
+                    {
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            // .replace(/[\[\]]/g, ' ')
+                            .replace(
+                                /[^신속|특화|치명|제압|숙련|인내\+0-9]/gi,
+                                ''
+                            )
+                            .replace(/\+/g, ' ')
+                            .replace(/[0-9]/g, '')
+                            .slice(0, 2)
+                        // .split(' ')[1]
+                    }{' '}
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        // .replace(/\s/gi, '')
+                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                // .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .indexOf('팔찌 효과')
+                        )
+                        .replace(/[\[\]]/g, ' ')
+                        .replace(/[^신속|특화|치명|제압|숙련|인내\+0-9]/gi, '')
+                        .replace(/\+/g, ' ')
+                        .split(' ')[1]
+                        .replace(/[^0-9]/g, '')}
+                </span>{' '}
+                <span>
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        // .replace(/\s/gi, '')
+                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                // .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .indexOf('팔찌 효과')
+                        )
+                        .replace(/[\[\]]/g, ' ')
+                        .replace(/[^신속|특화|치명|제압|숙련|인내\+0-9]/gi, '')
+                        .replace(/[\+0-9]/g, '')
+                        .slice(2, 4)}{' '}
+                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        // .replace(/\s/gi, '')
+                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                        .substring(
+                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                // .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                    ''
+                                )
+                                .replace(
+                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                    ''
+                                )
+                                .replace(/:[0-9]+/gi, ' ')
+                                .indexOf('팔찌 효과')
+                        )
+                        .replace(/[\[\]]/g, ' ')
+                        .replace(/[^신속|특화|치명|제압|숙련|인내\+0-9]/gi, ':')
+                        .split(/[신속|특화|치명|제압|숙련|인내]/)[4]
+                        .replace(/[^+0-9]/g, ' ')
+                        .split(' ')[1]
+                        .replace(/\+/g, '')}
+                </span>
+            </>
+        )
+    }
+
+    function braceleteffectstat(idx) {
+        return (
+            <>
+                <span>
+                    {
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                        ''
+                                    )
+                                    .substring(
+                                        equipData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            // .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                                ''
+                                            )
+                                            .replace(/:[0-9]+/gi, ' ')
+                                            .indexOf('팔찌 효과')
+                                    )
+                                    .indexOf('[')
+                            )
+                            .replace(/\s/gi, '')
+                            .replace(/[\[\]]/g, ' ')
+                            .split(' ')[1]
+                    }
+                </span>
+            </>
+        )
+    }
+
     const randomColor = () => {
         let r = Math.floor(Math.random() * 256)
         let g = Math.floor(Math.random() * 256)
@@ -3189,6 +3393,38 @@ const Profile = () => {
                                     </div>
                                     <div className="stone-info">
                                         {stonestat(11)}
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                        <div className="bracelet-inner">
+                            <p>
+                                <div
+                                    className="img-quality"
+                                    style={{
+                                        display: 'flex',
+
+                                        flexDirection: 'row',
+                                    }}
+                                >
+                                    <img
+                                        src={equipData[12].Icon}
+                                        value={equipData[12].Grade}
+                                        style={{
+                                            backgroundImage:
+                                                equipData[12].Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                            width: '45px',
+                                            height: '50px',
+                                        }}
+                                    />
+                                    <div className="nametag">
+                                        {/* <div className="equip-name">
+                                        {equipData[12].Name}
+                                    </div> */}
+                                        {braceletstat(12)}
+                                        {braceleteffectstat(12)}
                                     </div>
                                 </div>
                             </p>
