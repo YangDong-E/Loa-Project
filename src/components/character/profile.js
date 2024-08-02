@@ -1953,7 +1953,7 @@ const Profile = () => {
 
     function braceletstat(idx) {
         return (
-            <>
+            <div>
                 <span>
                     {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                         .replace(/Element_[0-9]+/g, '')
@@ -2054,1305 +2054,581 @@ const Profile = () => {
                         .toString()
                         .replace(/[^0-9]/g, '')}
                 </span>
-            </>
+            </div>
         )
     }
 
     function braceleteffectstat(idx) {
         return (
-            <>
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        // .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                // .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌 효과')
-                        )
-                        .replace(/\s/gi, ':')
-                        .match(
-                            /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                        ) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+            <div>
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌 효과')
+                    )
+                    .replace(/\s/gi, ':')
+                    .match(
+                        /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                    ) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      // .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                   ''
                               )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[0] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[0]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        // .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                // .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌 효과')
+                      )
+                      .replace(/\s/gi, ':')
+                      .match(
+                          /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                      )[0] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
                                     ''
                                 )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌 효과')
-                        )
-                        .replace(/\s/gi, ':')
-                        .match(
-                            /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                        ) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[1] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[1]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        // .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                // .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌 효과')
-                        )
-                        .replace(/\s/gi, ':')
-                        .match(
-                            /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                        ) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[2] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[2]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        // .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                // .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌 효과')
-                        )
-                        .replace(/\s/gi, ':')
-                        .match(
-                            /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                        ) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[3] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[3]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        // .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                // .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌 효과')
-                        )
-                        .replace(/\s/gi, ':')
-                        .match(
-                            /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                        ) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[4] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              // .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      // .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌 효과')
-                              )
-                              .replace(/\s/gi, ':')
-                              .match(
-                                  /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
-                              )[4]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                // .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌효과')
-                        )
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                    ''
-                                )
-                                .substring(
-                                    equipData[idx].Tooltip.replace(
-                                        /(<([^>]+)>)/g,
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                         ''
                                     )
-                                        .replace(/Element_[0-9]+/g, '')
-                                        .replace(/\s/gi, '')
-                                        .replace(
-                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                            ''
-                                        )
-                                        .replace(
-                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                            ''
-                                        )
-                                        // .replace(/:[0-9]+/gi, ' ')
-                                        .indexOf('팔찌효과')
-                                )
-                                .indexOf('[')
-                        )
-                        .match(/\[(\D{2,4})\]/g) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[0] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[0]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                // .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌효과')
-                        )
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                    ''
-                                )
-                                .substring(
-                                    equipData[idx].Tooltip.replace(
-                                        /(<([^>]+)>)/g,
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
                                         ''
                                     )
-                                        .replace(/Element_[0-9]+/g, '')
-                                        .replace(/\s/gi, '')
-                                        .replace(
-                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                            ''
-                                        )
-                                        .replace(
-                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                            ''
-                                        )
-                                        // .replace(/:[0-9]+/gi, ' ')
-                                        .indexOf('팔찌효과')
-                                )
-                                .indexOf('[')
-                        )
-                        .match(/\[(\D{2,4})\]/g) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(
+                                /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                            )[0]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌 효과')
+                    )
+                    .replace(/\s/gi, ':')
+                    .match(
+                        /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                    ) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      // .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
+                              // .replace(/\s/gi, '')
                               .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                   ''
                               )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[1] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[1]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>{' '}
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌 효과')
+                      )
+                      .replace(/\s/gi, ':')
+                      .match(
+                          /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                      )[1] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
                                     ''
                                 )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                // .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌효과')
-                        )
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                    ''
-                                )
-                                .substring(
-                                    equipData[idx].Tooltip.replace(
-                                        /(<([^>]+)>)/g,
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                         ''
                                     )
-                                        .replace(/Element_[0-9]+/g, '')
-                                        .replace(/\s/gi, '')
-                                        .replace(
-                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                            ''
-                                        )
-                                        .replace(
-                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                            ''
-                                        )
-                                        // .replace(/:[0-9]+/gi, ' ')
-                                        .indexOf('팔찌효과')
-                                )
-                                .indexOf('[')
-                        )
-                        .match(/\[(\D{2,4})\]/g) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[2] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[2]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                // .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌효과')
-                        )
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                    ''
-                                )
-                                .substring(
-                                    equipData[idx].Tooltip.replace(
-                                        /(<([^>]+)>)/g,
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
                                         ''
                                     )
-                                        .replace(/Element_[0-9]+/g, '')
-                                        .replace(/\s/gi, '')
-                                        .replace(
-                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                            ''
-                                        )
-                                        .replace(
-                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                            ''
-                                        )
-                                        // .replace(/:[0-9]+/gi, ' ')
-                                        .indexOf('팔찌효과')
-                                )
-                                .indexOf('[')
-                        )
-                        .match(/\[(\D{2,4})\]/g) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(
+                                /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                            )[1]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌 효과')
+                    )
+                    .replace(/\s/gi, ':')
+                    .match(
+                        /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                    ) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      // .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
+                              // .replace(/\s/gi, '')
                               .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                   ''
                               )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[3] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                              .replace(/Element_[0-9]+/g, '')
-                              .replace(/\s/gi, '')
-                              .replace(
-                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                  ''
-                              )
-                              .replace(
-                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                  ''
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                          ''
-                                      )
-                                      // .replace(/:[0-9]+/gi, ' ')
-                                      .indexOf('팔찌효과')
-                              )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
-                              )
-                              .match(/\[(\D{2,4})\]/g)[3]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>
-                <span>
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                        .replace(/Element_[0-9]+/g, '')
-                        .replace(/\s/gi, '')
-                        .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
-                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌 효과')
+                      )
+                      .replace(/\s/gi, ':')
+                      .match(
+                          /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                      )[1] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
                                     ''
                                 )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                    ''
-                                )
-                                // .replace(/:[0-9]+/gi, ' ')
-                                .indexOf('팔찌효과')
-                        )
-                        .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                                .replace(/Element_[0-9]+/g, '')
-                                .replace(/\s/gi, '')
-                                .replace(
-                                    /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                    ''
-                                )
-                                .replace(
-                                    /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                    ''
-                                )
-                                .substring(
-                                    equipData[idx].Tooltip.replace(
-                                        /(<([^>]+)>)/g,
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                         ''
                                     )
-                                        .replace(/Element_[0-9]+/g, '')
-                                        .replace(/\s/gi, '')
-                                        .replace(
-                                            /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                            ''
-                                        )
-                                        .replace(
-                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                            ''
-                                        )
-                                        // .replace(/:[0-9]+/gi, ' ')
-                                        .indexOf('팔찌효과')
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(
+                                /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                            )[1]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌 효과')
+                    )
+                    .replace(/\s/gi, ':')
+                    .match(
+                        /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                    ) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      // .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              // .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌 효과')
+                      )
+                      .replace(/\s/gi, ':')
+                      .match(
+                          /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                      )[2] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
                                 )
-                                .indexOf('[')
-                        )
-                        .match(/\[(\D{2,4})\]/g) == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(
+                                /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                            )[2]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌 효과')
+                    )
+                    .replace(/\s/gi, ':')
+                    .match(
+                        /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                    ) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      // .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              // .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌 효과')
+                      )
+                      .replace(/\s/gi, ':')
+                      .match(
+                          /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                      )[3] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(
+                                /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                            )[3]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌 효과')
+                    )
+                    .replace(/\s/gi, ':')
+                    .match(
+                        /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                    ) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      // .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              // .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌 효과')
+                      )
+                      .replace(/\s/gi, ':')
+                      .match(
+                          /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                      )[4] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌 효과')
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(
+                                /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
+                            )[4]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            // .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌효과')
+                    )
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .indexOf('[')
+                    )
+                    .match(/\[(\D{2,4})\]/g) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              // .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌효과')
+                      )
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -3381,44 +2657,151 @@ const Profile = () => {
                                       // .replace(/:[0-9]+/gi, ' ')
                                       .indexOf('팔찌효과')
                               )
-                              .substring(
-                                  equipData[idx].Tooltip.replace(
-                                      /(<([^>]+)>)/g,
-                                      ''
-                                  )
-                                      .replace(/Element_[0-9]+/g, '')
-                                      .replace(/\s/gi, '')
-                                      .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                          ''
-                                      )
-                                      .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
-                                          ''
-                                      )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
+                              .indexOf('[')
+                      )
+                      .match(/\[(\D{2,4})\]/g)[0] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                        ''
+                                    )
+                                    .substring(
+                                        equipData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                                ''
+                                            )
+                                            // .replace(/:[0-9]+/gi, ' ')
+                                            .indexOf('팔찌효과')
+                                    )
+                                    .indexOf('[')
+                            )
+                            .match(/\[(\D{2,4})\]/g)[0]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            // .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌효과')
+                    )
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .indexOf('[')
+                    )
+                    .match(/\[(\D{2,4})\]/g) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
                               )
-                              .match(/\[(\D{2,4})\]/g)[4] == null
-                        ? ''
-                        : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              // .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌효과')
+                      )
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -3447,6 +2830,161 @@ const Profile = () => {
                                       // .replace(/:[0-9]+/gi, ' ')
                                       .indexOf('팔찌효과')
                               )
+                              .indexOf('[')
+                      )
+                      .match(/\[(\D{2,4})\]/g)[1] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                        ''
+                                    )
+                                    .substring(
+                                        equipData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                                ''
+                                            )
+                                            // .replace(/:[0-9]+/gi, ' ')
+                                            .indexOf('팔찌효과')
+                                    )
+                                    .indexOf('[')
+                            )
+                            .match(/\[(\D{2,4})\]/g)[1]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}{' '}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            // .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌효과')
+                    )
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .indexOf('[')
+                    )
+                    .match(/\[(\D{2,4})\]/g) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              // .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌효과')
+                      )
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(
+                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                  ''
+                              )
                               .substring(
                                   equipData[idx].Tooltip.replace(
                                       /(<([^>]+)>)/g,
@@ -3455,38 +2993,438 @@ const Profile = () => {
                                       .replace(/Element_[0-9]+/g, '')
                                       .replace(/\s/gi, '')
                                       .replace(
-                                          /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                           ''
                                       )
                                       .replace(
-                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
                                           ''
                                       )
-                                      .substring(
-                                          equipData[idx].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(
-                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
-                                                  ''
-                                              )
-                                              // .replace(/:[0-9]+/gi, ' ')
-                                              .indexOf('팔찌효과')
-                                      )
-                                      .indexOf('[')
+                                      // .replace(/:[0-9]+/gi, ' ')
+                                      .indexOf('팔찌효과')
                               )
-                              .match(/\[(\D{2,4})\]/g)[4]
-                              .toString()
-                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
-                </span>
-            </>
+                              .indexOf('[')
+                      )
+                      .match(/\[(\D{2,4})\]/g)[2] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                        ''
+                                    )
+                                    .substring(
+                                        equipData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                                ''
+                                            )
+                                            // .replace(/:[0-9]+/gi, ' ')
+                                            .indexOf('팔찌효과')
+                                    )
+                                    .indexOf('[')
+                            )
+                            .match(/\[(\D{2,4})\]/g)[2]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            // .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌효과')
+                    )
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .indexOf('[')
+                    )
+                    .match(/\[(\D{2,4})\]/g) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              // .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌효과')
+                      )
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(
+                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                  ''
+                              )
+                              .substring(
+                                  equipData[idx].Tooltip.replace(
+                                      /(<([^>]+)>)/g,
+                                      ''
+                                  )
+                                      .replace(/Element_[0-9]+/g, '')
+                                      .replace(/\s/gi, '')
+                                      .replace(
+                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                          ''
+                                      )
+                                      .replace(
+                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                          ''
+                                      )
+                                      // .replace(/:[0-9]+/gi, ' ')
+                                      .indexOf('팔찌효과')
+                              )
+                              .indexOf('[')
+                      )
+                      .match(/\[(\D{2,4})\]/g)[3] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                        ''
+                                    )
+                                    .substring(
+                                        equipData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                                ''
+                                            )
+                                            // .replace(/:[0-9]+/gi, ' ')
+                                            .indexOf('팔찌효과')
+                                    )
+                                    .indexOf('[')
+                            )
+                            .match(/\[(\D{2,4})\]/g)[3]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}
+                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                            // .replace(/:[0-9]+/gi, ' ')
+                            .indexOf('팔찌효과')
+                    )
+                    .substring(
+                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .indexOf('[')
+                    )
+                    .match(/\[(\D{2,4})\]/g) == null ? (
+                    ''
+                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      .replace(/Element_[0-9]+/g, '')
+                      .replace(/\s/gi, '')
+                      .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                      .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
+                              // .replace(/:[0-9]+/gi, ' ')
+                              .indexOf('팔찌효과')
+                      )
+                      .substring(
+                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(/\s/gi, '')
+                              .replace(
+                                  /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                  ''
+                              )
+                              .replace(
+                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                  ''
+                              )
+                              .substring(
+                                  equipData[idx].Tooltip.replace(
+                                      /(<([^>]+)>)/g,
+                                      ''
+                                  )
+                                      .replace(/Element_[0-9]+/g, '')
+                                      .replace(/\s/gi, '')
+                                      .replace(
+                                          /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                          ''
+                                      )
+                                      .replace(
+                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                          ''
+                                      )
+                                      // .replace(/:[0-9]+/gi, ' ')
+                                      .indexOf('팔찌효과')
+                              )
+                              .indexOf('[')
+                      )
+                      .match(/\[(\D{2,4})\]/g)[4] == null ? (
+                    ''
+                ) : (
+                    <span>
+                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                        ''
+                                    )
+                                    // .replace(/:[0-9]+/gi, ' ')
+                                    .indexOf('팔찌효과')
+                            )
+                            .substring(
+                                equipData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                        ''
+                                    )
+                                    .substring(
+                                        equipData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi,
+                                                ''
+                                            )
+                                            // .replace(/:[0-9]+/gi, ' ')
+                                            .indexOf('팔찌효과')
+                                    )
+                                    .indexOf('[')
+                            )
+                            .match(/\[(\D{2,4})\]/g)[4]
+                            .toString()
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
+                    </span>
+                )}
+            </div>
         )
     }
 
@@ -4750,16 +4688,18 @@ const Profile = () => {
                                                 equipData[12].Grade === '유물'
                                                     ? 'linear-gradient(135deg, #341a09, #a24006)'
                                                     : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            width: '45px',
-                                            height: '50px',
+                                            width: '40px',
+                                            height: '40px',
                                         }}
                                     />
                                     <div className="nametag">
                                         {/* <div className="equip-name">
                                         {equipData[12].Name}
                                     </div> */}
-                                        {braceletstat(12)}
-                                        <div>{braceleteffectstat(12)}</div>
+                                        <div className="braceletstat">
+                                            {braceletstat(12)}
+                                        </div>
+                                        {braceleteffectstat(12)}
                                     </div>
                                 </div>
                             </p>
