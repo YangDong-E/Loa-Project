@@ -6,6 +6,7 @@ const Profile = () => {
     const profileData = data?.ArmoryProfile
     const equipData = data?.ArmoryEquipment
     const skillData = data?.ArmorySkills
+    const avgLevel = parseFloat(profileData.ItemAvgLevel.replace(',', ''))
 
     const a = parseInt(profileData.Stats[1].Value)
     const b = parseInt(profileData.Stats[0].Value)
@@ -3574,7 +3575,8 @@ const Profile = () => {
                             <p>
                                 진화{' '}
                                 <div className="value">
-                                    {profileData.ArkPassive.Points[0]
+                                    {profileData.ArkPassive.Points[0] &&
+                                    avgLevel >= '1600'
                                         ? profileData.ArkPassive.Points[0].Value
                                         : '0'}
                                 </div>
@@ -3582,7 +3584,8 @@ const Profile = () => {
                             <p>
                                 깨달음{' '}
                                 <div className="value">
-                                    {profileData.ArkPassive.Points[1]
+                                    {profileData.ArkPassive.Points[1] &&
+                                    avgLevel >= '1600'
                                         ? profileData.ArkPassive.Points[1].Value
                                         : '0'}
                                 </div>
@@ -3590,7 +3593,8 @@ const Profile = () => {
                             <p>
                                 도약{' '}
                                 <div className="value">
-                                    {profileData.ArkPassive.Points[2]
+                                    {profileData.ArkPassive.Points[2] &&
+                                    avgLevel >= '1600'
                                         ? profileData.ArkPassive.Points[2].Value
                                         : '0'}
                                 </div>
