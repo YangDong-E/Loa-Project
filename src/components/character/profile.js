@@ -2594,20 +2594,6 @@ const Profile = () => {
                                         {equipData[1].Name}
                                     </div>
                                     <div className="elixir-tap">
-                                        {/* {equipData[1].Tooltip.includes(
-                                            '[초월]'
-                                        ) ? (
-                                            <>
-                                                {elixirfirststat(1)}{' '}
-                                                {elixirsecondstat(1)}
-                                            </>
-                                        ) : (
-                                            ''
-                                            // <>
-                                            //     {elixirNotransstat(1)}{' '}
-                                            //     {elixirNotranssecondstat(1)}
-                                            // </>
-                                        )} */}
                                         {elixirfirststat(1)}{' '}
                                         {elixirsecondstat(1)}
                                     </div>
@@ -2969,20 +2955,6 @@ const Profile = () => {
                                         {equipData[5].Name}
                                     </div>
                                     <div className="elixir-tap">
-                                        {/* {equipData[5].Tooltip.includes(
-                                            '[초월]'
-                                        ) ? (
-                                            <>
-                                                {elixirfirststat(5)}{' '}
-                                                {elixirsecondstat(5)}
-                                            </>
-                                        ) : (
-                                            ''
-                                            // <>
-                                            //     {elixirNotransstat(5)}{' '}
-                                            //     {elixirNotranssecondstat(5)}
-                                            // </>
-                                        )} */}
                                         {elixirfirststat(5)}{' '}
                                         {elixirsecondstat(5)}
                                     </div>
@@ -2992,424 +2964,501 @@ const Profile = () => {
 
                         <div className="acc-inner">
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[6].Icon}
-                                        value={equipData[6].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[6].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(6) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(6) >= 90 &&
-                                                      qualityValue(6) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(6) >= 70 &&
-                                                      qualityValue(6) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(6) >= 30 &&
-                                                      qualityValue(6) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(6) >= 10 &&
-                                                      qualityValue(6) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[6].Tooltip.substring(
-                                            equipData[6].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="equip-name">
-                                        {equipData[6].Name}
-                                    </div>
-                                    <div className="stat-info">
-                                        <span className="accstat">
-                                            {accfirststat(6)}
-                                        </span>{' '}
-                                        <span className="accstat">
-                                            {accsecondstat(6)}
-                                        </span>
-                                    </div>
-                                    <div className="engraving-info">
-                                        {accengravingeffect(6)}
-                                    </div>
-                                </div>
+                                {equipData[6].Type !== '목걸이' ? (
+                                    <>
+                                        {equipData.map((e) => {
+                                            return `${e.Type},`
+                                        })}
+                                    </>
+                                ) : (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={equipData[6].Icon}
+                                                value={equipData[6].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        equipData[6].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(6) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(6) >=
+                                                                  90 &&
+                                                              qualityValue(6) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(6) >=
+                                                                  70 &&
+                                                              qualityValue(6) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(6) >=
+                                                                  30 &&
+                                                              qualityValue(6) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(6) >=
+                                                                  10 &&
+                                                              qualityValue(6) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {equipData[6].Tooltip.substring(
+                                                    equipData[6].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {equipData[6].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(6)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(6)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(6)}
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </p>
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[7].Icon}
-                                        value={equipData[7].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[7].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(7) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(7) >= 90 &&
-                                                      qualityValue(7) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(7) >= 70 &&
-                                                      qualityValue(7) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(7) >= 30 &&
-                                                      qualityValue(7) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(7) >= 10 &&
-                                                      qualityValue(7) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[7].Tooltip.substring(
-                                            equipData[7].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="equip-name">
-                                        {equipData[7].Name}
-                                    </div>
-                                    <div className="stat-info">
-                                        <span className="accstat">
-                                            {accfirststat(7)}
-                                        </span>{' '}
-                                        <span className="accstat">
-                                            {accsecondstat(7)}
-                                        </span>
-                                    </div>
-                                    <div className="engraving-info">
-                                        {accengravingeffect(7)}
-                                    </div>
-                                </div>
+                                {equipData[7].Type !== '귀걸이' ? (
+                                    '1'
+                                ) : (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={equipData[7].Icon}
+                                                value={equipData[7].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        equipData[7].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(7) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(7) >=
+                                                                  90 &&
+                                                              qualityValue(7) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(7) >=
+                                                                  70 &&
+                                                              qualityValue(7) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(7) >=
+                                                                  30 &&
+                                                              qualityValue(7) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(7) >=
+                                                                  10 &&
+                                                              qualityValue(7) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {equipData[7].Tooltip.substring(
+                                                    equipData[7].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {equipData[7].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(7)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(7)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(7)}
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </p>
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[8].Icon}
-                                        value={equipData[8].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[8].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(8) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(8) >= 90 &&
-                                                      qualityValue(8) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(8) >= 70 &&
-                                                      qualityValue(8) < 90
-                                                    ? 'rgb(49, 49, 252)'
-                                                    : qualityValue(8) >= 30 &&
-                                                      qualityValue(8) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(8) >= 10 &&
-                                                      qualityValue(8) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[8].Tooltip.substring(
-                                            equipData[8].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="equip-name">
-                                        {equipData[8].Name}
-                                    </div>
-                                    <div className="stat-info">
-                                        <span className="accstat">
-                                            {accfirststat(8)}
-                                        </span>{' '}
-                                        <span className="accstat">
-                                            {accsecondstat(8)}
-                                        </span>
-                                    </div>
-                                    <div className="engraving-info">
-                                        {accengravingeffect(8)}
-                                    </div>
-                                </div>
+                                {equipData[8].Type !== '귀걸이' ? (
+                                    '1'
+                                ) : (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={equipData[8].Icon}
+                                                value={equipData[8].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        equipData[8].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(8) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(8) >=
+                                                                  90 &&
+                                                              qualityValue(8) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(8) >=
+                                                                  70 &&
+                                                              qualityValue(8) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(8) >=
+                                                                  30 &&
+                                                              qualityValue(8) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(8) >=
+                                                                  10 &&
+                                                              qualityValue(8) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {equipData[8].Tooltip.substring(
+                                                    equipData[8].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {equipData[8].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(8)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(8)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(8)}
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </p>
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[9].Icon}
-                                        value={equipData[9].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[9].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(9) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(9) >= 90 &&
-                                                      qualityValue(9) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(9) >= 70 &&
-                                                      qualityValue(9) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(9) >= 30 &&
-                                                      qualityValue(9) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(9) >= 10 &&
-                                                      qualityValue(9) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[9].Tooltip.substring(
-                                            equipData[9].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="equip-name">
-                                        {equipData[9].Name}
-                                    </div>
-                                    <div className="stat-info">
-                                        <span className="accstat">
-                                            {accfirststat(9)}
-                                        </span>{' '}
-                                        <span className="accstat">
-                                            {accsecondstat(9)}
-                                        </span>
-                                    </div>
-                                    <div className="engraving-info">
-                                        {accengravingeffect(9)}
-                                    </div>
-                                </div>
+                                {equipData[9].Type !== '반지' ? (
+                                    '1'
+                                ) : (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={equipData[9].Icon}
+                                                value={equipData[9].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        equipData[9].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(9) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(9) >=
+                                                                  90 &&
+                                                              qualityValue(9) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(9) >=
+                                                                  70 &&
+                                                              qualityValue(9) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(9) >=
+                                                                  30 &&
+                                                              qualityValue(9) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(9) >=
+                                                                  10 &&
+                                                              qualityValue(9) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {equipData[9].Tooltip.substring(
+                                                    equipData[9].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {equipData[9].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(9)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(9)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(9)}
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </p>
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[10].Icon}
-                                        value={equipData[10].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[10].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(10) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(10) >= 90 &&
-                                                      qualityValue(10) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(10) >= 70 &&
-                                                      qualityValue(10) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(10) >= 30 &&
-                                                      qualityValue(10) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(10) >= 10 &&
-                                                      qualityValue(10) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[10].Tooltip.substring(
-                                            equipData[10].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="equip-name">
-                                        {equipData[10].Name}
-                                    </div>
-                                    <div className="stat-info">
-                                        <span className="accstat">
-                                            {accfirststat(10)}
-                                        </span>{' '}
-                                        <span className="accstat">
-                                            {accsecondstat(10)}
-                                        </span>
-                                    </div>
-                                    <div className="engraving-info">
-                                        {accengravingeffect(10)}
-                                    </div>
-                                </div>
+                                {equipData[10].Type !== '반지' ? (
+                                    '1'
+                                ) : (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={equipData[10].Icon}
+                                                value={equipData[10].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        equipData[10].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(10) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 90 &&
+                                                              qualityValue(10) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 70 &&
+                                                              qualityValue(10) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 30 &&
+                                                              qualityValue(10) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 10 &&
+                                                              qualityValue(10) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {equipData[10].Tooltip.substring(
+                                                    equipData[10].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {equipData[10].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(10)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(10)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(10)}
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </p>
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[11].Icon}
-                                        value={equipData[11].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[11].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            borderBottomLeftRadius:
-                                                equipData[11].Grade === '고대'
-                                                    ? '0px'
-                                                    : '8px',
-                                            borderBottomRightRadius:
-                                                equipData[11].Grade === '고대'
-                                                    ? '0px'
-                                                    : '8px',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor: 'rgb(255, 255, 0)',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[11].Tooltip.replace(
-                                            /(<([^>]+)>)/g,
-                                            ''
-                                        )
-                                            .replace(/Element_[0-9]+/g, '')
-                                            .replace(/\s/gi, '')
-                                            .replace(
-                                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                ''
-                                            )
-                                            .replace(/[^\w]/gi, '')
-                                            // .replace(/:[0-9]+/gi, '')
-                                            // .replace(/:/gi, '')
-                                            .substring(
-                                                equipData[11].Tooltip.replace(
+                                {equipData[11].Type !== '어빌리티 스톤' ? (
+                                    ''
+                                ) : (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={equipData[11].Icon}
+                                                value={equipData[11].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        equipData[11].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                    borderBottomLeftRadius:
+                                                        equipData[11].Grade ===
+                                                        '고대'
+                                                            ? '0px'
+                                                            : '8px',
+                                                    borderBottomRightRadius:
+                                                        equipData[11].Grade ===
+                                                        '고대'
+                                                            ? '0px'
+                                                            : '8px',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        'rgb(255, 255, 0)',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {equipData[11].Tooltip.replace(
                                                     /(<([^>]+)>)/g,
                                                     ''
                                                 )
@@ -3422,24 +3471,30 @@ const Profile = () => {
                                                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                                         ''
                                                     )
-                                                    .indexOf('value')
-                                            )
-                                            .slice(0, 8)
-                                            .replace(/[a-z]*/g, '') == 'I' ? (
-                                            <>LV. 1</>
-                                        ) : equipData[11].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(/[^\w]/gi, '')
-                                              .substring(
-                                                  equipData[11].Tooltip.replace(
+                                                    .replace(/[^\w]/gi, '')
+                                                    // .replace(/:[0-9]+/gi, '')
+                                                    // .replace(/:/gi, '')
+                                                    .substring(
+                                                        equipData[11].Tooltip.replace(
+                                                            /(<([^>]+)>)/g,
+                                                            ''
+                                                        )
+                                                            .replace(
+                                                                /Element_[0-9]+/g,
+                                                                ''
+                                                            )
+                                                            .replace(/\s/gi, '')
+                                                            .replace(
+                                                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                ''
+                                                            )
+                                                            .indexOf('value')
+                                                    )
+                                                    .slice(0, 8)
+                                                    .replace(/[a-z]*/g, '') ==
+                                                'I' ? (
+                                                    <>LV. 1</>
+                                                ) : equipData[11].Tooltip.replace(
                                                       /(<([^>]+)>)/g,
                                                       ''
                                                   )
@@ -3452,25 +3507,31 @@ const Profile = () => {
                                                           /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                                           ''
                                                       )
-                                                      .indexOf('value')
-                                              )
-                                              .slice(0, 8)
-                                              .replace(/[a-z]*/g, '') ==
-                                          'II' ? (
-                                            <>Lv. 2</>
-                                        ) : equipData[11].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(/[^\w]/gi, '')
-                                              .substring(
-                                                  equipData[11].Tooltip.replace(
+                                                      .replace(/[^\w]/gi, '')
+                                                      .substring(
+                                                          equipData[11].Tooltip.replace(
+                                                              /(<([^>]+)>)/g,
+                                                              ''
+                                                          )
+                                                              .replace(
+                                                                  /Element_[0-9]+/g,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /\s/gi,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                  ''
+                                                              )
+                                                              .indexOf('value')
+                                                      )
+                                                      .slice(0, 8)
+                                                      .replace(/[a-z]*/g, '') ==
+                                                  'II' ? (
+                                                    <>Lv. 2</>
+                                                ) : equipData[11].Tooltip.replace(
                                                       /(<([^>]+)>)/g,
                                                       ''
                                                   )
@@ -3483,27 +3544,31 @@ const Profile = () => {
                                                           /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                                           ''
                                                       )
-                                                      .indexOf('value')
-                                              )
-                                              .slice(0, 8)
-                                              .replace(/[a-z]*/g, '') ==
-                                          'III' ? (
-                                            <>Lv. 3</>
-                                        ) : equipData[11].Tooltip.replace(
-                                              /(<([^>]+)>)/g,
-                                              ''
-                                          )
-                                              .replace(/Element_[0-9]+/g, '')
-                                              .replace(/\s/gi, '')
-                                              .replace(
-                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                  ''
-                                              )
-                                              .replace(/[^\w]/gi, '')
-                                              // .replace(/:[0-9]+/gi, '')
-                                              // .replace(/:/gi, '')
-                                              .substring(
-                                                  equipData[11].Tooltip.replace(
+                                                      .replace(/[^\w]/gi, '')
+                                                      .substring(
+                                                          equipData[11].Tooltip.replace(
+                                                              /(<([^>]+)>)/g,
+                                                              ''
+                                                          )
+                                                              .replace(
+                                                                  /Element_[0-9]+/g,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /\s/gi,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                  ''
+                                                              )
+                                                              .indexOf('value')
+                                                      )
+                                                      .slice(0, 8)
+                                                      .replace(/[a-z]*/g, '') ==
+                                                  'III' ? (
+                                                    <>Lv. 3</>
+                                                ) : equipData[11].Tooltip.replace(
                                                       /(<([^>]+)>)/g,
                                                       ''
                                                   )
@@ -3516,34 +3581,55 @@ const Profile = () => {
                                                           /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                                           ''
                                                       )
-                                                      .indexOf('value')
-                                              )
-                                              .slice(0, 8)
-                                              .replace(/[a-z]*/g, '') ==
-                                          'IV' ? (
-                                            <>Lv. 4</>
-                                        ) : (
-                                            ''
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="equip-name">
-                                        {equipData[11].Name}
-                                    </div>
-                                    <div className="stone-info">
-                                        {stonestat(11)}
-                                    </div>
-                                </div>
+                                                      .replace(/[^\w]/gi, '')
+                                                      // .replace(/:[0-9]+/gi, '')
+                                                      // .replace(/:/gi, '')
+                                                      .substring(
+                                                          equipData[11].Tooltip.replace(
+                                                              /(<([^>]+)>)/g,
+                                                              ''
+                                                          )
+                                                              .replace(
+                                                                  /Element_[0-9]+/g,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /\s/gi,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                  ''
+                                                              )
+                                                              .indexOf('value')
+                                                      )
+                                                      .slice(0, 8)
+                                                      .replace(/[a-z]*/g, '') ==
+                                                  'IV' ? (
+                                                    <>Lv. 4</>
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {equipData[11].Name}
+                                            </div>
+                                            <div className="stone-info">
+                                                {stonestat(11)}
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </p>
                         </div>
                         <div className="bracelet-inner">
                             <p>
-                                <div
+                                {/* <div
                                     className="img-quality"
                                     style={{
                                         display: 'flex',
-
                                         flexDirection: 'row',
                                     }}
                                 >
@@ -3560,15 +3646,12 @@ const Profile = () => {
                                         }}
                                     />
                                     <div className="nametag">
-                                        {/* <div className="equip-name">
-                                        {equipData[12].Name}
-                                    </div> */}
                                         <div className="braceletstat">
                                             {braceletstat(12)}
                                         </div>
                                         {braceleteffectstat(12)}
                                     </div>
-                                </div>
+                                </div> */}
                             </p>
                         </div>
                     </div>
