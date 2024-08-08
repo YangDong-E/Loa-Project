@@ -58,22 +58,22 @@ const Profile = () => {
     const alignedData = alignData(newdata, equipData)
 
     function qualityValue(idx) {
-        return equipData[idx].Tooltip.substring(
-            equipData[idx].Tooltip.indexOf('qualityValue')
+        return alignedData[idx].Tooltip.substring(
+            alignedData[idx].Tooltip.indexOf('qualityValue')
         )
             .slice(14, 18)
             .replace(',', '')
     }
 
     function equipLevel(idx) {
-        return equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        return alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
             .replace(/Element_[0-9]+/g, '')
             .replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
             .replace('Element', '')
             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
             .replace(/\s/gi, '')
             .substring(
-                equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -88,10 +88,10 @@ const Profile = () => {
             .replace(/[^0-9]/gi, '')
     }
     function equipHighLevel(idx) {
-        return equipData[idx].Tooltip.includes('상급 재련') ? (
+        return alignedData[idx].Tooltip.includes('상급 재련') ? (
             <>
                 +
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -101,7 +101,7 @@ const Profile = () => {
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
                     .replace(/\s/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(
                                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -120,8 +120,8 @@ const Profile = () => {
         )
     }
     function equiptranscend(idx) {
-        return equipData[idx].Tooltip.includes('[초월]')
-            ? equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        return alignedData[idx].Tooltip.includes('[초월]')
+            ? alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                   .replace(/Element_[0-9]+/g, '')
                   .replace(
                       /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -131,7 +131,7 @@ const Profile = () => {
                   .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
                   .replace(/\s/gi, '')
                   .substring(
-                      equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                      alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                           .replace(/Element_[0-9]+/g, '')
                           .replace(
                               /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -147,14 +147,14 @@ const Profile = () => {
             : ''
     }
     function equiptranscendcount(idx) {
-        return equipData[idx].Tooltip.includes('[초월]') ? (
+        return alignedData[idx].Tooltip.includes('[초월]') ? (
             <>
                 <img
                     src={transcend}
                     style={{ width: '13px', height: '13px' }}
                 />
                 <span className="transcend-count">
-                    {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                         .replace(/Element_[0-9]+/g, '')
                         .replace(
                             /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
@@ -163,7 +163,7 @@ const Profile = () => {
                         .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\0-9]/gi, '')
                         .replace(/:[0-9]+/gi, ' ')
                         .substring(
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                                 .replace(/Element_[0-9]+/g, '')
                                 .replace(
                                     /[\{\}\[\]\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
@@ -187,9 +187,9 @@ const Profile = () => {
     }
 
     function accfirststat(idx) {
-        return equipData[idx].Tooltip.includes('추가 효과') ? (
+        return alignedData[idx].Tooltip.includes('추가 효과') ? (
             <>
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -199,7 +199,7 @@ const Profile = () => {
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
                     .replace(/\s/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(
                                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -217,9 +217,9 @@ const Profile = () => {
         )
     }
     function accsecondstat(idx) {
-        return equipData[idx].Tooltip.includes('추가 효과') ? (
+        return alignedData[idx].Tooltip.includes('추가 효과') ? (
             <>
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -229,7 +229,7 @@ const Profile = () => {
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
                     .replace(/\s/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(
                                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -243,7 +243,7 @@ const Profile = () => {
                     .slice(10, 16)
                     .replace(/[^0-9]/gi, '') == 0
                     ? ''
-                    : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                           .replace(/Element_[0-9]+/g, '')
                           .replace(
                               /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -253,7 +253,10 @@ const Profile = () => {
                           .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
                           .replace(/\s/gi, '')
                           .substring(
-                              equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              alignedData[idx].Tooltip.replace(
+                                  /(<([^>]+)>)/g,
+                                  ''
+                              )
                                   .replace(/Element_[0-9]+/g, '')
                                   .replace(
                                       /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
@@ -272,12 +275,12 @@ const Profile = () => {
     }
 
     function accengravingeffect(idx) {
-        return equipData[idx].Tooltip ? (
+        return alignedData[idx].Tooltip ? (
             <>
                 <div className="effect-info-inner">
                     <span className="effect-info">
                         {
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                                 .replace(/Element_[0-9]+/g, '')
                                 .replace(/\s/gi, '')
                                 .replace(
@@ -288,7 +291,7 @@ const Profile = () => {
                                 .replace(/:[0-9]+/gi, ' ')
                                 .replace(/:/gi, '')
                                 .substring(
-                                    equipData[idx].Tooltip.replace(
+                                    alignedData[idx].Tooltip.replace(
                                         /(<([^>]+)>)/g,
                                         ''
                                     )
@@ -318,7 +321,7 @@ const Profile = () => {
                         }
                     </span>
                     <span className="effect-info">
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -329,7 +332,7 @@ const Profile = () => {
                             .replace(/:[0-9]+/gi, ' ')
                             .replace(/:/gi, '')
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -357,7 +360,10 @@ const Profile = () => {
                             .replace(/무작위각인효과.*$/gi, '')
                             .split(' ')[3] == null && undefined
                             ? ''
-                            : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            : alignedData[idx].Tooltip.replace(
+                                  /(<([^>]+)>)/g,
+                                  ''
+                              )
                                   .replace(/Element_[0-9]+/g, '')
                                   .replace(/\s/gi, '')
                                   .replace(
@@ -368,7 +374,7 @@ const Profile = () => {
                                   .replace(/:[0-9]+/gi, ' ')
                                   .replace(/:/gi, '')
                                   .substring(
-                                      equipData[idx].Tooltip.replace(
+                                      alignedData[idx].Tooltip.replace(
                                           /(<([^>]+)>)/g,
                                           ''
                                       )
@@ -397,7 +403,7 @@ const Profile = () => {
                                   .split(' ')[3]}
                     </span>
                     <span className="effect-info-reduction">
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -408,7 +414,7 @@ const Profile = () => {
                             .replace(/:[0-9]+/gi, ' ')
                             .replace(/:/gi, '')
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -436,7 +442,10 @@ const Profile = () => {
                             .replace(/무작위각인효과.*$/gi, '')
                             .split(' ')[5] == null && undefined
                             ? ''
-                            : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            : alignedData[idx].Tooltip.replace(
+                                  /(<([^>]+)>)/g,
+                                  ''
+                              )
                                   .replace(/Element_[0-9]+/g, '')
                                   .replace(/\s/gi, '')
                                   .replace(
@@ -447,7 +456,7 @@ const Profile = () => {
                                   .replace(/:[0-9]+/gi, ' ')
                                   .replace(/:/gi, '')
                                   .substring(
-                                      equipData[idx].Tooltip.replace(
+                                      alignedData[idx].Tooltip.replace(
                                           /(<([^>]+)>)/g,
                                           ''
                                       )
@@ -483,12 +492,12 @@ const Profile = () => {
     }
 
     function stonestat(idx) {
-        return equipData[idx].Grade == '영웅' ? (
+        return alignedData[idx].Grade == '영웅' ? (
             <>
                 <div className="stone-inner">
                     <span>
                         {
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                                 .replace(/Element_[0-9]+/g, '')
                                 .replace(/\s/gi, '')
                                 .replace(
@@ -499,7 +508,7 @@ const Profile = () => {
                                 .replace(/:[0-9]+/gi, ' ')
                                 .replace(/:/gi, '')
                                 .substring(
-                                    equipData[idx].Tooltip.replace(
+                                    alignedData[idx].Tooltip.replace(
                                         /(<([^>]+)>)/g,
                                         ''
                                     )
@@ -526,7 +535,7 @@ const Profile = () => {
                     </span>
                     <span>
                         {
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                                 .replace(/Element_[0-9]+/g, '')
                                 .replace(/\s/gi, '')
                                 .replace(
@@ -537,7 +546,7 @@ const Profile = () => {
                                 .replace(/:[0-9]+/gi, ' ')
                                 .replace(/:/gi, '')
                                 .substring(
-                                    equipData[idx].Tooltip.replace(
+                                    alignedData[idx].Tooltip.replace(
                                         /(<([^>]+)>)/g,
                                         ''
                                     )
@@ -564,7 +573,7 @@ const Profile = () => {
                     </span>
                     <span className="stone-info-reduction">
                         {
-                            equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                                 .replace(/Element_[0-9]+/g, '')
                                 .replace(/\s/gi, '')
                                 .replace(
@@ -575,7 +584,7 @@ const Profile = () => {
                                 .replace(/:[0-9]+/gi, ' ')
                                 .replace(/:/gi, '')
                                 .substring(
-                                    equipData[idx].Tooltip.replace(
+                                    alignedData[idx].Tooltip.replace(
                                         /(<([^>]+)>)/g,
                                         ''
                                     )
@@ -606,115 +615,106 @@ const Profile = () => {
             <>
                 <div className="stone-inner">
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
-                            .replace(/\s/gi, '')
+                            // .replace(/\s/gi, '')
                             .replace(
-                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                 ''
                             )
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, ' ')
-                            .replace(/:/gi, '')
-                            .substring(
-                                equipData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
-                                    ''
-                                )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                        ''
-                                    )
-                                    .replace(/:[0-9]+/gi, ' ')
-                                    .replace(/:/gi, '')
-                                    .indexOf('보너스체력')
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
                             )
-                            .replace(/보너스체력\+/gi, '')
-                            .replace(/활성도/gi, '+')
-                            .replace(/[0-9]+/, '')
-                            .replace(/무작위각인효과.*$/gi, '')
-                            .split(' ')[1]
-                            .toString()}
+                            .replace(/\s/gi, ':')
+                            .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g)[0]
+                            .replace(/\:/gi, '')
+                            .replace(/활성도/g, '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}{' '}
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g)[0]
+                            .replace(/\:/gi, '')
+                            .replace(/활성도/g, '')
+                            .replace(/[^0-9]/g, '')}
                     </span>{' '}
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
-                            .replace(/\s/gi, '')
+                            // .replace(/\s/gi, '')
                             .replace(
-                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                 ''
                             )
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, ' ')
-                            .replace(/:/gi, '')
-                            .substring(
-                                equipData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
-                                    ''
-                                )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                        ''
-                                    )
-                                    .replace(/:[0-9]+/gi, ' ')
-                                    .replace(/:/gi, '')
-                                    .indexOf('보너스체력')
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
                             )
-                            .replace(/보너스체력\+/gi, '')
-                            .replace(/활성도/gi, '+')
-                            .replace(/[0-9]+/, '')
-                            .replace(/무작위각인효과.*$/gi, '')
-                            .split(' ')[3]
-                            .toString()}
+                            .replace(/\s/gi, ':')
+                            .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g)[1]
+                            .replace(/\:/gi, '')
+                            .replace(/활성도/g, '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}{' '}
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g)[1]
+                            .replace(/\:/gi, '')
+                            .replace(/활성도/g, '')
+                            .replace(/[^0-9]/g, '')}
                     </span>{' '}
                     <span className="stone-info-reduction">
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
-                            .replace(/\s/gi, '')
+                            // .replace(/\s/gi, '')
                             .replace(
-                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
                                 ''
                             )
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, ' ')
-                            .replace(/:/gi, '')
-                            .substring(
-                                equipData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
-                                    ''
-                                )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                        ''
-                                    )
-                                    .replace(/:[0-9]+/gi, ' ')
-                                    .replace(/:/gi, '')
-                                    .indexOf('보너스체력')
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
                             )
-                            .replace(/보너스체력\+/gi, '')
-                            .replace(/활성도/gi, '+')
-                            .replace(/[0-9]+/, '')
-                            .replace(/무작위각인효과.*$/gi, '')
-                            .split(' ')[5]
-                            .toString()}
+                            .replace(/\s/gi, ':')
+                            .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g)[2]
+                            .replace(/\:/gi, '')
+                            .replace(/활성도/g, '')
+                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}{' '}
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi,
+                                ''
+                            )
+                            .replace(/\s/gi, ':')
+                            .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g)[2]
+                            .replace(/\:/gi, '')
+                            .replace(/활성도/g, '')
+                            .replace(/[^0-9]/g, '')}
                     </span>
                 </div>
             </>
@@ -724,9 +724,9 @@ const Profile = () => {
     function elixirfirststat(idx) {
         return (
             <>
-                {equipData[idx].Tooltip.includes('[엘릭서]') ? (
+                {alignedData[idx].Tooltip.includes('[엘릭서]') ? (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -747,7 +747,7 @@ const Profile = () => {
                                 ''
                             )}{' '}
                         Lv.
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -775,9 +775,9 @@ const Profile = () => {
     function elixirsecondstat(idx) {
         return (
             <>
-                {equipData[idx].Tooltip.includes('[엘릭서]') ? (
+                {alignedData[idx].Tooltip.includes('[엘릭서]') ? (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -798,7 +798,7 @@ const Profile = () => {
                                 ''
                             )}{' '}
                         Lv.
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -826,13 +826,13 @@ const Profile = () => {
     function braceletstat(idx) {
         return (
             <div>
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -849,7 +849,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -861,7 +861,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -885,13 +885,13 @@ const Profile = () => {
                             .replace(/\:\+/gi, ' ')}
                     </span>
                 )}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -908,7 +908,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -920,7 +920,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -951,13 +951,13 @@ const Profile = () => {
     function braceleteffectstat(idx) {
         return (
             <div>
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -973,13 +973,13 @@ const Profile = () => {
                         /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
                     ) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       // .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
@@ -997,7 +997,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1009,7 +1009,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1034,13 +1034,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1056,13 +1056,13 @@ const Profile = () => {
                         /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
                     ) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       // .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
@@ -1080,7 +1080,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1092,7 +1092,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1117,13 +1117,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1139,13 +1139,13 @@ const Profile = () => {
                         /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
                     ) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       // .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
@@ -1163,7 +1163,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1175,7 +1175,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1200,13 +1200,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1222,13 +1222,13 @@ const Profile = () => {
                         /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
                     ) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       // .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
@@ -1246,7 +1246,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1258,7 +1258,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1283,13 +1283,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1305,13 +1305,13 @@ const Profile = () => {
                         /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
                     ) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       // .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
@@ -1329,7 +1329,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1341,7 +1341,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1366,13 +1366,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1388,13 +1388,13 @@ const Profile = () => {
                         /(힘|민첩|지능|체력|최대:생명력|최대:마나|물리:방어력|마법:방어력|전투:중:생명력:회복량):\+\d{2,5}/g
                     ) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       // .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               // .replace(/\s/gi, '')
                               .replace(
@@ -1412,7 +1412,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             // .replace(/\s/gi, '')
                             .replace(
@@ -1424,7 +1424,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1449,13 +1449,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1467,7 +1467,7 @@ const Profile = () => {
                             .indexOf('팔찌효과')
                     )
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1479,7 +1479,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1500,13 +1500,13 @@ const Profile = () => {
                     )
                     .match(/\[(\D{2,4})\]/g) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -1518,7 +1518,7 @@ const Profile = () => {
                               .indexOf('팔찌효과')
                       )
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -1530,7 +1530,7 @@ const Profile = () => {
                                   ''
                               )
                               .substring(
-                                  equipData[idx].Tooltip.replace(
+                                  alignedData[idx].Tooltip.replace(
                                       /(<([^>]+)>)/g,
                                       ''
                                   )
@@ -1553,7 +1553,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1565,7 +1565,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1583,7 +1583,7 @@ const Profile = () => {
                                     .indexOf('팔찌효과')
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1598,7 +1598,7 @@ const Profile = () => {
                                         ''
                                     )
                                     .substring(
-                                        equipData[idx].Tooltip.replace(
+                                        alignedData[idx].Tooltip.replace(
                                             /(<([^>]+)>)/g,
                                             ''
                                         )
@@ -1622,13 +1622,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1640,7 +1640,7 @@ const Profile = () => {
                             .indexOf('팔찌효과')
                     )
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1652,7 +1652,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1673,13 +1673,13 @@ const Profile = () => {
                     )
                     .match(/\[(\D{2,4})\]/g) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -1691,7 +1691,7 @@ const Profile = () => {
                               .indexOf('팔찌효과')
                       )
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -1703,7 +1703,7 @@ const Profile = () => {
                                   ''
                               )
                               .substring(
-                                  equipData[idx].Tooltip.replace(
+                                  alignedData[idx].Tooltip.replace(
                                       /(<([^>]+)>)/g,
                                       ''
                                   )
@@ -1726,7 +1726,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1738,7 +1738,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1756,7 +1756,7 @@ const Profile = () => {
                                     .indexOf('팔찌효과')
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1771,7 +1771,7 @@ const Profile = () => {
                                         ''
                                     )
                                     .substring(
-                                        equipData[idx].Tooltip.replace(
+                                        alignedData[idx].Tooltip.replace(
                                             /(<([^>]+)>)/g,
                                             ''
                                         )
@@ -1795,13 +1795,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}{' '}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1813,7 +1813,7 @@ const Profile = () => {
                             .indexOf('팔찌효과')
                     )
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1825,7 +1825,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1846,13 +1846,13 @@ const Profile = () => {
                     )
                     .match(/\[(\D{2,4})\]/g) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -1864,7 +1864,7 @@ const Profile = () => {
                               .indexOf('팔찌효과')
                       )
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -1876,7 +1876,7 @@ const Profile = () => {
                                   ''
                               )
                               .substring(
-                                  equipData[idx].Tooltip.replace(
+                                  alignedData[idx].Tooltip.replace(
                                       /(<([^>]+)>)/g,
                                       ''
                                   )
@@ -1899,7 +1899,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1911,7 +1911,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1929,7 +1929,7 @@ const Profile = () => {
                                     .indexOf('팔찌효과')
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -1944,7 +1944,7 @@ const Profile = () => {
                                         ''
                                     )
                                     .substring(
-                                        equipData[idx].Tooltip.replace(
+                                        alignedData[idx].Tooltip.replace(
                                             /(<([^>]+)>)/g,
                                             ''
                                         )
@@ -1968,13 +1968,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1986,7 +1986,7 @@ const Profile = () => {
                             .indexOf('팔찌효과')
                     )
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -1998,7 +1998,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -2019,13 +2019,13 @@ const Profile = () => {
                     )
                     .match(/\[(\D{2,4})\]/g) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -2037,7 +2037,7 @@ const Profile = () => {
                               .indexOf('팔찌효과')
                       )
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -2049,7 +2049,7 @@ const Profile = () => {
                                   ''
                               )
                               .substring(
-                                  equipData[idx].Tooltip.replace(
+                                  alignedData[idx].Tooltip.replace(
                                       /(<([^>]+)>)/g,
                                       ''
                                   )
@@ -2072,7 +2072,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -2084,7 +2084,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -2102,7 +2102,7 @@ const Profile = () => {
                                     .indexOf('팔찌효과')
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -2117,7 +2117,7 @@ const Profile = () => {
                                         ''
                                     )
                                     .substring(
-                                        equipData[idx].Tooltip.replace(
+                                        alignedData[idx].Tooltip.replace(
                                             /(<([^>]+)>)/g,
                                             ''
                                         )
@@ -2141,13 +2141,13 @@ const Profile = () => {
                             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '')}
                     </span>
                 )}
-                {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(/\s/gi, '')
                     .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -2159,7 +2159,7 @@ const Profile = () => {
                             .indexOf('팔찌효과')
                     )
                     .substring(
-                        equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -2171,7 +2171,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -2192,13 +2192,13 @@ const Profile = () => {
                     )
                     .match(/\[(\D{2,4})\]/g) == null ? (
                     ''
-                ) : equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                       .replace(/Element_[0-9]+/g, '')
                       .replace(/\s/gi, '')
                       .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                       .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -2210,7 +2210,7 @@ const Profile = () => {
                               .indexOf('팔찌효과')
                       )
                       .substring(
-                          equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                          alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                               .replace(/Element_[0-9]+/g, '')
                               .replace(/\s/gi, '')
                               .replace(
@@ -2222,7 +2222,7 @@ const Profile = () => {
                                   ''
                               )
                               .substring(
-                                  equipData[idx].Tooltip.replace(
+                                  alignedData[idx].Tooltip.replace(
                                       /(<([^>]+)>)/g,
                                       ''
                                   )
@@ -2245,7 +2245,7 @@ const Profile = () => {
                     ''
                 ) : (
                     <span>
-                        {equipData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                             .replace(/Element_[0-9]+/g, '')
                             .replace(/\s/gi, '')
                             .replace(
@@ -2257,7 +2257,7 @@ const Profile = () => {
                                 ''
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -2275,7 +2275,7 @@ const Profile = () => {
                                     .indexOf('팔찌효과')
                             )
                             .substring(
-                                equipData[idx].Tooltip.replace(
+                                alignedData[idx].Tooltip.replace(
                                     /(<([^>]+)>)/g,
                                     ''
                                 )
@@ -2290,7 +2290,7 @@ const Profile = () => {
                                         ''
                                     )
                                     .substring(
-                                        equipData[idx].Tooltip.replace(
+                                        alignedData[idx].Tooltip.replace(
                                             /(<([^>]+)>)/g,
                                             ''
                                         )
@@ -2491,540 +2491,9 @@ const Profile = () => {
                     <div className="equip-inner">
                         <div className="equipment">
                             <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[0].Icon}
-                                        value={equipData[0].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[0].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(0) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(0) >= 90 &&
-                                                      qualityValue(0) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(0) >= 70 &&
-                                                      qualityValue(0) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(0) >= 30 &&
-                                                      qualityValue(0) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(0) >= 10 &&
-                                                      qualityValue(0) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {qualityValue(0)}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="leveltag">
-                                        <div>
-                                            <div className="transcend-info">
-                                                {equiptranscendcount(0)}{' '}
-                                                {equiptranscend(0)}
-                                            </div>
-                                            <div className="level-info">
-                                                {equipLevel(0)}{' '}
-                                                <span className="highlevel">
-                                                    {equipHighLevel(0)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="equip-name">
-                                        {equipData[0].Name}
-                                    </div>
-                                </div>
-                            </p>
-                            <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[1].Icon}
-                                        value={equipData[1].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[1].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(1) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(1) >= 90 &&
-                                                      qualityValue(1) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(1) >= 70 &&
-                                                      qualityValue(1) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(1) >= 30 &&
-                                                      qualityValue(1) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(1) >= 10 &&
-                                                      qualityValue(1) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            fontSize: '12px',
-                                            fontWeight: '600',
-                                            color: 'white',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[1].Tooltip.substring(
-                                            equipData[1].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="leveltag">
-                                        <div>
-                                            <div className="transcend-info">
-                                                {equiptranscendcount(1)}{' '}
-                                                {equiptranscend(1)}
-                                            </div>
-                                            <div className="level-info">
-                                                {equipLevel(1)}{' '}
-                                                <span className="highlevel">
-                                                    {equipHighLevel(1)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="equip-name">
-                                        {equipData[1].Name}
-                                    </div>
-                                    <div className="elixir-tap">
-                                        {elixirfirststat(1)}{' '}
-                                        {elixirsecondstat(1)}
-                                    </div>
-                                </div>
-                            </p>
-                            <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[2].Icon}
-                                        value={equipData[2].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[2].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(2) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(2) >= 90 &&
-                                                      qualityValue(2) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(2) >= 70 &&
-                                                      qualityValue(2) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(2) >= 30 &&
-                                                      qualityValue(2) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(2) >= 10 &&
-                                                      qualityValue(2) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[2].Tooltip.substring(
-                                            equipData[2].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="leveltag">
-                                        <div>
-                                            <div className="transcend-info">
-                                                {equiptranscendcount(2)}{' '}
-                                                {equiptranscend(2)}
-                                            </div>
-                                            <div className="level-info">
-                                                {equipLevel(2)}{' '}
-                                                <span className="highlevel">
-                                                    {equipHighLevel(2)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="equip-name">
-                                        {equipData[2].Name}
-                                    </div>
-                                    <div className="elixir-tap">
-                                        {/* {equipData[2].Tooltip.includes(
-                                            '[초월]'
-                                        ) ? (
-                                            <>
-                                                {elixirfirststat(2)}{' '}
-                                                {elixirsecondstat(2)}
-                                            </>
-                                        ) : (
-                                            ''
-                                            // <>
-                                            //     {elixirNotransstat(2)}{' '}
-                                            //     {elixirNotranssecondstat(2)}
-                                            // </>
-                                        )} */}
-                                        {elixirfirststat(2)}{' '}
-                                        {elixirsecondstat(2)}
-                                    </div>
-                                </div>
-                            </p>
-                            <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[3].Icon}
-                                        value={equipData[3].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[3].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(3) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(3) >= 90 &&
-                                                      qualityValue(3) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(3) >= 70 &&
-                                                      qualityValue(3) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(3) >= 30 &&
-                                                      qualityValue(3) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(3) >= 10 &&
-                                                      qualityValue(3) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[3].Tooltip.substring(
-                                            equipData[3].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="leveltag">
-                                        <div>
-                                            <div className="transcend-info">
-                                                {equiptranscendcount(3)}{' '}
-                                                {equiptranscend(3)}
-                                            </div>
-                                            <div className="level-info">
-                                                {equipLevel(3)}{' '}
-                                                <span className="highlevel">
-                                                    {equipHighLevel(3)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="equip-name">
-                                        {equipData[3].Name}
-                                    </div>
-                                    <div className="elixir-tap">
-                                        {/* {equipData[3].Tooltip.includes(
-                                            '[초월]'
-                                        ) ? (
-                                            <>
-                                                {elixirfirststat(3)}{' '}
-                                                {elixirsecondstat(3)}
-                                            </>
-                                        ) : (
-                                            ''
-                                            // <>
-                                            //     {elixirNotransstat(3)}{' '}
-                                            //     {elixirNotranssecondstat(3)}
-                                            // </>
-                                        )} */}
-                                        {elixirfirststat(3)}{' '}
-                                        {elixirsecondstat(3)}
-                                    </div>
-                                </div>
-                            </p>
-                            <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[4].Icon}
-                                        value={equipData[4].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[4].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(4) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(4) >= 90 &&
-                                                      qualityValue(4) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(4) >= 70 &&
-                                                      qualityValue(4) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(4) >= 30 &&
-                                                      qualityValue(4) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(4) >= 10 &&
-                                                      qualityValue(4) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[4].Tooltip.substring(
-                                            equipData[4].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="leveltag">
-                                        <div>
-                                            <div className="transcend-info">
-                                                {equiptranscendcount(4)}{' '}
-                                                {equiptranscend(4)}
-                                            </div>
-                                            <div className="level-info">
-                                                {equipLevel(4)}{' '}
-                                                <span className="highlevel">
-                                                    {equipHighLevel(4)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="equip-name">
-                                        {equipData[4].Name}
-                                    </div>
-                                    <div className="elixir-tap">
-                                        {/* {equipData[4].Tooltip.includes(
-                                            '[초월]'
-                                        ) ? (
-                                            <>
-                                                {elixirfirststat(4)}{' '}
-                                                {elixirsecondstat(4)}
-                                            </>
-                                        ) : (
-                                            ''
-                                            // <>
-                                            //     {elixirNotransstat(4)}{' '}
-                                            //     {elixirNotranssecondstat(4)}
-                                            // </>
-                                        )} */}
-                                        {elixirfirststat(4)}{' '}
-                                        {elixirsecondstat(4)}
-                                    </div>
-                                </div>
-                            </p>
-                            <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        width: '48px',
-                                        height: '56px',
-                                        // borderRadius: '8px',
-                                        flexDirection: 'column',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[5].Icon}
-                                        value={equipData[5].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[5].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        }}
-                                    />
-                                    <div
-                                        className="qualityValue"
-                                        style={{
-                                            // width: '48px',
-                                            backgroundColor:
-                                                qualityValue(5) == 100
-                                                    ? 'rgb(255, 106, 0)'
-                                                    : qualityValue(5) >= 90 &&
-                                                      qualityValue(5) < 100
-                                                    ? 'rgb(138, 43, 226)'
-                                                    : qualityValue(5) >= 70 &&
-                                                      qualityValue(5) < 90
-                                                    ? 'rgb(81, 162, 254)'
-                                                    : qualityValue(5) >= 30 &&
-                                                      qualityValue(5) < 70
-                                                    ? 'rgb(36, 157, 46)'
-                                                    : qualityValue(5) >= 10 &&
-                                                      qualityValue(5) < 30
-                                                    ? 'rgb(214, 214, 0)'
-                                                    : 'rgb(216, 38, 38)',
-                                            color: 'white',
-                                            fontWeight: '600',
-                                            fontSize: '12px',
-                                            textAlign: 'center',
-                                        }}
-                                    >
-                                        {equipData[5].Tooltip.substring(
-                                            equipData[5].Tooltip.indexOf(
-                                                'qualityValue'
-                                            )
-                                        )
-                                            .slice(14, 18)
-                                            .replace(',', '')}
-                                    </div>
-                                </div>
-                                <div className="nametag">
-                                    <div className="leveltag">
-                                        <div>
-                                            <div className="transcend-info">
-                                                {equiptranscendcount(5)}{' '}
-                                                {equiptranscend(5)}
-                                            </div>
-                                            <div className="level-info">
-                                                {equipLevel(5)}{' '}
-                                                <span className="highlevel">
-                                                    {equipHighLevel(5)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="equip-name">
-                                        {equipData[5].Name}
-                                    </div>
-                                    <div className="elixir-tap">
-                                        {elixirfirststat(5)}{' '}
-                                        {elixirsecondstat(5)}
-                                    </div>
-                                </div>
-                            </p>
-                        </div>
-
-                        <div className="acc-inner">
-                            <p>
-                                {alignedData.map((item, index) => (
-                                    <div key={index} className="item">
-                                        <div className="type">
-                                            Type: {item.Type}
-                                        </div>
-                                        <div>Name: {item.Name}</div>
-                                        {/* <div>Icon: {item.Icon || 'N/A'}</div>
-                                        <div>Grade: {item.Grade || 'N/A'}</div>
-                                        <div className="tooltip">
-                                            Tooltip: {item.Tooltip || 'N/A'}
-                                        </div> */}
-                                    </div>
-                                ))}
-                                {/* {equipData[6].Type !== '목걸이' ? (
-                                    <>
-                                        {equipData.map((e) => {
-                                            return `${e.Type},`
-                                        })}
-                                    </>
-                                ) : (
+                                {alignedData[0] &&
+                                alignedData[0].Type == '무기' &&
+                                alignedData[0].Name !== '' ? (
                                     <>
                                         <div
                                             className="img-quality"
@@ -3037,11 +2506,603 @@ const Profile = () => {
                                             }}
                                         >
                                             <img
-                                                src={equipData[6].Icon}
-                                                value={equipData[6].Grade}
+                                                src={alignedData[0].Icon}
+                                                value={alignedData[0].Grade}
                                                 style={{
                                                     backgroundImage:
-                                                        equipData[6].Grade ===
+                                                        alignedData[0].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(0) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(0) >=
+                                                                  90 &&
+                                                              qualityValue(0) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(0) >=
+                                                                  70 &&
+                                                              qualityValue(0) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(0) >=
+                                                                  30 &&
+                                                              qualityValue(0) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(0) >=
+                                                                  10 &&
+                                                              qualityValue(0) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {qualityValue(0)}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="leveltag">
+                                                <div>
+                                                    <div className="transcend-info">
+                                                        {equiptranscendcount(0)}{' '}
+                                                        {equiptranscend(0)}
+                                                    </div>
+                                                    <div className="level-info">
+                                                        {equipLevel(0)}{' '}
+                                                        <span className="highlevel">
+                                                            {equipHighLevel(0)}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="equip-name">
+                                                {alignedData[0].Name}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[1] &&
+                                alignedData[1].Type == '투구' &&
+                                alignedData[1].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[1].Icon}
+                                                value={alignedData[1].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[1].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(1) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(1) >=
+                                                                  90 &&
+                                                              qualityValue(1) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(1) >=
+                                                                  70 &&
+                                                              qualityValue(1) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(1) >=
+                                                                  30 &&
+                                                              qualityValue(1) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(1) >=
+                                                                  10 &&
+                                                              qualityValue(1) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    fontSize: '12px',
+                                                    fontWeight: '600',
+                                                    color: 'white',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {alignedData[1].Tooltip.substring(
+                                                    alignedData[1].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="leveltag">
+                                                <div>
+                                                    <div className="transcend-info">
+                                                        {equiptranscendcount(1)}{' '}
+                                                        {equiptranscend(1)}
+                                                    </div>
+                                                    <div className="level-info">
+                                                        {equipLevel(1)}{' '}
+                                                        <span className="highlevel">
+                                                            {equipHighLevel(1)}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="equip-name">
+                                                {alignedData[1].Name}
+                                            </div>
+                                            <div className="elixir-tap">
+                                                {elixirfirststat(1)}{' '}
+                                                {elixirsecondstat(1)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[2] &&
+                                alignedData[2].Type == '상의' &&
+                                alignedData[2].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[2].Icon}
+                                                value={alignedData[2].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[2].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(2) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(2) >=
+                                                                  90 &&
+                                                              qualityValue(2) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(2) >=
+                                                                  70 &&
+                                                              qualityValue(2) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(2) >=
+                                                                  30 &&
+                                                              qualityValue(2) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(2) >=
+                                                                  10 &&
+                                                              qualityValue(2) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {qualityValue(2)}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="leveltag">
+                                                <div>
+                                                    <div className="transcend-info">
+                                                        {equiptranscendcount(2)}{' '}
+                                                        {equiptranscend(2)}
+                                                    </div>
+                                                    <div className="level-info">
+                                                        {equipLevel(2)}{' '}
+                                                        <span className="highlevel">
+                                                            {equipHighLevel(2)}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="equip-name">
+                                                {alignedData[2].Name}
+                                            </div>
+                                            <div className="elixir-tap">
+                                                {elixirfirststat(2)}{' '}
+                                                {elixirsecondstat(2)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[3] &&
+                                alignedData[3].Type == '하의' &&
+                                alignedData[3].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[3].Icon}
+                                                value={alignedData[3].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[3].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(3) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(3) >=
+                                                                  90 &&
+                                                              qualityValue(3) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(3) >=
+                                                                  70 &&
+                                                              qualityValue(3) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(3) >=
+                                                                  30 &&
+                                                              qualityValue(3) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(3) >=
+                                                                  10 &&
+                                                              qualityValue(3) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {qualityValue(3)}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="leveltag">
+                                                <div>
+                                                    <div className="transcend-info">
+                                                        {equiptranscendcount(3)}{' '}
+                                                        {equiptranscend(3)}
+                                                    </div>
+                                                    <div className="level-info">
+                                                        {equipLevel(3)}{' '}
+                                                        <span className="highlevel">
+                                                            {equipHighLevel(3)}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="equip-name">
+                                                {alignedData[3].Name}
+                                            </div>
+                                            <div className="elixir-tap">
+                                                {elixirfirststat(3)}{' '}
+                                                {elixirsecondstat(3)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[4] &&
+                                alignedData[4].Type == '장갑' &&
+                                alignedData[4].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[4].Icon}
+                                                value={alignedData[4].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[4].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(4) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(4) >=
+                                                                  90 &&
+                                                              qualityValue(4) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(4) >=
+                                                                  70 &&
+                                                              qualityValue(4) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(4) >=
+                                                                  30 &&
+                                                              qualityValue(4) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(4) >=
+                                                                  10 &&
+                                                              qualityValue(4) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {qualityValue(4)}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="leveltag">
+                                                <div>
+                                                    <div className="transcend-info">
+                                                        {equiptranscendcount(4)}{' '}
+                                                        {equiptranscend(4)}
+                                                    </div>
+                                                    <div className="level-info">
+                                                        {equipLevel(4)}{' '}
+                                                        <span className="highlevel">
+                                                            {equipHighLevel(4)}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="equip-name">
+                                                {alignedData[4].Name}
+                                            </div>
+                                            <div className="elixir-tap">
+                                                {elixirfirststat(4)}{' '}
+                                                {elixirsecondstat(4)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[5] &&
+                                alignedData[5].Type == '어깨' &&
+                                alignedData[5].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[5].Icon}
+                                                value={alignedData[5].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[5].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(5) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(5) >=
+                                                                  90 &&
+                                                              qualityValue(5) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(5) >=
+                                                                  70 &&
+                                                              qualityValue(5) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(5) >=
+                                                                  30 &&
+                                                              qualityValue(5) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(5) >=
+                                                                  10 &&
+                                                              qualityValue(5) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {qualityValue(5)}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="leveltag">
+                                                <div>
+                                                    <div className="transcend-info">
+                                                        {equiptranscendcount(5)}{' '}
+                                                        {equiptranscend(5)}
+                                                    </div>
+                                                    <div className="level-info">
+                                                        {equipLevel(5)}{' '}
+                                                        <span className="highlevel">
+                                                            {equipHighLevel(5)}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="equip-name">
+                                                {alignedData[5].Name}
+                                            </div>
+                                            <div className="elixir-tap">
+                                                {elixirfirststat(5)}{' '}
+                                                {elixirsecondstat(5)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                        </div>
+                        <div className="acc-inner">
+                            <p>
+                                {alignedData[6] &&
+                                alignedData[6].Type == '목걸이' &&
+                                alignedData[6].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[6].Icon}
+                                                value={alignedData[6].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[6].Grade ===
                                                         '유물'
                                                             ? 'linear-gradient(135deg, #341a09, #a24006)'
                                                             : 'linear-gradient(135deg, #3d3325, #dcc999)',
@@ -3081,8 +3142,8 @@ const Profile = () => {
                                                     textAlign: 'center',
                                                 }}
                                             >
-                                                {equipData[6].Tooltip.substring(
-                                                    equipData[6].Tooltip.indexOf(
+                                                {alignedData[6].Tooltip.substring(
+                                                    alignedData[6].Tooltip.indexOf(
                                                         'qualityValue'
                                                     )
                                                 )
@@ -3092,7 +3153,7 @@ const Profile = () => {
                                         </div>
                                         <div className="nametag">
                                             <div className="equip-name">
-                                                {equipData[6].Name}
+                                                {alignedData[6].Name}
                                             </div>
                                             <div className="stat-info">
                                                 <span className="accstat">
@@ -3107,376 +3168,670 @@ const Profile = () => {
                                             </div>
                                         </div>
                                     </>
-                                )} */}
-                            </p>
-                            {/* <p>
-                            {equipData[7].Type !== '귀걸이' ? (
-                                '1'
-                            ) : (
-                                <>
+                                ) : (
                                     <div
-                                        className="img-quality"
                                         style={{
-                                            display: 'flex',
-                                            width: '48px',
+                                            width: '4.8rem',
                                             height: '56px',
-                                            // borderRadius: '8px',
-                                            flexDirection: 'column',
-                                        }}
-                                    >
-                                        <img
-                                            src={equipData[7].Icon}
-                                            value={equipData[7].Grade}
-                                            style={{
-                                                backgroundImage:
-                                                    equipData[7].Grade ===
-                                                    '유물'
-                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            }}
-                                        />
-                                        <div
-                                            className="qualityValue"
-                                            style={{
-                                                // width: '48px',
-                                                backgroundColor:
-                                                    qualityValue(7) == 100
-                                                        ? 'rgb(255, 106, 0)'
-                                                        : qualityValue(7) >=
-                                                              90 &&
-                                                          qualityValue(7) < 100
-                                                        ? 'rgb(138, 43, 226)'
-                                                        : qualityValue(7) >=
-                                                              70 &&
-                                                          qualityValue(7) < 90
-                                                        ? 'rgb(81, 162, 254)'
-                                                        : qualityValue(7) >=
-                                                              30 &&
-                                                          qualityValue(7) < 70
-                                                        ? 'rgb(36, 157, 46)'
-                                                        : qualityValue(7) >=
-                                                              10 &&
-                                                          qualityValue(7) < 30
-                                                        ? 'rgb(214, 214, 0)'
-                                                        : 'rgb(216, 38, 38)',
-                                                color: 'white',
-                                                fontWeight: '600',
-                                                fontSize: '12px',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            {equipData[7].Tooltip.substring(
-                                                equipData[7].Tooltip.indexOf(
-                                                    'qualityValue'
-                                                )
-                                            )
-                                                .slice(14, 18)
-                                                .replace(',', '')}
-                                        </div>
-                                    </div>
-                                    <div className="nametag">
-                                        <div className="equip-name">
-                                            {equipData[7].Name}
-                                        </div>
-                                        <div className="stat-info">
-                                            <span className="accstat">
-                                                {accfirststat(7)}
-                                            </span>{' '}
-                                            <span className="accstat">
-                                                {accsecondstat(7)}
-                                            </span>
-                                        </div>
-                                        <div className="engraving-info">
-                                            {accengravingeffect(7)}
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                            </p> */}
-                            {/* <p>
-                            {equipData[8].Type !== '귀걸이' ? (
-                                '1'
-                            ) : (
-                                <>
-                                    <div
-                                        className="img-quality"
-                                        style={{
-                                            display: 'flex',
-                                            width: '48px',
-                                            height: '56px',
-                                            // borderRadius: '8px',
-                                            flexDirection: 'column',
-                                        }}
-                                    >
-                                        <img
-                                            src={equipData[8].Icon}
-                                            value={equipData[8].Grade}
-                                            style={{
-                                                backgroundImage:
-                                                    equipData[8].Grade ===
-                                                    '유물'
-                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            }}
-                                        />
-                                        <div
-                                            className="qualityValue"
-                                            style={{
-                                                // width: '48px',
-                                                backgroundColor:
-                                                    qualityValue(8) == 100
-                                                        ? 'rgb(255, 106, 0)'
-                                                        : qualityValue(8) >=
-                                                              90 &&
-                                                          qualityValue(8) < 100
-                                                        ? 'rgb(138, 43, 226)'
-                                                        : qualityValue(8) >=
-                                                              70 &&
-                                                          qualityValue(8) < 90
-                                                        ? 'rgb(81, 162, 254)'
-                                                        : qualityValue(8) >=
-                                                              30 &&
-                                                          qualityValue(8) < 70
-                                                        ? 'rgb(36, 157, 46)'
-                                                        : qualityValue(8) >=
-                                                              10 &&
-                                                          qualityValue(8) < 30
-                                                        ? 'rgb(214, 214, 0)'
-                                                        : 'rgb(216, 38, 38)',
-                                                color: 'white',
-                                                fontWeight: '600',
-                                                fontSize: '12px',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            {equipData[8].Tooltip.substring(
-                                                equipData[8].Tooltip.indexOf(
-                                                    'qualityValue'
-                                                )
-                                            )
-                                                .slice(14, 18)
-                                                .replace(',', '')}
-                                        </div>
-                                    </div>
-                                    <div className="nametag">
-                                        <div className="equip-name">
-                                            {equipData[8].Name}
-                                        </div>
-                                        <div className="stat-info">
-                                            <span className="accstat">
-                                                {accfirststat(8)}
-                                            </span>{' '}
-                                            <span className="accstat">
-                                                {accsecondstat(8)}
-                                            </span>
-                                        </div>
-                                        <div className="engraving-info">
-                                            {accengravingeffect(8)}
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                            </p> */}
-                            {/* <p>
-                            {equipData[9].Type !== '반지' ? (
-                                '1'
-                            ) : (
-                                <>
-                                    <div
-                                        className="img-quality"
-                                        style={{
-                                            display: 'flex',
-                                            width: '48px',
-                                            height: '56px',
-                                            // borderRadius: '8px',
-                                            flexDirection: 'column',
-                                        }}
-                                    >
-                                        <img
-                                            src={equipData[9].Icon}
-                                            value={equipData[9].Grade}
-                                            style={{
-                                                backgroundImage:
-                                                    equipData[9].Grade ===
-                                                    '유물'
-                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            }}
-                                        />
-                                        <div
-                                            className="qualityValue"
-                                            style={{
-                                                // width: '48px',
-                                                backgroundColor:
-                                                    qualityValue(9) == 100
-                                                        ? 'rgb(255, 106, 0)'
-                                                        : qualityValue(9) >=
-                                                              90 &&
-                                                          qualityValue(9) < 100
-                                                        ? 'rgb(138, 43, 226)'
-                                                        : qualityValue(9) >=
-                                                              70 &&
-                                                          qualityValue(9) < 90
-                                                        ? 'rgb(81, 162, 254)'
-                                                        : qualityValue(9) >=
-                                                              30 &&
-                                                          qualityValue(9) < 70
-                                                        ? 'rgb(36, 157, 46)'
-                                                        : qualityValue(9) >=
-                                                              10 &&
-                                                          qualityValue(9) < 30
-                                                        ? 'rgb(214, 214, 0)'
-                                                        : 'rgb(216, 38, 38)',
-                                                color: 'white',
-                                                fontWeight: '600',
-                                                fontSize: '12px',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            {equipData[9].Tooltip.substring(
-                                                equipData[9].Tooltip.indexOf(
-                                                    'qualityValue'
-                                                )
-                                            )
-                                                .slice(14, 18)
-                                                .replace(',', '')}
-                                        </div>
-                                    </div>
-                                    <div className="nametag">
-                                        <div className="equip-name">
-                                            {equipData[9].Name}
-                                        </div>
-                                        <div className="stat-info">
-                                            <span className="accstat">
-                                                {accfirststat(9)}
-                                            </span>{' '}
-                                            <span className="accstat">
-                                                {accsecondstat(9)}
-                                            </span>
-                                        </div>
-                                        <div className="engraving-info">
-                                            {accengravingeffect(9)}
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                            </p> */}
-                            {/* <p>
-                            {equipData[10].Type !== '반지' ? (
-                                '1'
-                            ) : (
-                                <>
-                                    <div
-                                        className="img-quality"
-                                        style={{
-                                            display: 'flex',
-                                            width: '48px',
-                                            height: '56px',
-                                            // borderRadius: '8px',
-                                            flexDirection: 'column',
-                                        }}
-                                    >
-                                        <img
-                                            src={equipData[10].Icon}
-                                            value={equipData[10].Grade}
-                                            style={{
-                                                backgroundImage:
-                                                    equipData[10].Grade ===
-                                                    '유물'
-                                                        ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                        : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            }}
-                                        />
-                                        <div
-                                            className="qualityValue"
-                                            style={{
-                                                // width: '48px',
-                                                backgroundColor:
-                                                    qualityValue(10) == 100
-                                                        ? 'rgb(255, 106, 0)'
-                                                        : qualityValue(10) >=
-                                                              90 &&
-                                                          qualityValue(10) < 100
-                                                        ? 'rgb(138, 43, 226)'
-                                                        : qualityValue(10) >=
-                                                              70 &&
-                                                          qualityValue(10) < 90
-                                                        ? 'rgb(81, 162, 254)'
-                                                        : qualityValue(10) >=
-                                                              30 &&
-                                                          qualityValue(10) < 70
-                                                        ? 'rgb(36, 157, 46)'
-                                                        : qualityValue(10) >=
-                                                              10 &&
-                                                          qualityValue(10) < 30
-                                                        ? 'rgb(214, 214, 0)'
-                                                        : 'rgb(216, 38, 38)',
-                                                color: 'white',
-                                                fontWeight: '600',
-                                                fontSize: '12px',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            {equipData[10].Tooltip.substring(
-                                                equipData[10].Tooltip.indexOf(
-                                                    'qualityValue'
-                                                )
-                                            )
-                                                .slice(14, 18)
-                                                .replace(',', '')}
-                                        </div>
-                                    </div>
-                                    <div className="nametag">
-                                        <div className="equip-name">
-                                            {equipData[10].Name}
-                                        </div>
-                                        <div className="stat-info">
-                                            <span className="accstat">
-                                                {accfirststat(10)}
-                                            </span>{' '}
-                                            <span className="accstat">
-                                                {accsecondstat(10)}
-                                            </span>
-                                        </div>
-                                        <div className="engraving-info">
-                                            {accengravingeffect(10)}
-                                        </div>
-                                    </div>
-                                </>
-                            )}
-                            </p> */}
-                            <p>어빌리티스톤 수정필요</p>
-                        </div>
-                        {/* <div className="bracelet-inner">
-                            <p>
-                                <div
-                                    className="img-quality"
-                                    style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                    }}
-                                >
-                                    <img
-                                        src={equipData[12].Icon}
-                                        value={equipData[12].Grade}
-                                        style={{
-                                            backgroundImage:
-                                                equipData[12].Grade === '유물'
-                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                    : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                            width: '40px',
-                                            height: '40px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
                                         }}
                                     />
-                                    <div className="nametag">
-                                        <div className="braceletstat">
-                                            {braceletstat(12)}
-                                        </div>
-                                        {braceleteffectstat(12)}
-                                    </div>
-                                </div>
+                                )}
                             </p>
-                        </div> */}
+                            <p>
+                                {alignedData[7] &&
+                                alignedData[7].Type == '귀걸이' &&
+                                alignedData[7].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[7].Icon}
+                                                value={alignedData[7].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[7].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(7) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(7) >=
+                                                                  90 &&
+                                                              qualityValue(7) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(7) >=
+                                                                  70 &&
+                                                              qualityValue(7) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(7) >=
+                                                                  30 &&
+                                                              qualityValue(7) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(7) >=
+                                                                  10 &&
+                                                              qualityValue(7) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {alignedData[7].Tooltip.substring(
+                                                    alignedData[7].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {alignedData[7].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(7)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(7)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(7)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[8] &&
+                                alignedData[8].Type == '귀걸이' &&
+                                alignedData[8].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[8].Icon}
+                                                value={alignedData[8].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[8].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(8) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(8) >=
+                                                                  90 &&
+                                                              qualityValue(8) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(8) >=
+                                                                  70 &&
+                                                              qualityValue(8) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(8) >=
+                                                                  30 &&
+                                                              qualityValue(8) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(8) >=
+                                                                  10 &&
+                                                              qualityValue(8) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {alignedData[8].Tooltip.substring(
+                                                    alignedData[8].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {alignedData[8].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(8)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(8)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(8)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[9] &&
+                                alignedData[9].Type == '반지' &&
+                                alignedData[9].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[9].Icon}
+                                                value={alignedData[9].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[9].Grade ===
+                                                        '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(9) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(9) >=
+                                                                  90 &&
+                                                              qualityValue(9) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(9) >=
+                                                                  70 &&
+                                                              qualityValue(9) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(9) >=
+                                                                  30 &&
+                                                              qualityValue(9) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(9) >=
+                                                                  10 &&
+                                                              qualityValue(9) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {alignedData[9].Tooltip.substring(
+                                                    alignedData[9].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {alignedData[9].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(9)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(9)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(9)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[10] &&
+                                alignedData[10].Type == '반지' &&
+                                alignedData[10].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[10].Icon}
+                                                value={alignedData[10].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[10]
+                                                            .Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        qualityValue(10) == 100
+                                                            ? 'rgb(255, 106, 0)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 90 &&
+                                                              qualityValue(10) <
+                                                                  100
+                                                            ? 'rgb(138, 43, 226)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 70 &&
+                                                              qualityValue(10) <
+                                                                  90
+                                                            ? 'rgb(81, 162, 254)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 30 &&
+                                                              qualityValue(10) <
+                                                                  70
+                                                            ? 'rgb(36, 157, 46)'
+                                                            : qualityValue(
+                                                                  10
+                                                              ) >= 10 &&
+                                                              qualityValue(10) <
+                                                                  30
+                                                            ? 'rgb(214, 214, 0)'
+                                                            : 'rgb(216, 38, 38)',
+                                                    color: 'white',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {alignedData[10].Tooltip.substring(
+                                                    alignedData[10].Tooltip.indexOf(
+                                                        'qualityValue'
+                                                    )
+                                                )
+                                                    .slice(14, 18)
+                                                    .replace(',', '')}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {alignedData[10].Name}
+                                            </div>
+                                            <div className="stat-info">
+                                                <span className="accstat">
+                                                    {accfirststat(10)}
+                                                </span>{' '}
+                                                <span className="accstat">
+                                                    {accsecondstat(10)}
+                                                </span>
+                                            </div>
+                                            <div className="engraving-info">
+                                                {accengravingeffect(10)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                            <p>
+                                {alignedData[11] &&
+                                alignedData[11].Type == '어빌리티 스톤' &&
+                                alignedData[11].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                width: '48px',
+                                                height: '56px',
+                                                // borderRadius: '8px',
+                                                flexDirection: 'column',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[11].Icon}
+                                                value={alignedData[11].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[11]
+                                                            .Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                    borderBottomLeftRadius:
+                                                        alignedData[11]
+                                                            .Grade === '고대'
+                                                            ? '0px'
+                                                            : '8px',
+                                                    borderBottomRightRadius:
+                                                        alignedData[11]
+                                                            .Grade === '고대'
+                                                            ? '0px'
+                                                            : '8px',
+                                                }}
+                                            />
+                                            <div
+                                                className="qualityValue"
+                                                style={{
+                                                    // width: '48px',
+                                                    backgroundColor:
+                                                        'rgb(255, 255, 0)',
+                                                    fontWeight: '600',
+                                                    fontSize: '12px',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                {alignedData[11].Tooltip.replace(
+                                                    /(<([^>]+)>)/g,
+                                                    ''
+                                                )
+                                                    .replace(
+                                                        /Element_[0-9]+/g,
+                                                        ''
+                                                    )
+                                                    .replace(/\s/gi, '')
+                                                    .replace(
+                                                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                        ''
+                                                    )
+                                                    .replace(/[^\w]/gi, '')
+                                                    // .replace(/:[0-9]+/gi, '')
+                                                    // .replace(/:/gi, '')
+                                                    .substring(
+                                                        alignedData[11].Tooltip.replace(
+                                                            /(<([^>]+)>)/g,
+                                                            ''
+                                                        )
+                                                            .replace(
+                                                                /Element_[0-9]+/g,
+                                                                ''
+                                                            )
+                                                            .replace(/\s/gi, '')
+                                                            .replace(
+                                                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                ''
+                                                            )
+                                                            .indexOf('value')
+                                                    )
+                                                    .slice(0, 8)
+                                                    .replace(/[a-z]*/g, '') ==
+                                                'I' ? (
+                                                    <>LV. 1</>
+                                                ) : alignedData[11].Tooltip.replace(
+                                                      /(<([^>]+)>)/g,
+                                                      ''
+                                                  )
+                                                      .replace(
+                                                          /Element_[0-9]+/g,
+                                                          ''
+                                                      )
+                                                      .replace(/\s/gi, '')
+                                                      .replace(
+                                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                          ''
+                                                      )
+                                                      .replace(/[^\w]/gi, '')
+                                                      .substring(
+                                                          alignedData[11].Tooltip.replace(
+                                                              /(<([^>]+)>)/g,
+                                                              ''
+                                                          )
+                                                              .replace(
+                                                                  /Element_[0-9]+/g,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /\s/gi,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                  ''
+                                                              )
+                                                              .indexOf('value')
+                                                      )
+                                                      .slice(0, 8)
+                                                      .replace(/[a-z]*/g, '') ==
+                                                  'II' ? (
+                                                    <>Lv. 2</>
+                                                ) : alignedData[11].Tooltip.replace(
+                                                      /(<([^>]+)>)/g,
+                                                      ''
+                                                  )
+                                                      .replace(
+                                                          /Element_[0-9]+/g,
+                                                          ''
+                                                      )
+                                                      .replace(/\s/gi, '')
+                                                      .replace(
+                                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                          ''
+                                                      )
+                                                      .replace(/[^\w]/gi, '')
+                                                      .substring(
+                                                          alignedData[11].Tooltip.replace(
+                                                              /(<([^>]+)>)/g,
+                                                              ''
+                                                          )
+                                                              .replace(
+                                                                  /Element_[0-9]+/g,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /\s/gi,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                  ''
+                                                              )
+                                                              .indexOf('value')
+                                                      )
+                                                      .slice(0, 8)
+                                                      .replace(/[a-z]*/g, '') ==
+                                                  'III' ? (
+                                                    <>Lv. 3</>
+                                                ) : alignedData[11].Tooltip.replace(
+                                                      /(<([^>]+)>)/g,
+                                                      ''
+                                                  )
+                                                      .replace(
+                                                          /Element_[0-9]+/g,
+                                                          ''
+                                                      )
+                                                      .replace(/\s/gi, '')
+                                                      .replace(
+                                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                          ''
+                                                      )
+                                                      .replace(/[^\w]/gi, '')
+                                                      // .replace(/:[0-9]+/gi, '')
+                                                      // .replace(/:/gi, '')
+                                                      .substring(
+                                                          alignedData[11].Tooltip.replace(
+                                                              /(<([^>]+)>)/g,
+                                                              ''
+                                                          )
+                                                              .replace(
+                                                                  /Element_[0-9]+/g,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /\s/gi,
+                                                                  ''
+                                                              )
+                                                              .replace(
+                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                                  ''
+                                                              )
+                                                              .indexOf('value')
+                                                      )
+                                                      .slice(0, 8)
+                                                      .replace(/[a-z]*/g, '') ==
+                                                  'IV' ? (
+                                                    <>Lv. 4</>
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="nametag">
+                                            <div className="equip-name">
+                                                {alignedData[11].Name}
+                                            </div>
+                                            <div className="stone-info">
+                                                {stonestat(11)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '4.8rem',
+                                            height: '56px',
+                                            borderRadius: '8px',
+                                            backgroundColor: '#a7a8ac',
+                                        }}
+                                    />
+                                )}
+                            </p>
+                        </div>
+                        <div className="bracelet-inner">
+                            <p>
+                                {alignedData[12] &&
+                                alignedData[12].Type == '팔찌' &&
+                                alignedData[12].Name !== '' ? (
+                                    <>
+                                        <div
+                                            className="img-quality"
+                                            style={{
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                            }}
+                                        >
+                                            <img
+                                                src={alignedData[12].Icon}
+                                                value={alignedData[12].Grade}
+                                                style={{
+                                                    backgroundImage:
+                                                        alignedData[12]
+                                                            .Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                                    width: '40px',
+                                                    height: '40px',
+                                                }}
+                                            />
+                                            <div className="nametag">
+                                                <div className="braceletstat">
+                                                    {braceletstat(12)}
+                                                </div>
+                                                {braceleteffectstat(12)}
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
