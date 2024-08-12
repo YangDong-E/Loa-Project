@@ -612,7 +612,13 @@ const Profile = () => {
                     </span>
                 </div>
             </>
-        ) : (
+        ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+              .replace(/Element_[0-9]+/g, '')
+              // .replace(/\s/gi, '')
+              .replace(/[\{\}\/?.,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\0-9]/gi, '')
+              .replace(/\s/gi, ':')
+              .match(/\[(\D{2,8})\]:활성도:\d{1,2}/g) !== null ? (
             <>
                 <div className="stone-inner">
                     <span>
@@ -717,6 +723,12 @@ const Profile = () => {
                             .replace(/활성도/g, '')
                             .replace(/[^0-9]/g, '')}
                     </span>
+                </div>
+            </>
+        ) : (
+            <>
+                <div className="stone-inner">
+                    <span>이벤트 어빌리티 스톤</span>
                 </div>
             </>
         )
