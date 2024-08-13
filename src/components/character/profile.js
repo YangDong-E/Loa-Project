@@ -9,6 +9,8 @@ const Profile = () => {
     const skillData = data?.ArmorySkills
     const engravData = data?.ArmoryEngraving
     const avgLevel = parseFloat(profileData.ItemAvgLevel.replace(',', ''))
+    const gemData = data?.ArmoryGem.Gems
+    const gemeffectData = data?.ArmoryGem.Effects
 
     const a = parseInt(profileData.Stats[1].Value)
     const b = parseInt(profileData.Stats[0].Value)
@@ -3855,6 +3857,37 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
+            </section>
+            <section
+                style={{
+                    border: '1px solid red',
+                    height: '50px',
+                    marginTop: '10px',
+                }}
+            >
+                {gemData.map((item, index) => (
+                    <span key={index}>
+                        <img
+                            src={item.Icon}
+                            style={{ width: '15px', height: '15px' }}
+                        />
+                        <span>{item.Name.replace(/(<([^>]+)>)/g, '')}</span>
+                    </span>
+                ))}
+                {/* {gemData[0].Name.replace(/(<([^>]+)>)/g, '')} */}
+                {gemeffectData.Description.replace(/(<([^>]+)>)/g, '')}
+                {gemeffectData.Skills[0].Name.replace(/(<([^>]+)>)/g, '')}
+            </section>
+            <section
+                style={{
+                    border: '1px solid green',
+                    height: '50px',
+                    marginTop: '10px',
+                    width: '70%',
+                    marginLeft: '30%',
+                }}
+            >
+                스킬
             </section>
         </article>
     )
