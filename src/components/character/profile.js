@@ -11,6 +11,33 @@ const Profile = () => {
     const avgLevel = parseFloat(profileData.ItemAvgLevel.replace(',', ''))
     const gemData = data?.ArmoryGem.Gems
     const gemeffectData = data?.ArmoryGem.Effects
+    const priority = { 겁화: 1, 멸화: 2, 작열: 3, 홍염: 4 }
+    const sortedGemData = [...gemData]
+        .map((item) => ({ ...item }))
+        .sort((a, b) => {
+            const nameA = extractGemName(a.Name)
+            const nameB = extractGemName(b.Name)
+            const levelA = extractGemLevel(a.Name)
+            const levelB = extractGemLevel(b.Name)
+
+            if (priority[nameA] !== priority[nameB]) {
+                return priority[nameA] - priority[nameB]
+            } else {
+                return levelB - levelA
+            }
+        })
+
+    function extractGemName(name) {
+        const regex = /(\d+레벨 )?(겁화|멸화|작열|홍염)의 보석/
+        const match = name.match(regex)
+        return match ? match[2] : null
+    }
+
+    function extractGemLevel(name) {
+        const regex = /(\d+)레벨/
+        const match = name.match(regex)
+        return match ? parseInt(match[1], 10) : 0
+    }
 
     const a = parseInt(profileData.Stats[1].Value)
     const b = parseInt(profileData.Stats[0].Value)
@@ -2341,6 +2368,187 @@ const Profile = () => {
         return `rgba(${r}, ${g}, ${b}, 0.6)`
     }
 
+    function gemTooltip(idx) {
+        return sortedGemData[idx] ? (
+            <>
+                {sortedGemData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
+                    .substring(
+                        sortedGemData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
+                                ''
+                            )
+                            .indexOf('효과')
+                    )
+                    .replace(/\s/gi, '=')
+                    .replace(/(피해|재사용).*$/gi, '')
+                    .substring(
+                        sortedGemData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
+                                ''
+                            )
+                            .substring(
+                                sortedGemData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    // .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
+                                        ''
+                                    )
+                                    .indexOf('효과')
+                            )
+                            .replace(/\s/gi, '=')
+                            .replace(/(피해|재사용).*$/gi, '')
+                            .indexOf('[')
+                    )
+
+                    .replace(/\[\D{2,6}]/g, '')
+                    .replace(/\=/g, ' ')
+                    .replace(/(지원).*$/gi, '')}
+            </>
+        ) : (
+            ''
+        )
+    }
+
+    function gemLevel(idx) {
+        // Tooltip에서 HTML 태그 제거 후 정제 작업
+        let tooltipText = sortedGemData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+            .replace(/Element_[0-9]+/g, '')
+            .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
+
+        // '피해'와 '재사용'의 위치를 찾음
+        let damageIndex = tooltipText.indexOf('피해')
+        let cooldownIndex = tooltipText.indexOf('재사용')
+        let adenIndex1 = tooltipText.indexOf('신성의 오라')
+        let adenIndex2 = tooltipText.indexOf('음양 스킬')
+        let adenIndex3 = tooltipText.indexOf('세레나데 스킬')
+
+        if (damageIndex !== -1 && sortedGemData[idx].Tooltip.includes('멸화')) {
+            // '피해'가 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
+            return tooltipText
+                .substring(damageIndex)
+                .replace(/\s/gi, '=')
+                .replace(/==.*$/gi, '')
+                .replace(/\=/g, ' ')
+                .replace(/추가 효과.*$/g, '')
+        } else if (
+            cooldownIndex !== -1 &&
+            sortedGemData[idx].Tooltip.includes('홍염')
+        ) {
+            // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
+            return tooltipText
+                .substring(cooldownIndex)
+                .replace(/\s/gi, '=')
+                .replace(/==.*$/gi, '')
+                .replace(/\=/g, ' ')
+            // .replace(/추가 효과.*$/g, '')
+        } else if (
+            damageIndex !== -1 &&
+            sortedGemData[idx].Tooltip.includes('겁화')
+        ) {
+            // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
+            return (
+                <>
+                    {/* {tooltipText
+                        .substring(damageIndex)
+                        .replace(/\s/gi, '=')
+                        .replace(/==.*$/gi, '')
+                        .replace(/\=/g, ' ')
+                        .replace(/\[.*$/g, '')} */}
+                    {tooltipText
+                        .substring(damageIndex)
+                        .replace(/\s/gi, '=')
+                        .replace(/==.*$/gi, '')
+                        .replace(/\=/g, ' ')
+                        .substring(
+                            tooltipText
+                                .substring(damageIndex)
+                                .replace(/\s/gi, '=')
+                                .replace(/==.*$/gi, '')
+                                .replace(/\=/g, ' ')
+                                .indexOf('[')
+                        )
+                        ? tooltipText
+                              .substring(damageIndex)
+                              .replace(/\s/gi, '=')
+                              .replace(/==.*$/gi, '')
+                              .replace(/\=/g, ' ')
+                              .substring(
+                                  tooltipText
+                                      .substring(damageIndex)
+                                      .replace(/\s/gi, '=')
+                                      .replace(/==.*$/gi, '')
+                                      .replace(/\=/g, ' ')
+                                      .indexOf('[')
+                              )
+                              .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)
+                        : ''}
+                </>
+            )
+        } else if (
+            cooldownIndex !== -1 &&
+            sortedGemData[idx].Tooltip.includes('작열')
+        ) {
+            // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
+            return tooltipText
+                .substring(cooldownIndex)
+                .replace(/\s/gi, '=')
+                .replace(/==.*$/gi, '')
+                .replace(/\=/g, ' ')
+                .replace(/추가 효과.*$/g, '')
+        } else if (
+            (adenIndex1 !== -1 || adenIndex2 !== -1 || adenIndex3 !== -1) &&
+            sortedGemData[idx].Tooltip.includes('겁화')
+        ) {
+            // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
+            return (
+                tooltipText
+                    // .substring(cooldownIndex)
+                    .replace(/\s/gi, ' ')
+                    .substring(
+                        tooltipText
+                            //   .substring(damageIndex)
+                            .replace(/\s/gi, '=')
+                            //   .replace(/==.*$/gi, '')
+                            //   .replace(/\=/g, ' ')
+                            .indexOf('[')
+                    )
+                    .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)
+            )
+            // .replace(/\=/g, ' ')
+            // .replace(/추가 효과.*$/g, '')
+        } else {
+            // 두 단어가 모두 포함되지 않은 경우 빈 문자열을 반환
+            return ''
+        }
+    }
+
     return (
         <article className="profile">
             <div className="profile-inner">
@@ -3861,11 +4069,16 @@ const Profile = () => {
             <section
                 style={{
                     border: '1px solid red',
-                    height: '50px',
+                    // height: '50px',
                     marginTop: '10px',
+                    width: '70%',
+                    marginLeft: '30%',
+                    display: 'flex',
+                    flex: 'row',
                 }}
+                // className="gem"
             >
-                {gemData.map((item, index) => (
+                {/* {sortedGemData.map((item, index) => (
                     <span key={index}>
                         <img
                             src={item.Icon}
@@ -3873,10 +4086,38 @@ const Profile = () => {
                         />
                         <span>{item.Name.replace(/(<([^>]+)>)/g, '')}</span>
                     </span>
+                ))} */}
+                {/* {sortedGemData[0].Tooltip} */}
+                {sortedGemData.map((item, index) => (
+                    <div className="gem" key={index}>
+                        <div className="gem-inner">
+                            <div className="gem-info">
+                                <img
+                                    src={item.Icon}
+                                    style={{ width: '40px', height: '40px' }}
+                                    className="gem-img"
+                                />
+                                <div className="gem-text">
+                                    <div>
+                                        {
+                                            item.Name.replace(
+                                                /(<([^>]+)>)/g,
+                                                ''
+                                            )
+                                            // .match(/\D{2,3}/g)[1]
+                                            // .replace(/의/g, '')
+                                        }
+                                    </div>
+                                    <div>{gemTooltip(index)}</div>
+                                    <div>{gemLevel(index)}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-                {/* {gemData[0].Name.replace(/(<([^>]+)>)/g, '')} */}
-                {gemeffectData.Description.replace(/(<([^>]+)>)/g, '')}
-                {gemeffectData.Skills[0].Name.replace(/(<([^>]+)>)/g, '')}
+
+                {/* {gemeffectData.Description.replace(/(<([^>]+)>)/g, '')}
+                {gemeffectData.Skills[0].Name.replace(/(<([^>]+)>)/g, '')} */}
             </section>
             <section
                 style={{

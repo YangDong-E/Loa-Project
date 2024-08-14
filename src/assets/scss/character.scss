@@ -138,6 +138,35 @@
             }
         }
     }
+    .gem {
+        display: flex;
+        flex-direction: row;
+        &-inner {
+            display: flex;
+            flex-direction: row;
+            // text-align: center;
+            gap: 5px;
+            .gem-info {
+                // .gem-img {
+                //     margin-left: 5px;
+                // }
+                // .gem-text {
+                //     position: absolute;
+                //     display: none;
+                //     border: 1px solid blue;
+                //     background-color: white;
+                //     // margin-top: 35px;
+                //     // margin-left: 5px;
+                //     div {
+                //         margin-top: 3px;
+                //     }
+                // }
+                // .gem-img:hover + .gem-text {
+                //     display: block;
+                // }
+            }
+        }
+    }
 }
 
 .stats {
