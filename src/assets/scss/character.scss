@@ -141,29 +141,41 @@
     .gem {
         display: flex;
         flex-direction: row;
+        // gap: 10px;
         &-inner {
             display: flex;
-            flex-direction: row;
-            // text-align: center;
-            gap: 5px;
+            flex-direction: column;
+            text-align: center;
+            // gap: 5px;
             .gem-info {
-                // .gem-img {
-                //     margin-left: 5px;
-                // }
-                // .gem-text {
-                //     position: absolute;
-                //     display: none;
-                //     border: 1px solid blue;
-                //     background-color: white;
-                //     // margin-top: 35px;
-                //     // margin-left: 5px;
-                //     div {
-                //         margin-top: 3px;
-                //     }
-                // }
-                // .gem-img:hover + .gem-text {
-                //     display: block;
-                // }
+                // text-align: center;
+
+                .gem-img {
+                    margin-left: 5px;
+                }
+                .gem-text {
+                    @include boxStyle(4px, 2px);
+                    position: absolute;
+                    display: none;
+                    // border: 1px solid blue;
+                    // background-color: white;
+                    // margin-top: 35px;
+                    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+                    margin-left: -30px;
+                    text-align: center;
+                    font-family: 'jua';
+                    div {
+                        margin-top: 3px;
+                        font-family: 'jua';
+                    }
+                }
+                .gem-img:hover + .gem-text {
+                    display: block;
+                }
+            }
+            .gem-name {
+                font-size: 12px;
+                font-family: 'jua';
             }
         }
     }

@@ -2475,12 +2475,6 @@ const Profile = () => {
             // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
             return (
                 <>
-                    {/* {tooltipText
-                        .substring(damageIndex)
-                        .replace(/\s/gi, '=')
-                        .replace(/==.*$/gi, '')
-                        .replace(/\=/g, ' ')
-                        .replace(/\[.*$/g, '')} */}
                     {tooltipText
                         .substring(damageIndex)
                         .replace(/\s/gi, '=')
@@ -2493,22 +2487,42 @@ const Profile = () => {
                                 .replace(/==.*$/gi, '')
                                 .replace(/\=/g, ' ')
                                 .indexOf('[')
-                        )
-                        ? tooltipText
-                              .substring(damageIndex)
-                              .replace(/\s/gi, '=')
-                              .replace(/==.*$/gi, '')
-                              .replace(/\=/g, ' ')
-                              .substring(
-                                  tooltipText
-                                      .substring(damageIndex)
-                                      .replace(/\s/gi, '=')
-                                      .replace(/==.*$/gi, '')
-                                      .replace(/\=/g, ' ')
-                                      .indexOf('[')
-                              )
-                              .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)
-                        : ''}
+                        ) ? (
+                        <>
+                            {tooltipText
+                                .substring(damageIndex)
+                                .replace(/\s/gi, '=')
+                                .replace(/==.*$/gi, '')
+                                .replace(/\=/g, ' ')
+                                .substring(
+                                    tooltipText
+                                        .substring(damageIndex)
+                                        .replace(/\s/gi, '=')
+                                        .replace(/==.*$/gi, '')
+                                        .replace(/\=/g, ' ')
+                                        .indexOf('[')
+                                )
+                                .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)}
+                            <div>
+                                {tooltipText
+                                    .substring(damageIndex)
+                                    .replace(/\s/gi, '=')
+                                    .replace(/==.*$/gi, '')
+                                    .replace(/\=/g, ' ')
+                                    .substring(
+                                        tooltipText
+                                            .substring(damageIndex)
+                                            .replace(/\s/gi, '=')
+                                            .replace(/==.*$/gi, '')
+                                            .replace(/\=/g, ' ')
+                                            .indexOf('[')
+                                    )
+                                    .match(/기본 공격력.*?증가/g, '')}
+                            </div>
+                        </>
+                    ) : (
+                        ''
+                    )}
                 </>
             )
         } else if (
@@ -2516,35 +2530,47 @@ const Profile = () => {
             sortedGemData[idx].Tooltip.includes('작열')
         ) {
             // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
-            return tooltipText
-                .substring(cooldownIndex)
-                .replace(/\s/gi, '=')
-                .replace(/==.*$/gi, '')
-                .replace(/\=/g, ' ')
-                .replace(/추가 효과.*$/g, '')
+            return (
+                <>
+                    {tooltipText
+                        .substring(cooldownIndex)
+                        .replace(/\s/gi, '=')
+                        .replace(/==.*$/gi, '')
+                        .replace(/\=/g, ' ')
+                        .replace(/추가 효과.*$/g, '')}
+                    <div>
+                        {tooltipText
+                            .substring(cooldownIndex)
+                            .replace(/\s/gi, '=')
+                            .replace(/==.*$/gi, '')
+                            .replace(/\=/g, ' ')
+                            .match(/기본 공격력.*?증가/g, '')}
+                    </div>
+                </>
+            )
         } else if (
             (adenIndex1 !== -1 || adenIndex2 !== -1 || adenIndex3 !== -1) &&
             sortedGemData[idx].Tooltip.includes('겁화')
         ) {
-            // '재사용'이 포함된 경우 해당 위치부터 끝까지의 문자열을 추출
             return (
-                tooltipText
-                    // .substring(cooldownIndex)
-                    .replace(/\s/gi, ' ')
-                    .substring(
-                        tooltipText
-                            //   .substring(damageIndex)
-                            .replace(/\s/gi, '=')
-                            //   .replace(/==.*$/gi, '')
-                            //   .replace(/\=/g, ' ')
-                            .indexOf('[')
-                    )
-                    .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)
+                <>
+                    {tooltipText
+                        .replace(/\s/gi, ' ')
+                        .substring(
+                            tooltipText.replace(/\s/gi, '=').indexOf('[')
+                        )
+                        .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)}
+                    <div>
+                        {tooltipText
+                            .replace(/\s/gi, ' ')
+                            .substring(
+                                tooltipText.replace(/\s/gi, '=').indexOf('[')
+                            )
+                            .match(/기본 공격력.*?증가/g, '')}
+                    </div>
+                </>
             )
-            // .replace(/\=/g, ' ')
-            // .replace(/추가 효과.*$/g, '')
         } else {
-            // 두 단어가 모두 포함되지 않은 경우 빈 문자열을 반환
             return ''
         }
     }
@@ -4068,49 +4094,57 @@ const Profile = () => {
             </section>
             <section
                 style={{
-                    border: '1px solid red',
-                    // height: '50px',
+                    // border: '1px solid red',
                     marginTop: '10px',
                     width: '70%',
                     marginLeft: '30%',
                     display: 'flex',
                     flex: 'row',
+                    gap: '5px',
+                    padding: '10px 0px',
+                    background: '#fff',
+                    boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
+                    borderRadius: '8px',
                 }}
                 // className="gem"
             >
-                {/* {sortedGemData.map((item, index) => (
-                    <span key={index}>
-                        <img
-                            src={item.Icon}
-                            style={{ width: '15px', height: '15px' }}
-                        />
-                        <span>{item.Name.replace(/(<([^>]+)>)/g, '')}</span>
-                    </span>
-                ))} */}
-                {/* {sortedGemData[0].Tooltip} */}
                 {sortedGemData.map((item, index) => (
                     <div className="gem" key={index}>
                         <div className="gem-inner">
                             <div className="gem-info">
                                 <img
                                     src={item.Icon}
-                                    style={{ width: '40px', height: '40px' }}
+                                    style={{
+                                        width: '37px',
+                                        height: '37px',
+                                        backgroundImage:
+                                            item.Grade === '유물'
+                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
+                                        borderRadius: '5px',
+                                    }}
                                     className="gem-img"
                                 />
                                 <div className="gem-text">
-                                    <div>
-                                        {
-                                            item.Name.replace(
-                                                /(<([^>]+)>)/g,
-                                                ''
-                                            )
-                                            // .match(/\D{2,3}/g)[1]
-                                            // .replace(/의/g, '')
-                                        }
+                                    <div
+                                        style={{
+                                            fontWeight: '600',
+                                            fontSize: '11px',
+                                        }}
+                                    >
+                                        {gemTooltip(index)}
                                     </div>
-                                    <div>{gemTooltip(index)}</div>
                                     <div>{gemLevel(index)}</div>
                                 </div>
+                            </div>
+                            <div className="gem-name">
+                                {
+                                    item.Name.replace(/(<([^>]+)>)/g, '')
+                                        .replace(/의.*$/g, '')
+                                        .replace(/레벨/g, '')
+                                    // .match(/\D{2,3}/g)[1]
+                                    // .replace(/의/g, '')
+                                }
                             </div>
                         </div>
                     </div>
