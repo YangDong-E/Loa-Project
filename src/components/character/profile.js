@@ -3,6 +3,11 @@ import transcend from '../../assets/images/character/transcendence.png'
 import { useState } from 'react'
 
 const Profile = () => {
+    const [openIndex, setOpenIndex] = useState(null)
+    const handleAccordionClick = (index) => {
+        setOpenIndex(openIndex === index ? null : index)
+    }
+
     const data = useSelector((state) => state.character.characterProfile)
     const profileData = data?.ArmoryProfile
     const equipData = data?.ArmoryEquipment
@@ -10,9 +15,8 @@ const Profile = () => {
     const engravData = data?.ArmoryEngraving
     const avgLevel = parseFloat(profileData.ItemAvgLevel.replace(',', ''))
     const gemData = data?.ArmoryGem.Gems
-    const gemeffectData = data?.ArmoryGem.Effects
     const priority = { 겁화: 1, 멸화: 2, 작열: 3, 홍염: 4 }
-    const sortedGemData = [...gemData]
+    const sortedGemData = (gemData ? [...gemData] : [])
         .map((item) => ({ ...item }))
         .sort((a, b) => {
             const nameA = extractGemName(a.Name)
@@ -26,6 +30,8 @@ const Profile = () => {
                 return levelB - levelA
             }
         })
+    const cardData = data?.ArmoryCard.Cards
+    const cardEffectsData = data?.ArmoryCard.Effects
 
     function extractGemName(name) {
         const regex = /(\d+레벨 )?(겁화|멸화|작열|홍염)의 보석/
@@ -4108,62 +4114,297 @@ const Profile = () => {
                 }}
                 // className="gem"
             >
-                {sortedGemData.map((item, index) => (
-                    <div className="gem" key={index}>
-                        <div className="gem-inner">
-                            <div className="gem-info">
-                                <img
-                                    src={item.Icon}
-                                    style={{
-                                        width: '37px',
-                                        height: '37px',
-                                        backgroundImage:
-                                            item.Grade === '유물'
-                                                ? 'linear-gradient(135deg, #341a09, #a24006)'
-                                                : 'linear-gradient(135deg, #3d3325, #dcc999)',
-                                        borderRadius: '5px',
-                                    }}
-                                    className="gem-img"
-                                />
-                                <div className="gem-text">
-                                    <div
+                {gemData ? (
+                    sortedGemData.map((item, index) => (
+                        <div className="gem" key={index}>
+                            <div className="gem-inner">
+                                <div className="gem-info">
+                                    <img
+                                        src={item.Icon}
                                         style={{
-                                            fontWeight: '600',
-                                            fontSize: '11px',
+                                            width: '37px',
+                                            height: '37px',
+                                            backgroundImage:
+                                                item.Grade === '유물'
+                                                    ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                    : item.Grade === '고대'
+                                                    ? 'linear-gradient(135deg, #3d3325, #dcc999)'
+                                                    : 'linear-gradient(#3c2201,#a86200)',
+                                            borderRadius: '5px',
                                         }}
-                                    >
-                                        {gemTooltip(index)}
+                                        className="gem-img"
+                                    />
+                                    <div className="gem-text">
+                                        <div
+                                            style={{
+                                                fontWeight: '600',
+                                                fontSize: '11px',
+                                            }}
+                                        >
+                                            {gemTooltip(index)}
+                                        </div>
+                                        <div>{gemLevel(index)}</div>
                                     </div>
-                                    <div>{gemLevel(index)}</div>
+                                </div>
+                                <div className="gem-name">
+                                    {
+                                        item.Name.replace(/(<([^>]+)>)/g, '')
+                                            .replace(/의.*$/g, '')
+                                            .replace(/레벨/g, '')
+                                        // .match(/\D{2,3}/g)[1]
+                                        // .replace(/의/g, '')
+                                    }
                                 </div>
                             </div>
-                            <div className="gem-name">
-                                {
-                                    item.Name.replace(/(<([^>]+)>)/g, '')
-                                        .replace(/의.*$/g, '')
-                                        .replace(/레벨/g, '')
-                                    // .match(/\D{2,3}/g)[1]
-                                    // .replace(/의/g, '')
-                                }
+                        </div>
+                    ))
+                ) : (
+                    <>
+                        <div className="gem">
+                            <div className="gem-inner">
+                                <div className="no-gem">
+                                    장착된 보석이 없습니다.
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-
-                {/* {gemeffectData.Description.replace(/(<([^>]+)>)/g, '')}
-                {gemeffectData.Skills[0].Name.replace(/(<([^>]+)>)/g, '')} */}
+                    </>
+                )}
             </section>
             <section
                 style={{
                     border: '1px solid green',
-                    height: '50px',
                     marginTop: '10px',
                     width: '70%',
                     marginLeft: '30%',
+                    display: 'grid',
+                    gap: '3px',
+                    padding: '10px 0px',
+                    background: '#fff',
+                    boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
+                    borderRadius: '8px',
+                    gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
                 }}
             >
-                스킬
+                <div
+                    style={{
+                        // width: '20px',
+                        height: '15px',
+                        position: 'absolute',
+                        justifySelf: 'end',
+                    }}
+                >
+                    {cardEffectsData[0].Items[
+                        cardEffectsData[0].Items.length - 1
+                    ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)
+                        ? cardEffectsData[0].Items[
+                              cardEffectsData[0].Items.length - 1
+                          ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[1] +
+                          ' ' +
+                          cardEffectsData[0].Items[
+                              cardEffectsData[0].Items.length - 1
+                          ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[2]
+                        : cardEffectsData[0].Items[
+                              cardEffectsData[0].Items.length - 1
+                          ].Name.match(/(.*?\d+세트)/)[0]}{' '}
+                    열기
+                </div>
+                {cardData
+                    ? cardData.map((item, index) => (
+                          <div
+                              style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  marginTop: '20px',
+                              }}
+                              key={index}
+                              onClick={() => handleAccordionClick(index)}
+                          >
+                              <div>
+                                  <div>
+                                      <img
+                                          src={item.Icon}
+                                          style={{
+                                              width: '70px',
+                                              height: '100px',
+                                          }}
+                                      />
+                                  </div>
+                                  <div>{item.Name}</div>
+                              </div>
+                          </div>
+                      ))
+                    : ''}
+                {openIndex !== null && (
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '10px',
+                            marginTop: '20px',
+                            marginLeft: '10px',
+                        }}
+                    >
+                        {cardEffectsData.length - 1 == 0 ? (
+                            cardEffectsData[0].Items.map((item, index) => (
+                                <div
+                                    style={{
+                                        display: 'grid',
+                                        // flexDirection: 'row',
+                                        width: '512px',
+                                        gap: '20px',
+                                        // textAlign: ' center',
+                                        // alignItems: 'center',
+                                        gridTemplateColumns: 'repeat(2, 130px)',
+                                    }}
+                                    onClick={() => handleAccordionClick(index)}
+                                    key={index}
+                                >
+                                    <div>
+                                        {item.Name.includes('각성합계') ? (
+                                            <div>
+                                                {
+                                                    item.Name.match(
+                                                        /(\d+각성)/
+                                                    )[0]
+                                                }
+                                            </div>
+                                        ) : (
+                                            <div style={{ marginRight: '5px' }}>
+                                                {
+                                                    item.Name.match(
+                                                        /(\d+세트)/
+                                                    )[0]
+                                                }
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div style={{ width: '500px' }}>
+                                        {item.Description}
+                                    </div>
+                                </div>
+                            ))
+                        ) : cardEffectsData.length - 1 == 1 ? (
+                            <>
+                                {cardEffectsData[0].Items.map((item, index) => (
+                                    <div
+                                        style={{
+                                            display: 'grid',
+                                            // flexDirection: 'row',
+                                            width: '512px',
+                                            gap: '20px',
+                                            // textAlign: ' center',
+                                            // alignItems: 'center',
+                                            gridTemplateColumns:
+                                                'repeat(2, 130px)',
+                                        }}
+                                        onClick={() =>
+                                            handleAccordionClick(index)
+                                        }
+                                        key={index}
+                                    >
+                                        <div>
+                                            {item.Name.includes('각성합계') ? (
+                                                <div>
+                                                    {
+                                                        item.Name.match(
+                                                            /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
+                                                        )[1]
+                                                    }{' '}
+                                                    {
+                                                        item.Name.match(
+                                                            /(\d+각성)/
+                                                        )[0]
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    style={{
+                                                        marginRight: '5px',
+                                                    }}
+                                                >
+                                                    {
+                                                        item.Name.match(
+                                                            /^(.+?)\s\d+세트$/
+                                                        )[1]
+                                                    }{' '}
+                                                    {
+                                                        item.Name.match(
+                                                            /(\d+세트)/
+                                                        )[0]
+                                                    }
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div style={{ width: '500px' }}>
+                                            {item.Description}
+                                        </div>
+                                    </div>
+                                ))}
+                                {cardEffectsData[1].Items.map((item, index) => (
+                                    <div
+                                        style={{
+                                            display: 'grid',
+                                            // flexDirection: 'row',
+                                            width: '512px',
+                                            gap: '20px',
+                                            // textAlign: ' center',
+                                            // alignItems: 'center',
+                                            gridTemplateColumns:
+                                                'repeat(2, 130px)',
+                                        }}
+                                        onClick={() =>
+                                            handleAccordionClick(index)
+                                        }
+                                        key={index}
+                                    >
+                                        <div>
+                                            {item.Name.includes('각성합계') ? (
+                                                <div>
+                                                    {
+                                                        item.Name.match(
+                                                            /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
+                                                        )[1]
+                                                    }{' '}
+                                                    {
+                                                        item.Name.match(
+                                                            /(\d+각성)/
+                                                        )[0]
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                // style={{
+                                                //     marginRight: '5px',
+                                                // }}
+                                                >
+                                                    {
+                                                        item.Name.match(
+                                                            /^(.+?)\s\d+세트$/
+                                                        )[1]
+                                                    }{' '}
+                                                    {
+                                                        item.Name.match(
+                                                            /(\d+세트)/
+                                                        )[0]
+                                                    }
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div style={{ width: '500px' }}>
+                                            {item.Description}
+                                        </div>
+                                    </div>
+                                ))}
+                            </>
+                        ) : (
+                            ''
+                        )}
+                    </div>
+                )}
             </section>
+            {/* <div>{cardEffectsData[0].Items[0].Name}</div> */}
         </article>
     )
 }
