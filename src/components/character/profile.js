@@ -1,11 +1,25 @@
 import { useSelector } from 'react-redux'
 import transcend from '../../assets/images/character/transcendence.png'
 import { useState } from 'react'
+import arrowup from '../../assets/images/common/arrow-up.png'
+import General from '../../assets/images/common/img_card_grade.png'
+import Advanced from '../../assets/images/common/img_card_grade2.png'
+import Rare from '../../assets/images/common/img_card_grade3.png'
+import Hero from '../../assets/images/common/img_card_grade4.png'
+import Legend from '../../assets/images/common/img_card_grade5.png'
 
 const Profile = () => {
     const [openIndex, setOpenIndex] = useState(null)
     const handleAccordionClick = (index) => {
         setOpenIndex(openIndex === index ? null : index)
+    }
+
+    const cardborders = {
+        전설: Legend,
+        영웅: Hero,
+        희귀: Rare,
+        고급: Advanced,
+        일반: General,
     }
 
     const data = useSelector((state) => state.character.characterProfile)
@@ -4100,7 +4114,6 @@ const Profile = () => {
             </section>
             <section
                 style={{
-                    // border: '1px solid red',
                     marginTop: '10px',
                     width: '70%',
                     marginLeft: '30%',
@@ -4112,7 +4125,6 @@ const Profile = () => {
                     boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
                     borderRadius: '8px',
                 }}
-                // className="gem"
             >
                 {gemData ? (
                     sortedGemData.map((item, index) => (
@@ -4147,13 +4159,9 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div className="gem-name">
-                                    {
-                                        item.Name.replace(/(<([^>]+)>)/g, '')
-                                            .replace(/의.*$/g, '')
-                                            .replace(/레벨/g, '')
-                                        // .match(/\D{2,3}/g)[1]
-                                        // .replace(/의/g, '')
-                                    }
+                                    {item.Name.replace(/(<([^>]+)>)/g, '')
+                                        .replace(/의.*$/g, '')
+                                        .replace(/레벨/g, '')}
                                 </div>
                             </div>
                         </div>
@@ -4186,27 +4194,76 @@ const Profile = () => {
                 }}
             >
                 <div
-                    style={{
-                        // width: '20px',
-                        height: '15px',
-                        position: 'absolute',
-                        justifySelf: 'end',
-                    }}
+                    className="card-setname"
+                    onClick={() => handleAccordionClick(0)}
                 >
-                    {cardEffectsData[0].Items[
-                        cardEffectsData[0].Items.length - 1
-                    ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)
-                        ? cardEffectsData[0].Items[
-                              cardEffectsData[0].Items.length - 1
-                          ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[1] +
-                          ' ' +
-                          cardEffectsData[0].Items[
-                              cardEffectsData[0].Items.length - 1
-                          ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[2]
-                        : cardEffectsData[0].Items[
-                              cardEffectsData[0].Items.length - 1
-                          ].Name.match(/(.*?\d+세트)/)[0]}{' '}
-                    열기
+                    {cardEffectsData.length - 1 == 0 ? (
+                        <div>
+                            {cardEffectsData[0].Items[
+                                cardEffectsData[0].Items.length - 1
+                            ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)
+                                ? cardEffectsData[0].Items[
+                                      cardEffectsData[0].Items.length - 1
+                                  ].Name.match(
+                                      /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
+                                  )[1] +
+                                  ' ' +
+                                  cardEffectsData[0].Items[
+                                      cardEffectsData[0].Items.length - 1
+                                  ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[2]
+                                : cardEffectsData[0].Items[
+                                      cardEffectsData[0].Items.length - 1
+                                  ].Name.match(/(.*?\d+세트)/)[1]}
+                        </div>
+                    ) : cardEffectsData.length - 1 == 1 ? (
+                        <div>
+                            {cardEffectsData[1].Items[
+                                cardEffectsData[1].Items.length - 1
+                            ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)
+                                ? cardEffectsData[1].Items[
+                                      cardEffectsData[1].Items.length - 1
+                                  ].Name.match(
+                                      /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
+                                  )[1] +
+                                  ' ' +
+                                  cardEffectsData[1].Items[
+                                      cardEffectsData[1].Items.length - 1
+                                  ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[2]
+                                : cardEffectsData[1].Items[
+                                      cardEffectsData[1].Items.length - 1
+                                  ].Name.match(/(.*?\d+세트)/)[1]}
+                            {'  '}
+                            {cardEffectsData[0].Items[
+                                cardEffectsData[0].Items.length - 1
+                            ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)
+                                ? cardEffectsData[0].Items[
+                                      cardEffectsData[0].Items.length - 1
+                                  ].Name.match(
+                                      /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
+                                  )[1] +
+                                  ' ' +
+                                  cardEffectsData[0].Items[
+                                      cardEffectsData[0].Items.length - 1
+                                  ].Name.match(/(.*?\d+세트)\s*\((\d+각)/)[2]
+                                : cardEffectsData[0].Items[
+                                      cardEffectsData[0].Items.length - 1
+                                  ].Name.match(/(.*?\d+세트)/)[1]}
+                        </div>
+                    ) : (
+                        ''
+                    )}
+                    <img
+                        src={arrowup}
+                        alt="arrow icon"
+                        style={{
+                            transition: 'transform 0.3s ease-in-out',
+                            transform: `rotate(${
+                                openIndex !== null ? 180 : 0
+                            }deg)`,
+                        }}
+                        onClick={() => handleAccordionClick(0)}
+                        className="arrow"
+                    />
                 </div>
                 {cardData
                     ? cardData.map((item, index) => (
@@ -4220,18 +4277,24 @@ const Profile = () => {
                               }}
                               key={index}
                               onClick={() => handleAccordionClick(index)}
+                              className="card"
                           >
-                              <div>
-                                  <div>
+                              <div className="card-inner">
+                                  <div className="card-img">
                                       <img
                                           src={item.Icon}
-                                          style={{
-                                              width: '70px',
-                                              height: '100px',
-                                          }}
+                                          //   style={{
+                                          //       width: '70px',
+                                          //       height: '100px',
+                                          //   }}
+                                      />
+                                      <img
+                                          src={cardborders[item.Grade]}
+                                          alt={`${item.Grade} border`}
+                                          className="cardborders"
                                       />
                                   </div>
-                                  <div>{item.Name}</div>
+                                  <div className="card-name">{item.Name}</div>
                               </div>
                           </div>
                       ))
@@ -4245,42 +4308,38 @@ const Profile = () => {
                             marginTop: '20px',
                             marginLeft: '10px',
                         }}
+                        className="card-setinfo"
                     >
                         {cardEffectsData.length - 1 == 0 ? (
                             cardEffectsData[0].Items.map((item, index) => (
                                 <div
                                     style={{
                                         display: 'grid',
-                                        // flexDirection: 'row',
                                         width: '512px',
                                         gap: '20px',
-                                        // textAlign: ' center',
-                                        // alignItems: 'center',
                                         gridTemplateColumns: 'repeat(2, 130px)',
                                     }}
                                     onClick={() => handleAccordionClick(index)}
                                     key={index}
+                                    className="card-setinfo-inner"
                                 >
-                                    <div>
-                                        {item.Name.includes('각성합계') ? (
-                                            <div>
-                                                {
-                                                    item.Name.match(
-                                                        /(\d+각성)/
-                                                    )[0]
-                                                }
-                                            </div>
-                                        ) : (
-                                            <div style={{ marginRight: '5px' }}>
-                                                {
-                                                    item.Name.match(
-                                                        /(\d+세트)/
-                                                    )[0]
-                                                }
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div style={{ width: '500px' }}>
+                                    {item.Name.includes('각성합계') ? (
+                                        <div className="card-setinfo-name">
+                                            {item.Name.match(/(\d+각성)/)[0]}
+                                        </div>
+                                    ) : (
+                                        <div
+                                            style={{ marginRight: '5px' }}
+                                            className="card-setinfo-name"
+                                        >
+                                            {item.Name.match(/(\d+세트)/)[0]}
+                                        </div>
+                                    )}
+
+                                    <div
+                                        style={{ width: '500px' }}
+                                        className="card-setinfo-des"
+                                    >
                                         {item.Description}
                                     </div>
                                 </div>
@@ -4291,11 +4350,8 @@ const Profile = () => {
                                     <div
                                         style={{
                                             display: 'grid',
-                                            // flexDirection: 'row',
                                             width: '512px',
                                             gap: '20px',
-                                            // textAlign: ' center',
-                                            // alignItems: 'center',
                                             gridTemplateColumns:
                                                 'repeat(2, 130px)',
                                         }}
@@ -4303,10 +4359,11 @@ const Profile = () => {
                                             handleAccordionClick(index)
                                         }
                                         key={index}
+                                        className="card-setinfo-inner"
                                     >
                                         <div>
                                             {item.Name.includes('각성합계') ? (
-                                                <div>
+                                                <div className="card-setinfo-name">
                                                     {
                                                         item.Name.match(
                                                             /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
@@ -4323,6 +4380,7 @@ const Profile = () => {
                                                     style={{
                                                         marginRight: '5px',
                                                     }}
+                                                    className="card-setinfo-name"
                                                 >
                                                     {
                                                         item.Name.match(
@@ -4337,7 +4395,10 @@ const Profile = () => {
                                                 </div>
                                             )}
                                         </div>
-                                        <div style={{ width: '500px' }}>
+                                        <div
+                                            style={{ width: '500px' }}
+                                            className="card-setinfo-des"
+                                        >
                                             {item.Description}
                                         </div>
                                     </div>
@@ -4346,11 +4407,8 @@ const Profile = () => {
                                     <div
                                         style={{
                                             display: 'grid',
-                                            // flexDirection: 'row',
                                             width: '512px',
                                             gap: '20px',
-                                            // textAlign: ' center',
-                                            // alignItems: 'center',
                                             gridTemplateColumns:
                                                 'repeat(2, 130px)',
                                         }}
@@ -4358,10 +4416,11 @@ const Profile = () => {
                                             handleAccordionClick(index)
                                         }
                                         key={index}
+                                        className="card-setinfo-inner"
                                     >
                                         <div>
                                             {item.Name.includes('각성합계') ? (
-                                                <div>
+                                                <div className="card-setinfo-name">
                                                     {
                                                         item.Name.match(
                                                             /^(.+?)\s\d+세트\s\(\d+각성합계\)$/
@@ -4374,11 +4433,7 @@ const Profile = () => {
                                                     }
                                                 </div>
                                             ) : (
-                                                <div
-                                                // style={{
-                                                //     marginRight: '5px',
-                                                // }}
-                                                >
+                                                <div className="card-setinfo-name">
                                                     {
                                                         item.Name.match(
                                                             /^(.+?)\s\d+세트$/
@@ -4392,7 +4447,10 @@ const Profile = () => {
                                                 </div>
                                             )}
                                         </div>
-                                        <div style={{ width: '500px' }}>
+                                        <div
+                                            style={{ width: '500px' }}
+                                            className="card-setinfo-des"
+                                        >
                                             {item.Description}
                                         </div>
                                     </div>
@@ -4404,7 +4462,6 @@ const Profile = () => {
                     </div>
                 )}
             </section>
-            {/* <div>{cardEffectsData[0].Items[0].Name}</div> */}
         </article>
     )
 }
