@@ -225,6 +225,7 @@
                 font-size: 11px;
                 font-family: 'jua';
                 font-weight: 550;
+                margin-top: 3px;
                 text-align: center;
             }
         }
@@ -240,6 +241,51 @@
                 font-size: 11px;
                 font-family: 'jua';
                 font-weight: 550;
+            }
+        }
+    }
+
+    .skill-main {
+        @include boxStyle(5px, 5px);
+        &-point {
+            margin-left: 5px;
+        }
+        &-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 15px;
+            .mainskill {
+                @include boxStyle(6px, 6px);
+                flex-basis: calc(33.333% - 10px);
+                border: 1px solid red;
+                height: 100px;
+                &-info {
+                    height: 30px;
+                    line-height: 30px;
+                    display: flex;
+                    // justify-content: center;
+                    align-items: center;
+                    &-img {
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50px;
+                    }
+                    &-name {
+                        margin-left: 5px;
+                    }
+                    &-level {
+                        margin-left: 5px;
+                    }
+                }
+                &-tripod {
+                    &-inner {
+                        margin-top: 8px;
+                        display: flex;
+                        margin-left: 5px;
+                        gap: 5px 4px;
+                    }
+                }
             }
         }
     }
@@ -605,7 +651,7 @@
                     flex-direction: row;
                     span {
                         margin-top: 2px;
-                        font-weight: 900;
+                        font-weight: 800;
                         margin-left: 5px;
                     }
                 }

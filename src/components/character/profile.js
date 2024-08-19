@@ -10,8 +10,12 @@ import Legend from '../../assets/images/common/img_card_grade5.png'
 
 const Profile = () => {
     const [openIndex, setOpenIndex] = useState(null)
+    const [openSkill, setSkill] = useState(null)
     const handleAccordionClick = (index) => {
         setOpenIndex(openIndex === index ? null : index)
+    }
+    const handleSkillClick = (index) => {
+        setSkill(openSkill === index ? null : index)
     }
 
     const cardborders = {
@@ -46,6 +50,15 @@ const Profile = () => {
         })
     const cardData = data?.ArmoryCard.Cards
     const cardEffectsData = data?.ArmoryCard.Effects
+
+    const sortskillA = skillData.filter(
+        (item) => item.Level > 1 || item.Rune !== null
+    )
+    const sortskillB = skillData.filter(
+        (item) => !(item.Level > 1 || item.Rune !== null)
+    )
+
+    const sortskillData = [...sortskillA, ...sortskillB]
 
     function extractGemName(name) {
         const regex = /(\d+레벨 )?(겁화|멸화|작열|홍염)의 보석/
@@ -4180,7 +4193,6 @@ const Profile = () => {
             </section>
             <section
                 style={{
-                    border: '1px solid green',
                     marginTop: '10px',
                     width: '70%',
                     marginLeft: '30%',
@@ -4461,6 +4473,90 @@ const Profile = () => {
                         )}
                     </div>
                 )}
+            </section>
+            <section
+                style={{
+                    border: '1px solid green',
+                    marginTop: '10px',
+                    width: '70%',
+                    marginLeft: '30%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '3px',
+                    padding: '10px 0px',
+                    background: '#fff',
+                    boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
+                    borderRadius: '8px',
+                    // gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
+                }}
+            >
+                <div onClick={() => handleSkillClick(0)} className="skill-main">
+                    스킬트리
+                    <span className="skill-main-point">
+                        {profileData.UsingSkillPoint}/
+                        {profileData.TotalSkillPoint}
+                    </span>
+                    <div className="skill-main-inner">
+                        {sortskillA.map((item, index) => (
+                            <div key={index} className="mainskill">
+                                <div className="mainskill-info">
+                                    <img
+                                        // style={{ width: '20px', height: '20px' }}
+                                        src={item.Icon}
+                                        className="mainskill-info-img"
+                                    />
+                                    <span className="mainskill-info-name">
+                                        {item.Name}
+                                    </span>
+                                    <span className="mainskill-info-level">
+                                        {item.Level}
+                                    </span>
+                                </div>
+                                <div className="mainskill-tripod">
+                                    {item.Tripods.map((item) => (
+                                        <>
+                                            {item.IsSelected == true ? (
+                                                <div className="mainskill-tripod-inner">
+                                                    <div className="mainskill-tripod-level">
+                                                        {item.Level}
+                                                    </div>
+                                                    <div className="mainskill-tripod-name">
+                                                        {item.Name}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                {openSkill !== null &&
+                    sortskillData.map((item, index) => (
+                        <div
+                            key={index}
+                            onClick={() => handleSkillClick(index)}
+                            className="skill-sub"
+                        >
+                            <img
+                                style={{ width: '15px', height: '15px' }}
+                                src={item.Icon}
+                            />
+                            {item.Rune !== null ? (
+                                <img
+                                    style={{ width: '15px', height: '15px' }}
+                                    src={item.Rune.Icon}
+                                />
+                            ) : (
+                                ''
+                            )}
+                            <div>{item.Rune?.Name}</div>
+                            <div>{item.Name}</div>
+                        </div>
+                    ))}
             </section>
         </article>
     )
