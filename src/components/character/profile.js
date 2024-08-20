@@ -4496,43 +4496,45 @@ const Profile = () => {
                         {profileData.UsingSkillPoint}/
                         {profileData.TotalSkillPoint}
                     </span>
-                    <div className="skill-main-inner">
-                        {sortskillA.map((item, index) => (
-                            <div key={index} className="mainskill">
-                                <div className="mainskill-info">
-                                    <img
-                                        // style={{ width: '20px', height: '20px' }}
-                                        src={item.Icon}
-                                        className="mainskill-info-img"
-                                    />
-                                    <span className="mainskill-info-name">
-                                        {item.Name}
-                                    </span>
-                                    <span className="mainskill-info-level">
-                                        {item.Level}
-                                    </span>
-                                </div>
-                                <div className="mainskill-tripod">
-                                    {item.Tripods.map((item) => (
-                                        <>
-                                            {item.IsSelected == true ? (
-                                                <div className="mainskill-tripod-inner">
-                                                    <div className="mainskill-tripod-level">
-                                                        {item.Level}
+                    {openSkill == null && (
+                        <div className="skill-main-inner">
+                            {sortskillA.map((item, index) => (
+                                <div key={index} className="mainskill">
+                                    <div className="mainskill-info">
+                                        <img
+                                            // style={{ width: '20px', height: '20px' }}
+                                            src={item.Icon}
+                                            className="mainskill-info-img"
+                                        />
+                                        <span className="mainskill-info-name">
+                                            {item.Name}
+                                        </span>
+                                        <span className="mainskill-info-level">
+                                            {item.Level}
+                                        </span>
+                                    </div>
+                                    <div className="mainskill-tripod">
+                                        {item.Tripods.map((item) => (
+                                            <>
+                                                {item.IsSelected == true ? (
+                                                    <div className="mainskill-tripod-inner">
+                                                        <div className="mainskill-tripod-level">
+                                                            {item.Level}
+                                                        </div>
+                                                        <div className="mainskill-tripod-name">
+                                                            {item.Name}
+                                                        </div>
                                                     </div>
-                                                    <div className="mainskill-tripod-name">
-                                                        {item.Name}
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                ''
-                                            )}
-                                        </>
-                                    ))}
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
                 {openSkill !== null &&
                     sortskillData.map((item, index) => (
