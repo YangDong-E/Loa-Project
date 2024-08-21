@@ -4491,7 +4491,7 @@ const Profile = () => {
                 }}
             >
                 <div onClick={() => handleSkillClick(0)} className="skill-main">
-                    스킬트리
+                    <span className="skill-main-name">스킬트리</span>
                     <span className="skill-main-point">
                         {profileData.UsingSkillPoint}/
                         {profileData.TotalSkillPoint}
@@ -4507,21 +4507,39 @@ const Profile = () => {
                                             className="mainskill-info-img"
                                         />
                                         <span className="mainskill-info-name">
-                                            {item.Name}
+                                            {item.Name} Lv.{item.Level}
                                         </span>
-                                        <span className="mainskill-info-level">
-                                            {item.Level}
-                                        </span>
+                                        {item.Rune !== null ? (
+                                            <>
+                                                <img
+                                                    className="mainskill-info-rune"
+                                                    src={item.Rune?.Icon}
+                                                    style={{
+                                                        background:
+                                                            item.Rune?.Grade ==
+                                                            '전설'
+                                                                ? 'linear-gradient(#362003,#9e5f04)'
+                                                                : item.Rune
+                                                                      ?.Grade ==
+                                                                  '영웅'
+                                                                ? 'linear-gradient(#261331,#480d5d)'
+                                                                : 'linear-gradient(135deg, #341a09, #a24006)',
+                                                    }}
+                                                />
+                                            </>
+                                        ) : (
+                                            ''
+                                        )}
                                     </div>
                                     <div className="mainskill-tripod">
                                         {item.Tripods.map((item) => (
                                             <>
                                                 {item.IsSelected == true ? (
                                                     <div className="mainskill-tripod-inner">
-                                                        <div className="mainskill-tripod-level">
+                                                        <div className="mainskill-tripod-inner-level">
                                                             {item.Level}
                                                         </div>
-                                                        <div className="mainskill-tripod-name">
+                                                        <div className="mainskill-tripod-inner-name">
                                                             {item.Name}
                                                         </div>
                                                     </div>

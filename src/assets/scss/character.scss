@@ -247,8 +247,16 @@
 
     .skill-main {
         @include boxStyle(5px, 5px);
+        &-name {
+            font-size: 15px;
+            font-family: 'jua';
+            font-weight: 500;
+        }
         &-point {
             margin-left: 5px;
+            font-size: 15px;
+            font-family: 'jua';
+            font-weight: 500;
         }
         &-inner {
             display: flex;
@@ -256,9 +264,9 @@
             gap: 5px;
             margin-top: 15px;
             .mainskill {
-                @include boxStyle(6px, 6px);
+                @include boxStyle(6px, 6px, 0.1);
                 flex-basis: calc(33.333% - 10px);
-                border: 1px solid red;
+                // border: 1px solid red;
                 height: 100px;
                 &-info {
                     height: 30px;
@@ -266,6 +274,7 @@
                     display: flex;
                     // justify-content: center;
                     align-items: center;
+                    // gap: 3px;
                     &-img {
                         width: 25px;
                         height: 25px;
@@ -273,17 +282,35 @@
                     }
                     &-name {
                         margin-left: 5px;
+                        font-size: 14px;
+                        font-family: 'jua';
+                        font-weight: 500;
                     }
-                    &-level {
-                        margin-left: 5px;
+                    &-rune {
+                        width: 20px;
+                        height: 20px;
+                        // border: 1px solid red;
+                        border-radius: 50px;
+                        margin-left: auto;
+                        // background-color: #b4b5b7;
                     }
                 }
                 &-tripod {
                     &-inner {
-                        margin-top: 8px;
+                        margin-top: 6px;
                         display: flex;
                         margin-left: 5px;
                         gap: 5px 4px;
+                        &-level {
+                            font-size: 12px;
+                            font-family: 'jua';
+                            font-weight: 500;
+                        }
+                        &-name {
+                            font-size: 12px;
+                            font-family: 'jua';
+                            font-weight: 500;
+                        }
                     }
                 }
             }
