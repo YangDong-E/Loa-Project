@@ -247,17 +247,36 @@
 
     .skill-main {
         @include boxStyle(5px, 5px);
-        &-name {
-            font-size: 15px;
-            font-family: 'jua';
-            font-weight: 500;
+        padding-left: 20px;
+        padding-right: 0px;
+        &-set {
+            display: flex;
+            justify-content: space-between;
+            &-title {
+                display: flex;
+                flex-direction: row;
+                margin-left: 8px;
+                &-name {
+                    font-size: 15px;
+                    font-family: 'jua';
+                    font-weight: 500;
+                }
+                &-point {
+                    margin-left: 5px;
+                    font-size: 15px;
+                    font-family: 'jua';
+                    font-weight: 500;
+                }
+            }
+
+            img {
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+                margin-right: 21px;
+            }
         }
-        &-point {
-            margin-left: 5px;
-            font-size: 15px;
-            font-family: 'jua';
-            font-weight: 500;
-        }
+
         &-inner {
             display: flex;
             flex-wrap: wrap;
@@ -282,7 +301,7 @@
                     }
                     &-name {
                         margin-left: 5px;
-                        font-size: 14px;
+                        font-size: 13px;
                         font-family: 'jua';
                         font-weight: 500;
                     }
@@ -312,6 +331,162 @@
                             font-weight: 500;
                         }
                     }
+                }
+            }
+        }
+    }
+    .skill-sub {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        // width: 100%;
+        // border-bottom: 1px solid #d3d3d3b5;
+        margin-bottom: 15px;
+        gap: 5px;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 2%;
+            width: 95%;
+            height: 1px;
+            background-color: #d3d3d3b5;
+        }
+
+        &-info {
+            flex: 1;
+            display: grid;
+            // flex-direction: row;
+            grid-template-columns: repeat(3, 1fr);
+            flex-wrap: wrap;
+            align-items: center;
+            border-right: 3px dotted #d3d3d3b5;
+            height: 50px;
+            margin-left: 8px;
+            // gap: 3px;
+            // border-right-style: dotted;
+            &-img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50px;
+            }
+            &-text {
+                margin-left: -8px;
+                &-level {
+                    font-size: 11px;
+                    font-family: 'jua';
+                    font-weight: 500;
+                    span {
+                        font-size: 11px;
+                        font-family: 'jua';
+                        font-weight: 500;
+                    }
+                }
+                &-name {
+                    margin-top: 3px;
+                    font-size: 12px;
+                    font-family: 'jua';
+                    font-weight: 500;
+                }
+            }
+
+            &-detail {
+                margin-left: -5px;
+                margin-right: 5px;
+                width: 60px;
+                div {
+                    display: inline-block;
+                    font-size: 9px;
+                    font-family: 'jua';
+                    font-weight: 500;
+                    border: 0.5px solid black;
+                    border-radius: 11px;
+                    padding: 2px 2px;
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        &-tripods {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            border-right: 3px dotted #d3d3d3b5;
+            &-inner {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                &-img {
+                    width: 27px;
+                    height: 27px;
+                }
+                &-info {
+                    &-level {
+                        margin-top: 3px;
+                        font-size: 11px;
+                        font-family: 'jua';
+                        font-weight: 500;
+                        span {
+                            // margin-top: 3px;
+                            font-size: 11px;
+                            font-family: 'jua';
+                            font-weight: 500;
+                        }
+                    }
+                    &-name {
+                        margin-top: 3px;
+                        font-size: 12px;
+                        font-family: 'jua';
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        &-subinfo {
+            flex: 0.5;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            &-gem {
+                display: flex;
+                flex-direction: column;
+                img {
+                    margin-top: 5px;
+                    width: 23px;
+                    height: 23px;
+                    border-radius: 50px;
+                }
+                .empty {
+                    margin-top: 5px;
+                    width: 23px;
+                    height: 23px;
+                    background-color: #cccfe0;
+                    border-radius: 50px;
+                }
+            }
+            &-rune {
+                text-align: center;
+                &-img {
+                    margin-top: 5px;
+                    width: 21.5px;
+                    height: 21.5px;
+                    border-radius: 50px;
+                }
+                &-name {
+                    margin-top: 5px;
+                    font-size: 11px;
+                    font-family: 'jua';
+                    font-weight: 500;
+                }
+                .empty {
+                    margin-top: 5px;
+                    width: 23px;
+                    height: 23px;
+                    background-color: #cccfe0;
+                    border-radius: 50px;
                 }
             }
         }

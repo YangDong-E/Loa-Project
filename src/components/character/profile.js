@@ -60,6 +60,45 @@ const Profile = () => {
 
     const sortskillData = [...sortskillA, ...sortskillB]
 
+    const gemskillName = sortedGemData.map((item) =>
+        item.Tooltip.replace(/(<([^>]+)>)/g, '')
+            .replace(/Element_[0-9]+/g, '')
+            // .replace(/\s/gi, '')
+            .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
+            .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용)/g)[0]
+            .replace(/\s/gi, '')
+            .replace(/\[\D{2,6}\]/g, '')
+            .replace(/(피해|재사용)/g, '')
+    )
+
+    const sortedgemskill = sortskillA.map((skill) => {
+        let newSkill = { ...skill }
+        sortedGemData.forEach((gem) => {
+            if (
+                gem.Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    // .replace(/\s/gi, '')
+                    .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
+                    .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용)/g)[0]
+                    .replace(/\s/gi, '')
+                    .replace(/\[\D{2,6}\]/g, '')
+                    .replace(/(피해|재사용)/g, '') === newSkill.Name
+            ) {
+                if (gem.Name.includes('멸화') || gem.Name.includes('겁화')) {
+                    newSkill.AttackGemIcon = gem.Icon
+                } else if (
+                    gem.Name.includes('홍염') ||
+                    gem.Name.includes('작열')
+                ) {
+                    newSkill.CoolGemIcon = gem.Icon
+                }
+            }
+        })
+        return newSkill
+    })
+
     function extractGemName(name) {
         const regex = /(\d+레벨 )?(겁화|멸화|작열|홍염)의 보석/
         const match = name.match(regex)
@@ -2409,59 +2448,10 @@ const Profile = () => {
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
-                    .substring(
-                        sortedGemData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            // .replace(/\s/gi, '')
-                            .replace(
-                                /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                ''
-                            )
-                            .replace(
-                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
-                                ''
-                            )
-                            .indexOf('효과')
-                    )
-                    .replace(/\s/gi, '=')
-                    .replace(/(피해|재사용).*$/gi, '')
-                    .substring(
-                        sortedGemData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            // .replace(/\s/gi, '')
-                            .replace(
-                                /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                ''
-                            )
-                            .replace(
-                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
-                                ''
-                            )
-                            .substring(
-                                sortedGemData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
-                                    ''
-                                )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    // .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
-                                        ''
-                                    )
-                                    .indexOf('효과')
-                            )
-                            .replace(/\s/gi, '=')
-                            .replace(/(피해|재사용).*$/gi, '')
-                            .indexOf('[')
-                    )
-
-                    .replace(/\[\D{2,6}]/g, '')
-                    .replace(/\=/g, ' ')
-                    .replace(/(지원).*$/gi, '')}
+                    .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용)/g)[0]
+                    .replace(/\s/gi, '')
+                    .replace(/\[\D{2,6}\]/g, '')
+                    .replace(/(피해|재사용)/g, '')}
             </>
         ) : (
             ''
@@ -2606,6 +2596,75 @@ const Profile = () => {
         } else {
             return ''
         }
+    }
+
+    function skillDetail(idx) {
+        return sortskillA[idx].Tooltip.includes('부위 파괴') ||
+            sortskillA[idx].Tooltip.includes('무력화') ? (
+            sortskillA[idx].Tooltip.includes('부위 파괴') &&
+            !sortskillA[idx].Tooltip.includes('무력화') ? (
+                <div>
+                    {sortskillA[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        // .replace(/\s/gi, '')
+                        .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
+                        .match(/(부위 파괴)\s:\s\레벨\s\d/g)[0]
+                        .replace(/\:/g, '')
+                        .replace(/레벨/g, 'Lv.')}
+                </div>
+            ) : sortskillA[idx].Tooltip.includes('무력화') &&
+              !sortskillA[idx].Tooltip.includes('부위 파괴') ? (
+                <div>
+                    {sortskillA[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        // .replace(/\s/gi, '')
+                        .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
+                        .match(/(무력화)\s:\s(상|중|하|중상|최상)/g)[0]
+                        .replace(/\:/g, '')}
+                </div>
+            ) : sortskillA[idx].Tooltip.includes('무력화') &&
+              sortskillA[idx].Tooltip.includes('부위 파괴') ? (
+                <>
+                    <div>
+                        {sortskillA[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
+                                ''
+                            )
+                            .match(/(부위 파괴)\s:\s\레벨\s\d/g)[0]
+                            .replace(/\:/g, '')
+                            .replace(/레벨/g, 'Lv.')}
+                    </div>
+                    <div>
+                        {sortskillA[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                            .replace(/Element_[0-9]+/g, '')
+                            // .replace(/\s/gi, '')
+                            .replace(
+                                /[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi,
+                                ''
+                            )
+                            .replace(
+                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi,
+                                ''
+                            )
+                            .match(/(무력화)\s:\s(상|중|하|중상|최상)/g)[0]
+                            .replace(/\:/g, '')}
+                    </div>
+                </>
+            ) : (
+                ''
+            )
+        ) : (
+            ''
+        )
     }
 
     return (
@@ -4491,15 +4550,36 @@ const Profile = () => {
                 }}
             >
                 <div onClick={() => handleSkillClick(0)} className="skill-main">
-                    <span className="skill-main-name">스킬트리</span>
-                    <span className="skill-main-point">
-                        {profileData.UsingSkillPoint}/
-                        {profileData.TotalSkillPoint}
-                    </span>
+                    <div className="skill-main-set">
+                        <div className="skill-main-set-title">
+                            <span className="skill-main-set-title-name">
+                                스킬트리
+                            </span>
+                            <span className="skill-main-set-title-point">
+                                {profileData.UsingSkillPoint}/
+                                {profileData.TotalSkillPoint}
+                            </span>
+                        </div>
+                        <img
+                            src={arrowup}
+                            alt="arrow icon"
+                            style={{
+                                transition: 'transform 0.3s ease-in-out',
+                                transform: `rotate(${
+                                    openSkill !== null ? 180 : 0
+                                }deg)`,
+                            }}
+                            onClick={() => handleSkillClick(0)}
+                        />
+                    </div>
                     {openSkill == null && (
                         <div className="skill-main-inner">
-                            {sortskillA.map((item, index) => (
-                                <div key={index} className="mainskill">
+                            {sortedgemskill.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="mainskill"
+                                    onClick={() => handleSkillClick(index)}
+                                >
                                     <div className="mainskill-info">
                                         <img
                                             // style={{ width: '20px', height: '20px' }}
@@ -4555,26 +4635,152 @@ const Profile = () => {
                     )}
                 </div>
                 {openSkill !== null &&
-                    sortskillData.map((item, index) => (
+                    sortedgemskill.map((item, index) => (
                         <div
                             key={index}
                             onClick={() => handleSkillClick(index)}
                             className="skill-sub"
                         >
-                            <img
-                                style={{ width: '15px', height: '15px' }}
-                                src={item.Icon}
-                            />
-                            {item.Rune !== null ? (
+                            <div className="skill-sub-info">
                                 <img
-                                    style={{ width: '15px', height: '15px' }}
-                                    src={item.Rune.Icon}
+                                    src={item.Icon}
+                                    className="skill-sub-info-img"
                                 />
-                            ) : (
-                                ''
-                            )}
-                            <div>{item.Rune?.Name}</div>
-                            <div>{item.Name}</div>
+                                <div className="skill-sub-info-text">
+                                    <div className="skill-sub-info-text-level">
+                                        <span>Lv.</span>
+                                        {item.Level}
+                                    </div>
+                                    <div className="skill-sub-info-text-name">
+                                        {item.Name}
+                                    </div>
+                                </div>
+                                <div className="skill-sub-info-detail">
+                                    {skillDetail(index)}
+                                </div>
+                            </div>
+                            <div className="skill-sub-tripods">
+                                {item.Tripods.map((item) => (
+                                    <>
+                                        {item.IsSelected == true ? (
+                                            <div className="skill-sub-tripods-inner">
+                                                <img
+                                                    src={item.Icon}
+                                                    className="skill-sub-tripods-inner-img"
+                                                />
+                                                <span className="skill-sub-tripods-inner-info">
+                                                    <div className="skill-sub-tripods-inner-info-level">
+                                                        <span>Lv.</span>
+                                                        {item.Level}
+                                                    </div>
+                                                    <div className="skill-sub-tripods-inner-info-name">
+                                                        {item.Name}
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </>
+                                ))}
+                            </div>
+                            <div className="skill-sub-subinfo">
+                                <div className="skill-sub-subinfo-gem">
+                                    {item.AttackGemIcon && item.CoolGemIcon ? (
+                                        <>
+                                            <img
+                                                style={{
+                                                    backgroundImage:
+                                                        item.Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : item.Grade ===
+                                                              '고대'
+                                                            ? 'linear-gradient(135deg, #3d3325, #dcc999)'
+                                                            : 'linear-gradient(#3c2201,#a86200)',
+                                                }}
+                                                src={item.AttackGemIcon}
+                                            />
+                                            <img
+                                                style={{
+                                                    backgroundImage:
+                                                        item.Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : item.Grade ===
+                                                              '고대'
+                                                            ? 'linear-gradient(135deg, #3d3325, #dcc999)'
+                                                            : 'linear-gradient(#3c2201,#a86200)',
+                                                }}
+                                                src={item.CoolGemIcon}
+                                            />
+                                        </>
+                                    ) : item.AttackGemIcon &&
+                                      !item.CoolGemIcon ? (
+                                        <>
+                                            <img
+                                                style={{
+                                                    backgroundImage:
+                                                        item.Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : item.Grade ===
+                                                              '고대'
+                                                            ? 'linear-gradient(135deg, #3d3325, #dcc999)'
+                                                            : 'linear-gradient(#3c2201,#a86200)',
+                                                }}
+                                                src={item.AttackGemIcon}
+                                            />
+                                            <div className="empty"></div>
+                                        </>
+                                    ) : !item.AttackGemIcon &&
+                                      item.CoolGemIcon ? (
+                                        <>
+                                            <div className="empty"></div>
+                                            <img
+                                                style={{
+                                                    backgroundImage:
+                                                        item.Grade === '유물'
+                                                            ? 'linear-gradient(135deg, #341a09, #a24006)'
+                                                            : item.Grade ===
+                                                              '고대'
+                                                            ? 'linear-gradient(135deg, #3d3325, #dcc999)'
+                                                            : 'linear-gradient(#3c2201,#a86200)',
+                                                }}
+                                                src={item.CoolGemIcon}
+                                            />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="empty"></div>
+                                            <div className="empty"></div>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="skill-sub-subinfo-rune">
+                                    {item.Rune !== null ? (
+                                        <>
+                                            <img
+                                                style={{
+                                                    background:
+                                                        item.Rune?.Grade ==
+                                                        '전설'
+                                                            ? 'linear-gradient(#362003,#9e5f04)'
+                                                            : item.Rune
+                                                                  ?.Grade ==
+                                                              '영웅'
+                                                            ? 'linear-gradient(#261331,#480d5d)'
+                                                            : 'linear-gradient(135deg, #341a09, #a24006)',
+                                                }}
+                                                src={item.Rune.Icon}
+                                                className="skill-sub-subinfo-rune-img"
+                                            />
+                                            <div className="skill-sub-subinfo-rune-name">
+                                                {item.Rune?.Name}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="empty"></div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     ))}
             </section>
