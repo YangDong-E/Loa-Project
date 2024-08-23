@@ -18,8 +18,12 @@ const Header = () => {
                 </h1>
                 <nav>
                     <div className="menu">
-                        <NavMenu path={'/'}>홈</NavMenu>
-                        <NavMenu path={'/character'}>캐릭터검색</NavMenu>
+                        <NavMenu path={'/'} className="menu-name">
+                            홈
+                        </NavMenu>
+                        <NavMenu path={'/character'} className="menu-name">
+                            캐릭터검색
+                        </NavMenu>
                     </div>
                 </nav>
             </div>

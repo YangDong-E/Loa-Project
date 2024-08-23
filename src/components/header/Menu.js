@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { findImage } from '../../utils'
 
 const NavMenu = ({ path, children }) => {
-    // ** variables
     const location = useLocation()
     const matchPath = (path) => {
         return location.pathname === path ? 'matched' : ''
@@ -20,6 +19,7 @@ const NavMenu = ({ path, children }) => {
                     textDecoration: 'none',
                     font: 'menu',
                     fontSize: '1.6rem',
+                    fontWeight: '600',
                 }}
             >
                 <div
