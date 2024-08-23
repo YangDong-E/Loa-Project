@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "LoaKong/static/css/main.02dc0940.css",
-    "main.js": "LoaKong/static/js/main.1b7d1130.js",
+    "main.js": "LoaKong/static/js/main.9474756c.js",
     "static/media/Jua-Regular.ttf": "LoaKong/static/media/Jua-Regular.03f46d33c377b251ab15.ttf",
     "static/media/DoHyeon-Regular.ttf": "LoaKong/static/media/DoHyeon-Regular.a8b42451c538437b10b4.ttf",
     "static/media/logo.png": "LoaKong/static/media/logo.57bb9f288b89562b6caf.png",
@@ -10,10 +10,10 @@
     "static/media/icon-search.svg": "LoaKong/static/media/icon-search.155296a0a9ae429d97b8.svg",
     "index.html": "LoaKong/index.html",
     "main.02dc0940.css.map": "LoaKong/static/css/main.02dc0940.css.map",
-    "main.1b7d1130.js.map": "LoaKong/static/js/main.1b7d1130.js.map"
+    "main.9474756c.js.map": "LoaKong/static/js/main.9474756c.js.map"
   },
   "entrypoints": [
     "static/css/main.02dc0940.css",
-    "static/js/main.1b7d1130.js"
+    "static/js/main.9474756c.js"
   ]
 }
