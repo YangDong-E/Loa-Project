@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Loa-Project/static/css/main.3b0071e8.css",
+    "main.css": "/Loa-Project/static/css/main.83929bea.css",
     "main.js": "/Loa-Project/static/js/main.09eaa056.js",
     "static/media/Jua-Regular.ttf": "/Loa-Project/static/media/Jua-Regular.03f46d33c377b251ab15.ttf",
     "static/media/DoHyeon-Regular.ttf": "/Loa-Project/static/media/DoHyeon-Regular.a8b42451c538437b10b4.ttf",
@@ -9,11 +9,11 @@
     "static/media/img_card_grade5.png": "/Loa-Project/static/media/img_card_grade5.0246afcefc5090a8b2d2.png",
     "static/media/icon-search.svg": "/Loa-Project/static/media/icon-search.155296a0a9ae429d97b8.svg",
     "index.html": "/Loa-Project/index.html",
-    "main.3b0071e8.css.map": "/Loa-Project/static/css/main.3b0071e8.css.map",
+    "main.83929bea.css.map": "/Loa-Project/static/css/main.83929bea.css.map",
     "main.09eaa056.js.map": "/Loa-Project/static/js/main.09eaa056.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b0071e8.css",
+    "static/css/main.83929bea.css",
     "static/js/main.09eaa056.js"
   ]
 }
