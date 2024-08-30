@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'jua'; // 이름 선언
+    src: url('../font/Jua-Regular.ttf'); // 내가 저장한 경로!
+}
+
+#header {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 15rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav {
+    &-wrap {
+        display: flex;
+        gap: 700px;
+        justify-content: center;
+        flex-wrap: wrap; // Ensure items wrap on smaller screens
+    }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .nav-wrap {
+        gap: 300px; // Adjust gap for medium screens
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 12rem; // Adjust logo size for smaller screens
+    }
+
+    .nav-wrap {
+        gap: 150px; // Reduce gap further for small screens
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 10rem; // Further reduce logo size
+    }
+
+    .nav-wrap {
+        gap: 50px; // Adjust gap for very small screens
+        flex-direction: column; // Stack navigation items vertically
+        align-items: center; // Center-align navigation items
+    }
+}
