@@ -1833,6 +1833,11 @@
 }
 
 @media (max-width: 480px) {
+    body {
+        width: 100%;
+        padding-left: 0px;
+        // padding-right: 0px;
+    }
     .character {
         &-inner {
             gap: 0 20px;
@@ -1888,14 +1893,14 @@
                 display: grid;
                 width: 512;
                 gap: 0px;
-                grid-template-columns: repeat(2, 100px);
+                grid-template-columns: 50px 1fr;
                 .card-setinfo-name {
                     font-size: 8px;
                     font-family: 'jua';
                     font-weight: 550;
                 }
                 .card-setinfo-des {
-                    font-size: 8px;
+                    font-size: 7px;
                     font-family: 'jua';
                     font-weight: 550;
                 }
@@ -2104,258 +2109,258 @@
     }
 }
 
-@media (max-width: 350px) {
-    .character {
-        &-inner {
-            gap: 0 20px;
-        }
-        &-area {
-            width: 100%;
-            padding: 0 10px;
-        }
-        &-search-area {
-            margin-left: 10px;
-        }
-    }
+// @media (max-width: 350px) {
+//     .character {
+//         &-inner {
+//             gap: 0 20px;
+//         }
+//         &-area {
+//             width: 100%;
+//             padding: 0 10px;
+//         }
+//         &-search-area {
+//             margin-left: 10px;
+//         }
+//     }
 
-    .profile {
-        width: 100%;
-        .server-box {
-            left: 20px;
-            top: 20px;
-        }
-        .img-box {
-            height: 150px;
-        }
-        .info-box {
-            font-size: 14px;
-        }
-        .equip {
-            .equipment {
-                width: 100%;
-            }
-        }
-        .gem {
-            display: flex;
-            flex-direction: row;
-            // gap: 10px;
-            &-inner {
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-                // gap: 5px;
-                .gem-info {
-                    // text-align: center;
-                    .gem-img {
-                        margin-left: 5px;
-                        width: 20px;
-                        height: 20px;
-                    }
-                    .gem-text {
-                        @include boxStyle(4px, 2px);
-                        position: absolute;
-                        display: none;
-                        box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
-                        margin-left: -30px;
-                        text-align: center;
-                        font-family: 'jua';
-                        div {
-                            margin-top: 3px;
-                            font-family: 'jua';
-                        }
-                    }
-                    .gem-img:hover + .gem-text {
-                        display: block;
-                    }
-                }
-                .gem-name {
-                    font-size: 12px;
-                    font-family: 'jua';
-                }
-                .no-gem {
-                    margin-left: 10px;
-                    font-size: 12px;
-                    font-family: 'jua';
-                }
-            }
-        }
-        .card {
-            &-inner {
-                img {
-                    width: 25px;
-                    height: 50px;
-                }
-                .cardborders {
-                    width: 25px;
-                    height: 50px;
-                }
-                .card-name {
-                    font-size: 4.5px;
-                }
-            }
-        }
-        .card-setname {
-            position: absolute;
-            right: 3px;
-            top: 4px;
-        }
-        .card-setinfo {
-            &-inner {
-                display: grid;
-                width: 512;
-                gap: 0px;
-                grid-template-columns: 50px 1fr;
-                .card-setinfo-name {
-                    font-size: 8px;
-                    font-family: 'jua';
-                    font-weight: 550;
-                }
-                .card-setinfo-des {
-                    font-size: 8px;
-                    font-family: 'jua';
-                    font-weight: 550;
-                }
-            }
-        }
+//     .profile {
+//         width: 100%;
+//         .server-box {
+//             left: 20px;
+//             top: 20px;
+//         }
+//         .img-box {
+//             height: 150px;
+//         }
+//         .info-box {
+//             font-size: 14px;
+//         }
+//         .equip {
+//             .equipment {
+//                 width: 100%;
+//             }
+//         }
+//         .gem {
+//             display: flex;
+//             flex-direction: row;
+//             // gap: 10px;
+//             &-inner {
+//                 display: flex;
+//                 flex-direction: column;
+//                 text-align: center;
+//                 // gap: 5px;
+//                 .gem-info {
+//                     // text-align: center;
+//                     .gem-img {
+//                         margin-left: 5px;
+//                         width: 20px;
+//                         height: 20px;
+//                     }
+//                     .gem-text {
+//                         @include boxStyle(4px, 2px);
+//                         position: absolute;
+//                         display: none;
+//                         box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+//                         margin-left: -30px;
+//                         text-align: center;
+//                         font-family: 'jua';
+//                         div {
+//                             margin-top: 3px;
+//                             font-family: 'jua';
+//                         }
+//                     }
+//                     .gem-img:hover + .gem-text {
+//                         display: block;
+//                     }
+//                 }
+//                 .gem-name {
+//                     font-size: 12px;
+//                     font-family: 'jua';
+//                 }
+//                 .no-gem {
+//                     margin-left: 10px;
+//                     font-size: 12px;
+//                     font-family: 'jua';
+//                 }
+//             }
+//         }
+//         .card {
+//             &-inner {
+//                 img {
+//                     width: 25px;
+//                     height: 50px;
+//                 }
+//                 .cardborders {
+//                     width: 25px;
+//                     height: 50px;
+//                 }
+//                 .card-name {
+//                     font-size: 4.5px;
+//                 }
+//             }
+//         }
+//         .card-setname {
+//             position: absolute;
+//             right: 3px;
+//             top: 4px;
+//         }
+//         .card-setinfo {
+//             &-inner {
+//                 display: grid;
+//                 width: 512;
+//                 gap: 0px;
+//                 grid-template-columns: 50px 1fr;
+//                 .card-setinfo-name {
+//                     font-size: 8px;
+//                     font-family: 'jua';
+//                     font-weight: 550;
+//                 }
+//                 .card-setinfo-des {
+//                     font-size: 8px;
+//                     font-family: 'jua';
+//                     font-weight: 550;
+//                 }
+//             }
+//         }
 
-        .skill-main {
-            padding-left: 5px;
-            padding-right: 5px;
-            &-inner {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-        .skill-sub {
-            display: flex;
-            flex-direction: column;
-            // display: flex;
-            // flex-direction: row;
-            // position: relative;
-            // width: 100%;
-            // border-bottom: 1px solid #d3d3d3b5;
-            // margin-bottom: 15px;
-            // gap: 10px;
-            &-info {
-                height: 40px;
-                border: none;
-                display: grid;
-                grid-template-columns: 1fr 2fr 1fr;
-                width: 160px;
-                img {
-                    width: 23px;
-                    height: 23px;
-                }
-                &-text {
-                    &-level {
-                        font-size: 10px;
-                        span {
-                            font-size: 10px;
-                        }
-                    }
-                    &-name {
-                        font-size: 10px;
-                    }
-                }
-                &-detail {
-                    width: 50px;
-                    div {
-                        font-size: 7px;
-                    }
-                }
-            }
-            &-tripods {
-                order: 2;
-                border: none;
-                display: grid;
-                grid-template-columns: repeat(3, 75px);
-                padding-left: 5px;
-                margin-top: 9px;
-                &-inner {
-                    img {
-                        width: 20px;
-                        height: 20px;
-                    }
-                    &-info {
-                        &-level {
-                            font-size: 9px;
-                            span {
-                                font-size: 9px;
-                            }
-                        }
-                        &-name {
-                            font-size: 8px;
-                        }
-                    }
-                }
-            }
-            &-subinfo {
-                order: 1;
-                position: absolute;
-                // top: -3px;
-                right: 5px;
-                display: flex;
-                flex-direction: row;
-                flex: 0.5 1;
-                gap: 5px;
-                height: 30px;
-                // align-items: center;
-                img {
-                    width: 13px;
-                    height: 13px;
-                }
-                .empty {
-                    width: 13px;
-                    height: 13px;
-                }
-                &-rune {
-                    // padding-top: 2px;
-                    // align-items: center;
-                    // text-align: center;
-                    &-name {
-                        font-size: 8px;
-                    }
-                }
-            }
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: -7px;
-                left: 2%;
-                width: 95%;
-                height: 1px;
-                background-color: #d3d3d3b5;
-            }
-        }
-    }
-    .equip {
-        .equipment {
-            font-size: 14px;
-        }
-    }
+//         .skill-main {
+//             padding-left: 5px;
+//             padding-right: 5px;
+//             &-inner {
+//                 display: flex;
+//                 flex-direction: column;
+//                 gap: 10px;
+//             }
+//         }
+//         .skill-sub {
+//             display: flex;
+//             flex-direction: column;
+//             // display: flex;
+//             // flex-direction: row;
+//             // position: relative;
+//             // width: 100%;
+//             // border-bottom: 1px solid #d3d3d3b5;
+//             // margin-bottom: 15px;
+//             // gap: 10px;
+//             &-info {
+//                 height: 40px;
+//                 border: none;
+//                 display: grid;
+//                 grid-template-columns: 1fr 2fr 1fr;
+//                 width: 160px;
+//                 img {
+//                     width: 23px;
+//                     height: 23px;
+//                 }
+//                 &-text {
+//                     &-level {
+//                         font-size: 10px;
+//                         span {
+//                             font-size: 10px;
+//                         }
+//                     }
+//                     &-name {
+//                         font-size: 10px;
+//                     }
+//                 }
+//                 &-detail {
+//                     width: 50px;
+//                     div {
+//                         font-size: 7px;
+//                     }
+//                 }
+//             }
+//             &-tripods {
+//                 order: 2;
+//                 border: none;
+//                 display: grid;
+//                 grid-template-columns: repeat(3, 75px);
+//                 padding-left: 5px;
+//                 margin-top: 9px;
+//                 &-inner {
+//                     img {
+//                         width: 20px;
+//                         height: 20px;
+//                     }
+//                     &-info {
+//                         &-level {
+//                             font-size: 9px;
+//                             span {
+//                                 font-size: 9px;
+//                             }
+//                         }
+//                         &-name {
+//                             font-size: 8px;
+//                         }
+//                     }
+//                 }
+//             }
+//             &-subinfo {
+//                 order: 1;
+//                 position: absolute;
+//                 // top: -3px;
+//                 right: 5px;
+//                 display: flex;
+//                 flex-direction: row;
+//                 flex: 0.5 1;
+//                 gap: 5px;
+//                 height: 30px;
+//                 // align-items: center;
+//                 img {
+//                     width: 13px;
+//                     height: 13px;
+//                 }
+//                 .empty {
+//                     width: 13px;
+//                     height: 13px;
+//                 }
+//                 &-rune {
+//                     // padding-top: 2px;
+//                     // align-items: center;
+//                     // text-align: center;
+//                     &-name {
+//                         font-size: 8px;
+//                     }
+//                 }
+//             }
+//             &::after {
+//                 content: '';
+//                 position: absolute;
+//                 bottom: -7px;
+//                 left: 2%;
+//                 width: 95%;
+//                 height: 1px;
+//                 background-color: #d3d3d3b5;
+//             }
+//         }
+//     }
+//     .equip {
+//         .equipment {
+//             font-size: 14px;
+//         }
+//     }
 
-    .stats {
-        .stats-info,
-        .sub-stats,
-        .ark,
-        .char-stats {
-            // font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            p {
-                font-size: 13px;
-            }
-        }
-        .engrav {
-            padding: 0px;
-            .engrav-item {
-                .engravname {
-                    font-family: 'jua';
-                    font-size: 10px;
-                }
-            }
-        }
-    }
-}
+//     .stats {
+//         .stats-info,
+//         .sub-stats,
+//         .ark,
+//         .char-stats {
+//             // font-size: 14px;
+//             display: flex;
+//             flex-direction: column;
+//             gap: 10px;
+//             p {
+//                 font-size: 13px;
+//             }
+//         }
+//         .engrav {
+//             padding: 0px;
+//             .engrav-item {
+//                 .engravname {
+//                     font-family: 'jua';
+//                     font-size: 10px;
+//                 }
+//             }
+//         }
+//     }
+// }
