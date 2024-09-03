@@ -4180,20 +4180,21 @@ const Profile = () => {
                 </div>
             </section>
             <section
-                style={{
-                    marginTop: '10px',
-                    width: '70%',
-                    marginLeft: '30%',
-                    display: 'flex',
-                    flex: 'row',
-                    gap: '5px',
-                    padding: '10px 0px',
-                    background: '#fff',
-                    boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
-                    borderRadius: '8px',
-                    flexWrap: 'wrap',
-                    justifyContent: 'flex-start',
-                }}
+                // style={{
+                //     marginTop: '10px',
+                //     width: '70%',
+                //     marginLeft: '30%',
+                //     display: 'flex',
+                //     flex: 'row',
+                //     gap: '5px',
+                //     padding: '10px 0px',
+                //     background: '#fff',
+                //     boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
+                //     borderRadius: '8px',
+                //     flexWrap: 'wrap',
+                //     justifyContent: 'flex-start',
+                // }}
+                className="gem-set"
             >
                 {gemData ? (
                     sortedGemData.map((item, index) => (
@@ -4248,19 +4249,20 @@ const Profile = () => {
                 )}
             </section>
             <section
-                style={{
-                    marginTop: '10px',
-                    position: 'relative',
-                    width: '70%',
-                    marginLeft: '30%',
-                    display: 'grid',
-                    gap: '3px',
-                    padding: '10px 0px',
-                    background: '#fff',
-                    boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
-                    borderRadius: '8px',
-                    gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
-                }}
+                // style={{
+                //     marginTop: '10px',
+                //     position: 'relative',
+                //     width: '70%',
+                //     marginLeft: '30%',
+                //     display: 'grid',
+                //     gap: '3px',
+                //     padding: '10px 0px',
+                //     background: '#fff',
+                //     boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
+                //     borderRadius: '8px',
+                //     gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
+                // }}
+                className="card-set"
             >
                 <div
                     className="card-setname"
@@ -4512,20 +4514,23 @@ const Profile = () => {
                 )}
             </section>
             <section
-                style={{
-                    // border: '1px solid green',
-                    marginTop: '10px',
-                    width: '70%',
-                    marginLeft: '30%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '3px',
-                    padding: '10px 0px',
-                    background: '#fff',
-                    boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
-                    borderRadius: '8px',
-                    // gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
-                }}
+                style={
+                    {
+                        // border: '1px solid green',
+                        // marginTop: '10px',
+                        // width: '70%',
+                        // marginLeft: '30%',
+                        // display: 'flex',
+                        // flexDirection: 'column',
+                        // gap: '3px',
+                        // padding: '10px 0px',
+                        // background: '#fff',
+                        // boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
+                        // borderRadius: '8px',
+                        // gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
+                    }
+                }
+                className="skill-set"
             >
                 <div onClick={() => handleSkillClick(0)} className="skill-main">
                     <div className="skill-main-set">

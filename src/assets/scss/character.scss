@@ -1379,6 +1379,48 @@
     }
 }
 
+.skill-set {
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 0px;
+    background: #fff;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.card-set {
+    margin-top: 10px;
+    width: 70%;
+    position: relative;
+    margin-left: 30%;
+    display: grid;
+    gap: 3px;
+    padding: 10px 0px;
+    background: #fff;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.gem-set {
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 0px;
+    background: #fff;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .stats {
     margin-top: 15px;
     width: 30%;
@@ -1863,50 +1905,83 @@
         .info-box {
             font-size: 14px;
         }
-        .equip {
-            .equipment {
-                width: 100%;
-            }
-        }
-        .card {
-            &-inner {
-                img {
-                    width: 36px;
-                    height: 72px;
-                }
-                .cardborders {
-                    width: 36px;
-                    height: 72px;
-                }
-                .card-name {
-                    font-size: 6px;
-                }
-            }
-        }
-        .card-setname {
-            position: absolute;
-            right: 3px;
-            top: 4px;
-        }
-        .card-setinfo {
-            &-inner {
-                display: grid;
-                width: 512;
-                gap: 0px;
-                grid-template-columns: 50px 1fr;
-                .card-setinfo-name {
-                    font-size: 8px;
-                    font-family: 'jua';
-                    font-weight: 550;
-                }
-                .card-setinfo-des {
-                    font-size: 7px;
-                    font-family: 'jua';
-                    font-weight: 550;
-                }
-            }
-        }
 
+        .equip {
+            &-inner {
+                padding-bottom: 10px;
+                padding-top: 10px;
+                .equipment {
+                    width: 100%;
+                    p {
+                        img {
+                            width: 4rem;
+                            height: 40px;
+                        }
+                        .qualityValue {
+                            width: 4rem;
+                        }
+
+                        .nametag {
+                            .leveltag {
+                                .level-info {
+                                    .highlevel {
+                                        color: rgb(215, 176, 1);
+                                    }
+                                }
+                            }
+                            .elixir-tap {
+                                span {
+                                    font-size: 7px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .acc-inner {
+                    width: 95%;
+                    p {
+                        gap: 10px;
+                        img {
+                            width: 4rem;
+                            height: 40px;
+                        }
+                        .qualityValue {
+                            width: 4rem;
+                        }
+                        .effect-info-inner {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                        }
+                        .effect-info {
+                            font-size: 6px;
+                        }
+                        .nametag {
+                            // .equip-name {
+                            //     font-size: 12px;
+                            // }
+                            width: 100%;
+                            .effect-info-reduction {
+                                font-size: 6px;
+                            }
+                        }
+                    }
+                }
+                .stone-info {
+                    .stone-inner {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        span {
+                            font-size: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .skill-set {
+        width: 100%;
+        margin-left: 0px;
         .skill-main {
             padding-left: 5px;
             padding-right: 5px;
@@ -1980,6 +2055,7 @@
                 }
             }
             &-subinfo {
+                margin-right: 30px;
                 order: 1;
                 position: absolute;
                 // top: -3px;
@@ -2017,64 +2093,73 @@
                 background-color: #d3d3d3b5;
             }
         }
+    }
 
+    .card-set {
+        width: 100%;
+        margin-left: 0px;
+        .card {
+            &-inner {
+                img {
+                    width: 50px;
+                    height: 72px;
+                }
+                .cardborders {
+                    width: 50px;
+                    height: 72px;
+                }
+                .card-name {
+                    font-size: 8px;
+                }
+            }
+        }
+        .card-setname {
+            position: absolute;
+            right: 3px;
+            top: 4px;
+        }
+        .card-setinfo {
+            &-inner {
+                display: grid;
+                width: 512;
+                gap: 0px;
+                grid-template-columns: 80px 1fr;
+                .card-setinfo-name {
+                    font-size: 8px;
+                    font-family: 'jua';
+                    font-weight: 550;
+                }
+                .card-setinfo-des {
+                    font-size: 8px;
+                    font-family: 'jua';
+                    font-weight: 550;
+                }
+            }
+        }
+    }
+
+    .gem-set {
+        gap: 5px;
+        width: 100%;
+        margin-left: 0px;
         .gem {
             justify-content: flex-start;
             // flex: 1 1 calc(33.333% - 5spx);
             .gem-inner {
                 .gem-info {
                     .gem-img {
-                        width: 15px;
-                        height: 15px;
+                        width: 20px;
+                        height: 20px;
+                    }
+                    .gem-text {
+                        margin-left: -7px;
+                        font-size: 8px;
+                        z-index: 9999;
                     }
                 }
                 .gem-name {
-                    font-size: 5px;
-                }
-            }
-        }
-    }
-    .equip {
-        &-inner {
-            .equipment {
-                p {
-                    .nametag {
-                        .elixir-tap {
-                            span {
-                                font-size: 7px;
-                            }
-                        }
-                    }
-                }
-            }
-            .acc-inner {
-                width: 95%;
-                p {
-                    .effect-info-inner {
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                    }
-                    .effect-info {
-                        font-size: 6px;
-                    }
-                    .nametag {
-                        // .equip-name {
-                        //     font-size: 12px;
-                        // }
-                        width: 100%;
-                        .effect-info-reduction {
-                            font-size: 6px;
-                        }
-                    }
-                }
-            }
-            .stone-info {
-                .stone-inner {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    span {
-                        font-size: 6px;
-                    }
+                    margin-top: 2px;
+                    font-size: 9px;
                 }
             }
         }
