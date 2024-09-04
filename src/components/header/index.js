@@ -24,6 +24,9 @@ const Header = () => {
                         <NavMenu path={'/character'} className="menu-name">
                             캐릭터검색
                         </NavMenu>
+                        <NavMenu path={'/calculator'} className="menu-name">
+                            입찰 계산기
+                        </NavMenu>
                     </div>
                 </nav>
             </div>
