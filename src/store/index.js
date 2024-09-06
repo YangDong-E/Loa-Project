@@ -1,9 +1,10 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 import characterReducer from './characterSlice'
-
+import marketReducer from './marketSlice'
 
 export const store = configureStore({
-  reducer: {
-    character: characterReducer
-  }
+    reducer: {
+        character: characterReducer,
+        market: marketReducer,
+    },
 })

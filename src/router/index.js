@@ -3,6 +3,7 @@ import Layout from '../layout'
 import Home from '../pages/home'
 import Character from '../pages/character'
 import Calculator from '../pages/calculator'
+import Auctions from '../pages/auctions'
 
 const Router = () => {
     return (
@@ -12,6 +13,7 @@ const Router = () => {
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/character" element={<Character />}></Route>
                     <Route path="/calculator" element={<Calculator />}></Route>
+                    <Route path="/auctions" element={<Auctions />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>

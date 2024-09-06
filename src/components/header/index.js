@@ -27,6 +27,9 @@ const Header = () => {
                         <NavMenu path={'/calculator'} className="menu-name">
                             입찰 계산기
                         </NavMenu>
+                        <NavMenu path={'/auctions'} className="menu-name">
+                            실시간 가격
+                        </NavMenu>
                     </div>
                 </nav>
             </div>
