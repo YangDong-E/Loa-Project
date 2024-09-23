@@ -2823,12 +2823,35 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="engrav">
-                        {engravData.Effects.map((item, index) => (
-                            <div key={index} className="engrav-item">
-                                <img src={item.Icon} className="engravimg" />
-                                <span className="engravname">{item.Name}</span>
-                            </div>
-                        ))}
+                        {engravData.Engravings !== null &&
+                        engravData.ArkPassiveEffects == null ? (
+                            engravData.Effects.map((item, index) => (
+                                <div key={index} className="engrav-item">
+                                    <img
+                                        src={item.Icon}
+                                        className="engravimg"
+                                    />
+                                    <span className="engravname">
+                                        {item.Name}
+                                    </span>
+                                </div>
+                            ))
+                        ) : engravData.Engravings == null &&
+                          engravData.ArkPassiveEffects !== null ? (
+                            engravData.ArkPassiveEffects.map((item, index) => (
+                                <div key={index} className="engrav-item">
+                                    <img
+                                        src={item.Icon}
+                                        className="engravimg"
+                                    />
+                                    <span className="engravname">
+                                        {item.Name}
+                                    </span>
+                                </div>
+                            ))
+                        ) : (
+                            <></>
+                        )}
                     </div>
                 </div>
                 <div className="equip">
