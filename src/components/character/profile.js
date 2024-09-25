@@ -8,6 +8,52 @@ import Rare from '../../assets/images/common/img_card_grade3.png'
 import Hero from '../../assets/images/common/img_card_grade4.png'
 import Legend from '../../assets/images/common/img_card_grade5.png'
 
+const imageMap = {
+    각성: require('../../assets/images/common/ability/각성.png'),
+    강령술: require('../../assets/images/common/ability/강령술.png'),
+    '강화 방패': require('../../assets/images/common/ability/강화방패.png'),
+    '결투의 대가': require('../../assets/images/common/ability/결대.png'),
+    구슬동자: require('../../assets/images/common/ability/구동.png'),
+    '굳은 의지': require('../../assets/images/common/ability/굳은의지.png'),
+    '급소 타격': require('../../assets/images/common/ability/급타.png'),
+    '기습의 대가': require('../../assets/images/common/ability/기습.png'),
+    긴급구조: require('../../assets/images/common/ability/긴급구조.png'),
+    '달인의 저력': require('../../assets/images/common/ability/달저.png'),
+    돌격대장: require('../../assets/images/common/ability/돌대.png'),
+    '마나 효율 증가': require('../../assets/images/common/ability/마효증.png'),
+    '마나의 흐름': require('../../assets/images/common/ability/마흐.png'),
+    바리케이드: require('../../assets/images/common/ability/바리.png'),
+    '번개의 분노': require('../../assets/images/common/ability/번분.png'),
+    '부러진 뼈': require('../../assets/images/common/ability/부뼈.png'),
+    '분쇄의 주먹': require('../../assets/images/common/ability/분쇄의주먹.png'),
+    불굴: require('../../assets/images/common/ability/불굴.png'),
+    선수필승: require('../../assets/images/common/ability/선필.png'),
+    속전속결: require('../../assets/images/common/ability/속전속결.png'),
+    실드관통: require('../../assets/images/common/ability/쉴드관통.png'),
+    '슈퍼 차지': require('../../assets/images/common/ability/슈차.png'),
+    승부사: require('../../assets/images/common/ability/승부사.png'),
+    '시선 집중': require('../../assets/images/common/ability/시선집중.png'),
+    아드레날린: require('../../assets/images/common/ability/아드레날린.png'),
+    '안정된 상태': require('../../assets/images/common/ability/안상.png'),
+    '약자 무시': require('../../assets/images/common/ability/약무.png'),
+    '에테르 포식자': require('../../assets/images/common/ability/에포.png'),
+    '여신의 가호': require('../../assets/images/common/ability/여신의가호.png'),
+    '예리한 둔기': require('../../assets/images/common/ability/예둔.png'),
+    원한: require('../../assets/images/common/ability/원한.png'),
+    '위기 모면': require('../../assets/images/common/ability/위모.png'),
+    '저주받은 인형': require('../../assets/images/common/ability/저받.png'),
+    전문의: require('../../assets/images/common/ability/전문의.png'),
+    '정밀 단도': require('../../assets/images/common/ability/정단.png'),
+    '정기 흡수': require('../../assets/images/common/ability/정흡.png'),
+    '중갑 착용': require('../../assets/images/common/ability/중갑.png'),
+    '질량 증가': require('../../assets/images/common/ability/질증.png'),
+    '최대 마나 증가': require('../../assets/images/common/ability/최마.png'),
+    추진력: require('../../assets/images/common/ability/추진력.png'),
+    '타격의 대가': require('../../assets/images/common/ability/타격의대가.png'),
+    '탈출의 명수': require('../../assets/images/common/ability/탈출의명수.png'),
+    '폭발물 전문가': require('../../assets/images/common/ability/폭전.png'),
+}
+
 const Profile = () => {
     const [openIndex, setOpenIndex] = useState(null)
     const [openSkill, setSkill] = useState(null)
@@ -2841,11 +2887,19 @@ const Profile = () => {
                             engravData.ArkPassiveEffects.map((item, index) => (
                                 <div key={index} className="engrav-item">
                                     <img
-                                        src={item.Icon}
+                                        src={imageMap[item.Name]}
+                                        alt={item.Name}
                                         className="engravimg"
                                     />
                                     <span className="engravname">
-                                        {item.Name}
+                                        {item.Name} Lv. {item.Level}{' '}
+                                        <span>
+                                            {item.AbilityStoneLevel !== null ? (
+                                                <>X {item.AbilityStoneLevel}</>
+                                            ) : (
+                                                <></>
+                                            )}
+                                        </span>
                                     </span>
                                 </div>
                             ))
