@@ -7,6 +7,9 @@ import Advanced from '../../assets/images/common/img_card_grade2.png'
 import Rare from '../../assets/images/common/img_card_grade3.png'
 import Hero from '../../assets/images/common/img_card_grade4.png'
 import Legend from '../../assets/images/common/img_card_grade5.png'
+import Lability from '../../assets/images/common/ability/유물등급.png'
+import Rability from '../../assets/images/common/ability/전설등급.png'
+import Hability from '../../assets/images/common/ability/영웅등급.png'
 
 const imageMap = {
     각성: require('../../assets/images/common/ability/각성.png'),
@@ -2892,7 +2895,20 @@ const Profile = () => {
                                         className="engravimg"
                                     />
                                     <span className="engravname">
-                                        {item.Name} Lv. {item.Level}{' '}
+                                        {item.Name}{' '}
+                                        {item.Grade == '유물' ? (
+                                            <img src={Lability} />
+                                        ) : item.Grade == '전설' ? (
+                                            <img src={Rability} />
+                                        ) : item.Grade == '영웅' ? (
+                                            <img
+                                                style={{ width: '18px' }}
+                                                src={Hability}
+                                            />
+                                        ) : (
+                                            <></>
+                                        )}{' '}
+                                        {item.Level}{' '}
                                         <span>
                                             {item.AbilityStoneLevel !== null ? (
                                                 <>X {item.AbilityStoneLevel}</>

@@ -686,6 +686,13 @@
             .engravname {
                 font-family: 'jua';
                 font-size: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                img {
+                    width: 16px;
+                }
                 span {
                     font-family: 'jua';
                     font-size: 15px;
