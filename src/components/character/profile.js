@@ -352,6 +352,30 @@ const Profile = () => {
                     )
                     .slice(4, 10)}
             </>
+        ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
+            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                .replace(/Element_[0-9]+/g, '')
+                .replace(/[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
+                .replace('Element', '')
+                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                .replace(/\s+/g, '')
+                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
+                .includes('아크패시브포인트효과깨달음') ? (
+                '없음'
+            ) : (
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
+            )
         ) : (
             ''
         )
@@ -409,13 +433,37 @@ const Profile = () => {
                           )
                           .slice(10, 16)}
             </>
+        ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
+            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                .replace(/Element_[0-9]+/g, '')
+                .replace(/[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
+                .replace('Element', '')
+                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                .replace(/\s+/g, '')
+                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[1]
+                .includes('아크패시브포인트효과깨달음') ? (
+                '없음'
+            ) : (
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[1]
+            )
         ) : (
             ''
         )
     }
 
     function accengravingeffect(idx) {
-        return alignedData[idx].Tooltip ? (
+        return alignedData[idx].Tooltip.includes('추가 효과') ? (
             <>
                 <div className="effect-info-inner">
                     <span className="effect-info">
@@ -626,6 +674,30 @@ const Profile = () => {
                     </span>
                 </div>
             </>
+        ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
+            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                .replace(/Element_[0-9]+/g, '')
+                .replace(/[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
+                .replace('Element', '')
+                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                .replace(/\s+/g, '')
+                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[2]
+                .includes('아크패시브포인트효과깨달음') ? (
+                '없음'
+            ) : (
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[2]
+            )
         ) : (
             ''
         )
@@ -3592,17 +3664,41 @@ const Profile = () => {
                                             <div className="equip-name">
                                                 {alignedData[6].Name}
                                             </div>
-                                            <div className="stat-info">
-                                                <span className="accstat">
-                                                    {accfirststat(6)}
-                                                </span>{' '}
-                                                <span className="accstat">
-                                                    {accsecondstat(6)}
-                                                </span>
-                                            </div>
-                                            <div className="engraving-info">
-                                                {accengravingeffect(6)}
-                                            </div>
+                                            {alignedData[6].Tooltip.includes(
+                                                '추가 효과'
+                                            ) ? (
+                                                <div className="accall-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(6)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(6)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(6)}
+                                                    </div>
+                                                </div>
+                                            ) : alignedData[6].Tooltip.includes(
+                                                  '연마 효과'
+                                              ) ? (
+                                                <div className="arkacc-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(6)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(6)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(6)}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </>
                                 ) : (
@@ -3689,17 +3785,41 @@ const Profile = () => {
                                             <div className="equip-name">
                                                 {alignedData[7].Name}
                                             </div>
-                                            <div className="stat-info">
-                                                <span className="accstat">
-                                                    {accfirststat(7)}
-                                                </span>{' '}
-                                                <span className="accstat">
-                                                    {accsecondstat(7)}
-                                                </span>
-                                            </div>
-                                            <div className="engraving-info">
-                                                {accengravingeffect(7)}
-                                            </div>
+                                            {alignedData[7].Tooltip.includes(
+                                                '추가 효과'
+                                            ) ? (
+                                                <div className="accall-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(7)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(7)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(7)}
+                                                    </div>
+                                                </div>
+                                            ) : alignedData[7].Tooltip.includes(
+                                                  '연마 효과'
+                                              ) ? (
+                                                <div className="arkacc-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(7)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(7)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(7)}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </>
                                 ) : (
@@ -3786,17 +3906,41 @@ const Profile = () => {
                                             <div className="equip-name">
                                                 {alignedData[8].Name}
                                             </div>
-                                            <div className="stat-info">
-                                                <span className="accstat">
-                                                    {accfirststat(8)}
-                                                </span>{' '}
-                                                <span className="accstat">
-                                                    {accsecondstat(8)}
-                                                </span>
-                                            </div>
-                                            <div className="engraving-info">
-                                                {accengravingeffect(8)}
-                                            </div>
+                                            {alignedData[8].Tooltip.includes(
+                                                '추가 효과'
+                                            ) ? (
+                                                <div className="accall-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(8)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(8)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(8)}
+                                                    </div>
+                                                </div>
+                                            ) : alignedData[8].Tooltip.includes(
+                                                  '연마 효과'
+                                              ) ? (
+                                                <div className="arkacc-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(8)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(8)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(8)}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </>
                                 ) : (
@@ -3883,17 +4027,41 @@ const Profile = () => {
                                             <div className="equip-name">
                                                 {alignedData[9].Name}
                                             </div>
-                                            <div className="stat-info">
-                                                <span className="accstat">
-                                                    {accfirststat(9)}
-                                                </span>{' '}
-                                                <span className="accstat">
-                                                    {accsecondstat(9)}
-                                                </span>
-                                            </div>
-                                            <div className="engraving-info">
-                                                {accengravingeffect(9)}
-                                            </div>
+                                            {alignedData[9].Tooltip.includes(
+                                                '추가 효과'
+                                            ) ? (
+                                                <div className="accall-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(9)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(9)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(9)}
+                                                    </div>
+                                                </div>
+                                            ) : alignedData[9].Tooltip.includes(
+                                                  '연마 효과'
+                                              ) ? (
+                                                <div className="arkacc-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(9)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(9)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(9)}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </>
                                 ) : (
@@ -3984,17 +4152,41 @@ const Profile = () => {
                                             <div className="equip-name">
                                                 {alignedData[10].Name}
                                             </div>
-                                            <div className="stat-info">
-                                                <span className="accstat">
-                                                    {accfirststat(10)}
-                                                </span>{' '}
-                                                <span className="accstat">
-                                                    {accsecondstat(10)}
-                                                </span>
-                                            </div>
-                                            <div className="engraving-info">
-                                                {accengravingeffect(10)}
-                                            </div>
+                                            {alignedData[10].Tooltip.includes(
+                                                '추가 효과'
+                                            ) ? (
+                                                <div className="accall-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(10)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(10)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(10)}
+                                                    </div>
+                                                </div>
+                                            ) : alignedData[10].Tooltip.includes(
+                                                  '연마 효과'
+                                              ) ? (
+                                                <div className="arkacc-info">
+                                                    <div className="stat-info">
+                                                        <span className="accstat">
+                                                            {accfirststat(10)}
+                                                        </span>{' '}
+                                                        <span className="accstat">
+                                                            {accsecondstat(10)}
+                                                        </span>
+                                                    </div>
+                                                    <div className="engraving-info">
+                                                        {accengravingeffect(10)}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </>
                                 ) : (

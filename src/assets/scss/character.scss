@@ -856,13 +856,31 @@
                         font-size: 13px;
                         font-family: 'jua';
                     }
-                    .stat-info {
-                        .accstat {
-                            line-height: 1.8rem;
+                    .accall-info {
+                        .stat-info {
+                            .accstat {
+                                line-height: 1.8rem;
+                                font-size: 1.1rem;
+                                font-family: 'jua';
+                            }
+                        }
+                    }
+                    .arkacc-info {
+                        font-size: 1.1rem;
+                        font-family: 'jua';
+                        .stat-info {
+                            .accstat {
+                                line-height: 1.8rem;
+                                font-size: 1.1rem;
+                                font-family: 'jua';
+                            }
+                        }
+                        .engraving-info {
                             font-size: 1.1rem;
                             font-family: 'jua';
                         }
                     }
+
                     .effect-info-reduction {
                         margin-top: 2px;
                         font-size: 0.95rem;
