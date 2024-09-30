@@ -11,6 +11,100 @@ import Lability from '../../assets/images/common/ability/유물등급.png'
 import Rability from '../../assets/images/common/ability/전설등급.png'
 import Hability from '../../assets/images/common/ability/영웅등급.png'
 
+const colorMapping = {
+    '추가 피해': {
+        blue: 0.7,
+        purple: 1.6,
+        orange: 2.6,
+    },
+    '적에게 주는 피해': {
+        blue: 0.55,
+        purple: 1.2,
+        orange: 2.0,
+    },
+    '세레나데 신앙 조화 게이지 획득량': {
+        blue: 1.6,
+        purple: 3.6,
+        orange: 6.0,
+    },
+    낙인력: {
+        blue: 2.15,
+        purple: 4.8,
+        orange: 8.0,
+    },
+    '최대 생명력': {
+        blue: 1300,
+        purple: 3250,
+        orange: 6500,
+    },
+    '공격력+': {
+        blue: 80,
+        purple: 195,
+        orange: 390,
+    },
+    '무기 공격력+': {
+        blue: 195,
+        purple: 480,
+        orange: 960,
+    },
+    '최대 마나': {
+        blue: 6,
+        purple: 15,
+        orange: 30,
+    },
+    '상태이상 공격 지속시간': {
+        blue: 0.2,
+        purple: 0.5,
+        orange: 1.0,
+    },
+    '전투 중 생명력 회복량': {
+        blue: 10,
+        purple: 25,
+        orange: 50,
+    },
+    '공격력%': {
+        blue: 0.4,
+        purple: 0.95,
+        orange: 1.55,
+    },
+    '무기 공격력%': {
+        blue: 0.8,
+        purple: 1.8,
+        orange: 3.0,
+    },
+    '파티원 회복 효과': {
+        blue: 0.95,
+        purple: 2.1,
+        orange: 3.5,
+    },
+    '파티원 보호막 효과': {
+        blue: 0.95,
+        purple: 2.1,
+        orange: 3.5,
+    },
+    '치명타 적중률': {
+        blue: 0.4,
+        purple: 0.95,
+        orange: 1.55,
+    },
+    '치명타 피해': {
+        blue: 1.1,
+        purple: 2.4,
+        orange: 4.0,
+    },
+    '아군 공격력 강화 효과': {
+        blue: 1.35,
+        purple: 3.0,
+        orange: 5.0,
+    },
+    '아군 피해량 강화 효과': {
+        blue: 2.0,
+        purple: 4.5,
+        orange: 7.5,
+    },
+    // 필요한 경우 다른 효과도 추가할 수 있습니다
+}
+
 const imageMap = {
     각성: require('../../assets/images/common/ability/각성.png'),
     강령술: require('../../assets/images/common/ability/강령술.png'),
@@ -55,6 +149,20 @@ const imageMap = {
     '타격의 대가': require('../../assets/images/common/ability/타격의대가.png'),
     '탈출의 명수': require('../../assets/images/common/ability/탈출의명수.png'),
     '폭발물 전문가': require('../../assets/images/common/ability/폭전.png'),
+}
+
+const getColor = (effectName, effectValue) => {
+    if (colorMapping[effectName]) {
+        const thresholds = colorMapping[effectName]
+        if (effectValue <= thresholds.blue) {
+            return '#019FE0'
+        } else if (effectValue <= thresholds.purple) {
+            return '#BA3DE4'
+        } else if (effectValue <= thresholds.orange) {
+            return '#DF8400'
+        }
+    }
+    return 'black'
 }
 
 const Profile = () => {
@@ -327,43 +435,35 @@ const Profile = () => {
     }
 
     function accfirststat(idx) {
-        return alignedData[idx].Tooltip.includes('추가 효과') ? (
-            <>
-                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                    .replace(/Element_[0-9]+/g, '')
-                    .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                        ''
-                    )
-                    .replace('Element', '')
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .substring(
-                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            .replace(
-                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace('Element', '')
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                            .replace(/\s/gi, '')
-                            .indexOf('추가효과')
-                    )
-                    .slice(4, 10)}
-            </>
-        ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
-            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                .replace(/Element_[0-9]+/g, '')
-                .replace(/[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
-                .replace('Element', '')
-                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
-                .replace(/\s+/g, '')
-                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
-                .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
-                .includes('아크패시브포인트효과깨달음') ? (
-                '없음'
-            ) : (
+        if (alignedData[idx].Tooltip.includes('추가 효과')) {
+            return (
+                <>
+                    {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                        .replace(/\s/gi, '')
+                        .substring(
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                .replace(/\s/gi, '')
+                                .indexOf('추가효과')
+                        )
+                        .slice(4, 10)}
+                </>
+            )
+        } else if (alignedData[idx].Tooltip.includes('연마 효과')) {
+            if (
                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
@@ -375,76 +475,349 @@ const Profile = () => {
                     .replace(/\s+/g, '')
                     .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
                     .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
-            )
-        ) : (
-            ''
-        )
-    }
-    function accsecondstat(idx) {
-        return alignedData[idx].Tooltip.includes('추가 효과') ? (
-            <>
-                {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .includes('아크패시브포인트효과깨달음')
+            ) {
+                return ''
+            } else if (
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
-                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                         ''
                     )
                     .replace('Element', '')
-                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                    .replace(/\s/gi, '')
-                    .substring(
-                        alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            .replace(
-                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace('Element', '')
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                            .replace(/\s/gi, '')
-                            .indexOf('추가효과')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
+            ) {
+                let effectString = ''
+                if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[0]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') ==
+                    '무기 공격력 %'
+                ) {
+                    effectString = '무기 공격력%'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[0]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') == '공격력 %'
+                ) {
+                    effectString = '공격력%'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[0]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\+\s]/g, '') ==
+                    '공격력 +'
+                ) {
+                    effectString = '공격력+'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[0]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\+\s]/g, '') ==
+                    '무기 공격력 +'
+                ) {
+                    effectString = '무기 공격력+'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[0]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\s]/g, '')
+                        .trim()
+                ) {
+                    effectString = alignedData[idx].Tooltip.replace(
+                        /(<([^>]+)>)/g,
+                        ''
                     )
-                    .slice(10, 16)
-                    .replace(/[^0-9]/gi, '') == 0
-                    ? ''
-                    : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                          .replace(/Element_[0-9]+/g, '')
-                          .replace(
-                              /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                              ''
-                          )
-                          .replace('Element', '')
-                          .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                          .replace(/\s/gi, '')
-                          .substring(
-                              alignedData[idx].Tooltip.replace(
-                                  /(<([^>]+)>)/g,
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[0]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\s]/g, '')
+                        .trim()
+                }
+
+                const effectName = effectString
+
+                const effectValue = alignedData[idx].Tooltip.replace(
+                    /(<([^>]+)>)/g,
+                    ''
+                )
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
+                    // .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                    .replace(/[^0-9\.]/g, '')
+
+                return (
+                    <>
+                        {
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                                .replace(/\s+/g, ' ')
+                                .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                                .match(
+                                    /([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g
+                                )[0]
+                                // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '')
+                                .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
+                        }{' '}
+                        <span
+                            style={{ color: getColor(effectName, effectValue) }}
+                        >
+                            {
+                                alignedData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace('Element', '')
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi,
+                                        ''
+                                    )
+                                    .replace(/\s+/g, '')
+                                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                                    .match(
+                                        /([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g
+                                    )[0]
+                                    .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                                // .replace(/[^0-9\.]/g, '')
+                            }
+                        </span>
+                    </>
+                )
+            }
+        }
+        // return alignedData[idx].Tooltip.includes('추가 효과') ? (
+        //     <>
+        //         {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        //             .replace(/Element_[0-9]+/g, '')
+        //             .replace(
+        //                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+        //                 ''
+        //             )
+        //             .replace('Element', '')
+        //             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+        //             .replace(/\s/gi, '')
+        //             .substring(
+        //                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        //                     .replace(/Element_[0-9]+/g, '')
+        //                     .replace(
+        //                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+        //                         ''
+        //                     )
+        //                     .replace('Element', '')
+        //                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+        //                     .replace(/\s/gi, '')
+        //                     .indexOf('추가효과')
+        //             )
+        //             .slice(4, 10)}
+        //     </>
+        // ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
+        //     alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        //         .replace(/Element_[0-9]+/g, '')
+        //         .replace(
+        //             /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+        //             ''
+        //         )
+        //         .replace('Element', '')
+        //         .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+        //         .replace(/\s+/g, '')
+        //         .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+        //         .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
+        //         .includes('아크패시브포인트효과깨달음') ? (
+        //         ''
+        //     ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        //           .replace(/Element_[0-9]+/g, '')
+        //           .replace(
+        //               /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+        //               ''
+        //           )
+        //           .replace('Element', '')
+        //           .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+        //           .replace(/\s+/g, '')
+        //           .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+        //           .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0] ? (
+        //         <>
+        //             {
+        //                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        //                     .replace(/Element_[0-9]+/g, '')
+        //                     .replace(
+        //                         /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+        //                         ''
+        //                     )
+        //                     .replace('Element', '')
+        //                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+        //                     .replace(/\s+/g, ' ')
+        //                     .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+        //                     .match(
+        //                         /([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g
+        //                     )[0]
+        //                     // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '')
+        //                     .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
+        //             }{' '}
+        //             <span>
+        //                 {
+        //                     alignedData[idx].Tooltip.replace(
+        //                         /(<([^>]+)>)/g,
+        //                         ''
+        //                     )
+        //                         .replace(/Element_[0-9]+/g, '')
+        //                         .replace(
+        //                             /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+        //                             ''
+        //                         )
+        //                         .replace('Element', '')
+        //                         .replace(
+        //                             /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi,
+        //                             ''
+        //                         )
+        //                         .replace(/\s+/g, '')
+        //                         .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+        //                         .match(
+        //                             /([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g
+        //                         )[0]
+        //                         .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+        //                     // .replace(/[^0-9\.]/g, '')
+        //                 }
+        //             </span>
+        //         </>
+        //     ) : (
+        //         ''
+        //     )
+        // ) : (
+        //     ''
+        // )
+    }
+    function accsecondstat(idx) {
+        if (alignedData[idx].Tooltip.includes('추가 효과')) {
+            return (
+                <>
+                    {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                        .replace(/\s/gi, '')
+                        .substring(
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                                .replace(/\s/gi, '')
+                                .indexOf('추가효과')
+                        )
+                        .slice(10, 16)
+                        .replace(/[^0-9]/gi, '') == 0
+                        ? ''
+                        : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                              .replace(/Element_[0-9]+/g, '')
+                              .replace(
+                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                   ''
                               )
-                                  .replace(/Element_[0-9]+/g, '')
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                              .replace('Element', '')
+                              .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
+                              .replace(/\s/gi, '')
+                              .substring(
+                                  alignedData[idx].Tooltip.replace(
+                                      /(<([^>]+)>)/g,
                                       ''
                                   )
-                                  .replace('Element', '')
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-                                  .replace(/\s/gi, '')
-                                  .indexOf('추가효과')
-                          )
-                          .slice(10, 16)}
-            </>
-        ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
-            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                .replace(/Element_[0-9]+/g, '')
-                .replace(/[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
-                .replace('Element', '')
-                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
-                .replace(/\s+/g, '')
-                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
-                .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[1]
-                .includes('아크패시브포인트효과깨달음') ? (
-                '없음'
-            ) : (
+                                      .replace(/Element_[0-9]+/g, '')
+                                      .replace(
+                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                          ''
+                                      )
+                                      .replace('Element', '')
+                                      .replace(
+                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi,
+                                          ''
+                                      )
+                                      .replace(/\s/gi, '')
+                                      .indexOf('추가효과')
+                              )
+                              .slice(10, 16)}
+                </>
+            )
+        } else if (alignedData[idx].Tooltip.includes('연마 효과')) {
+            if (
                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
@@ -456,19 +829,241 @@ const Profile = () => {
                     .replace(/\s+/g, '')
                     .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
                     .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[1]
-            )
-        ) : (
-            ''
-        )
+                    .includes('아크패시브포인트효과깨달음')
+            ) {
+                return ''
+            } else if (
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[1]
+            ) {
+                let effectString = ''
+                if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') ==
+                    '무기 공격력 %'
+                ) {
+                    effectString = '무기 공격력%'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') == '공격력 %'
+                ) {
+                    effectString = '공격력%'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\+\s]/g, '') ==
+                    '공격력 +'
+                ) {
+                    effectString = '공격력+'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\+\s]/g, '') ==
+                    '무기 공격력 +'
+                ) {
+                    effectString = '무기 공격력+'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\s]/g, '')
+                        .trim()
+                ) {
+                    effectString = alignedData[idx].Tooltip.replace(
+                        /(<([^>]+)>)/g,
+                        ''
+                    )
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\s]/g, '')
+                        .trim()
+                }
+
+                const effectName = effectString
+
+                const effectValue = alignedData[idx].Tooltip.replace(
+                    /(<([^>]+)>)/g,
+                    ''
+                )
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[1]
+                    .replace(/[^0-9\.]/g, '')
+
+                return (
+                    <>
+                        {
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                                .replace(/\s+/g, ' ')
+                                .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                                .match(
+                                    /([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g
+                                )[1]
+                                .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
+                        }{' '}
+                        <span
+                            style={{ color: getColor(effectName, effectValue) }}
+                        >
+                            {alignedData[idx].Tooltip.replace(
+                                /(<([^>]+)>)/g,
+                                ''
+                            )
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                                .replace(/\s+/g, '')
+                                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                                .match(
+                                    /([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g
+                                )[1]
+                                .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')}
+                        </span>
+                    </>
+                )
+            }
+        }
     }
 
     function accengravingeffect(idx) {
-        return alignedData[idx].Tooltip.includes('추가 효과') ? (
-            <>
-                <div className="effect-info-inner">
-                    <span className="effect-info">
-                        {
-                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+        if (alignedData[idx].Tooltip.includes('추가 효과')) {
+            return (
+                <>
+                    <div className="effect-info-inner">
+                        <span className="effect-info">
+                            {
+                                alignedData[idx].Tooltip.replace(
+                                    /(<([^>]+)>)/g,
+                                    ''
+                                )
+                                    .replace(/Element_[0-9]+/g, '')
+                                    .replace(/\s/gi, '')
+                                    .replace(
+                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                        ''
+                                    )
+                                    .replace(
+                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                        ''
+                                    )
+                                    .replace(/:[0-9]+/gi, ' ')
+                                    .replace(/:/gi, '')
+                                    .substring(
+                                        alignedData[idx].Tooltip.replace(
+                                            /(<([^>]+)>)/g,
+                                            ''
+                                        )
+                                            .replace(/Element_[0-9]+/g, '')
+                                            .replace(/\s/gi, '')
+                                            .replace(
+                                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                ''
+                                            )
+                                            .replace(
+                                                /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                                ''
+                                            )
+                                            .replace(/:[0-9]+/gi, ' ')
+                                            .replace(/:/gi, '')
+                                            .indexOf('추가효과')
+                                    )
+                                    .replace(
+                                        /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                        ''
+                                    )
+                                    .replace(/추가효과[0-9]/gi, '')
+                                    .replace(/[0-9]+/, '')
+                                    .replace(/활성도/gi, '')
+                                    .replace(/무작위각인효과.*$/gi, '')
+                                    .split(' ')[1]
+                            }
+                        </span>
+                        <span className="effect-info">
+                            {alignedData[idx].Tooltip.replace(
+                                /(<([^>]+)>)/g,
+                                ''
+                            )
                                 .replace(/Element_[0-9]+/g, '')
                                 .replace(/\s/gi, '')
                                 .replace(
@@ -505,187 +1100,146 @@ const Profile = () => {
                                 .replace(/[0-9]+/, '')
                                 .replace(/활성도/gi, '')
                                 .replace(/무작위각인효과.*$/gi, '')
-                                .split(' ')[1]
-                        }
-                    </span>
-                    <span className="effect-info">
-                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            .replace(/\s/gi, '')
-                            .replace(
-                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, ' ')
-                            .replace(/:/gi, '')
-                            .substring(
-                                alignedData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
-                                    ''
-                                )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                        ''
-                                    )
-                                    .replace(/:[0-9]+/gi, ' ')
-                                    .replace(/:/gi, '')
-                                    .indexOf('추가효과')
-                            )
-                            .replace(
-                                /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
-                                ''
-                            )
-                            .replace(/추가효과[0-9]/gi, '')
-                            .replace(/[0-9]+/, '')
-                            .replace(/활성도/gi, '')
-                            .replace(/무작위각인효과.*$/gi, '')
-                            .split(' ')[3] == null && undefined
-                            ? ''
-                            : alignedData[idx].Tooltip.replace(
-                                  /(<([^>]+)>)/g,
-                                  ''
-                              )
-                                  .replace(/Element_[0-9]+/g, '')
-                                  .replace(/\s/gi, '')
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                .split(' ')[3] == null && undefined
+                                ? ''
+                                : alignedData[idx].Tooltip.replace(
+                                      /(<([^>]+)>)/g,
                                       ''
                                   )
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                                  .replace(/:[0-9]+/gi, ' ')
-                                  .replace(/:/gi, '')
-                                  .substring(
-                                      alignedData[idx].Tooltip.replace(
-                                          /(<([^>]+)>)/g,
+                                      .replace(/Element_[0-9]+/g, '')
+                                      .replace(/\s/gi, '')
+                                      .replace(
+                                          /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
                                           ''
                                       )
-                                          .replace(/Element_[0-9]+/g, '')
-                                          .replace(/\s/gi, '')
-                                          .replace(
-                                              /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                              ''
-                                          )
-                                          .replace(
-                                              /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                              ''
-                                          )
-                                          .replace(/:[0-9]+/gi, ' ')
-                                          .replace(/:/gi, '')
-                                          .indexOf('추가효과')
-                                  )
-                                  .replace(
-                                      /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
-                                      ''
-                                  )
-                                  .replace(/추가효과[0-9]/gi, '')
-                                  .replace(/[0-9]+/, '')
-                                  .replace(/활성도/gi, '')
-                                  .replace(/무작위각인효과.*$/gi, '')
-                                  .split(' ')[3]}
-                    </span>
-                    <span className="effect-info-reduction">
-                        {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                            .replace(/Element_[0-9]+/g, '')
-                            .replace(/\s/gi, '')
-                            .replace(
-                                /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                ''
-                            )
-                            .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                            .replace(/:[0-9]+/gi, ' ')
-                            .replace(/:/gi, '')
-                            .substring(
-                                alignedData[idx].Tooltip.replace(
-                                    /(<([^>]+)>)/g,
-                                    ''
-                                )
-                                    .replace(/Element_[0-9]+/g, '')
-                                    .replace(/\s/gi, '')
-                                    .replace(
-                                        /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                        ''
-                                    )
-                                    .replace(
-                                        /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                        ''
-                                    )
-                                    .replace(/:[0-9]+/gi, ' ')
-                                    .replace(/:/gi, '')
-                                    .indexOf('추가효과')
-                            )
-                            .replace(
-                                /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
-                                ''
-                            )
-                            .replace(/추가효과[0-9]/gi, '')
-                            .replace(/[0-9]+/, '')
-                            .replace(/활성도/gi, '')
-                            .replace(/무작위각인효과.*$/gi, '')
-                            .split(' ')[5] == null && undefined
-                            ? ''
-                            : alignedData[idx].Tooltip.replace(
-                                  /(<([^>]+)>)/g,
-                                  ''
-                              )
-                                  .replace(/Element_[0-9]+/g, '')
-                                  .replace(/\s/gi, '')
-                                  .replace(
-                                      /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                      ''
-                                  )
-                                  .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
-                                  .replace(/:[0-9]+/gi, ' ')
-                                  .replace(/:/gi, '')
-                                  .substring(
-                                      alignedData[idx].Tooltip.replace(
-                                          /(<([^>]+)>)/g,
+                                      .replace(
+                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
                                           ''
                                       )
-                                          .replace(/Element_[0-9]+/g, '')
-                                          .replace(/\s/gi, '')
-                                          .replace(
-                                              /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                      .replace(/:[0-9]+/gi, ' ')
+                                      .replace(/:/gi, '')
+                                      .substring(
+                                          alignedData[idx].Tooltip.replace(
+                                              /(<([^>]+)>)/g,
                                               ''
                                           )
-                                          .replace(
-                                              /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
-                                              ''
-                                          )
-                                          .replace(/:[0-9]+/gi, ' ')
-                                          .replace(/:/gi, '')
-                                          .indexOf('추가효과')
-                                  )
-                                  .replace(
-                                      /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                              .replace(/Element_[0-9]+/g, '')
+                                              .replace(/\s/gi, '')
+                                              .replace(
+                                                  /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                  ''
+                                              )
+                                              .replace(
+                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                                  ''
+                                              )
+                                              .replace(/:[0-9]+/gi, ' ')
+                                              .replace(/:/gi, '')
+                                              .indexOf('추가효과')
+                                      )
+                                      .replace(
+                                          /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                          ''
+                                      )
+                                      .replace(/추가효과[0-9]/gi, '')
+                                      .replace(/[0-9]+/, '')
+                                      .replace(/활성도/gi, '')
+                                      .replace(/무작위각인효과.*$/gi, '')
+                                      .split(' ')[3]}
+                        </span>
+                        <span className="effect-info-reduction">
+                            {alignedData[idx].Tooltip.replace(
+                                /(<([^>]+)>)/g,
+                                ''
+                            )
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(/\s/gi, '')
+                                .replace(
+                                    /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi, '')
+                                .replace(/:[0-9]+/gi, ' ')
+                                .replace(/:/gi, '')
+                                .substring(
+                                    alignedData[idx].Tooltip.replace(
+                                        /(<([^>]+)>)/g,
+                                        ''
+                                    )
+                                        .replace(/Element_[0-9]+/g, '')
+                                        .replace(/\s/gi, '')
+                                        .replace(
+                                            /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                            ''
+                                        )
+                                        .replace(
+                                            /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                            ''
+                                        )
+                                        .replace(/:[0-9]+/gi, ' ')
+                                        .replace(/:/gi, '')
+                                        .indexOf('추가효과')
+                                )
+                                .replace(
+                                    /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                    ''
+                                )
+                                .replace(/추가효과[0-9]/gi, '')
+                                .replace(/[0-9]+/, '')
+                                .replace(/활성도/gi, '')
+                                .replace(/무작위각인효과.*$/gi, '')
+                                .split(' ')[5] == null && undefined
+                                ? ''
+                                : alignedData[idx].Tooltip.replace(
+                                      /(<([^>]+)>)/g,
                                       ''
                                   )
-                                  .replace(/추가효과[0-9]/gi, '')
-                                  .replace(/[0-9]+/, '')
-                                  .replace(/활성도/gi, '')
-                                  .replace(/무작위각인효과.*$/gi, '')
-                                  .split(' ')[5]}
-                    </span>
-                </div>
-            </>
-        ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
-            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-                .replace(/Element_[0-9]+/g, '')
-                .replace(/[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi, '')
-                .replace('Element', '')
-                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
-                .replace(/\s+/g, '')
-                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
-                .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[2]
-                .includes('아크패시브포인트효과깨달음') ? (
-                '없음'
-            ) : (
+                                      .replace(/Element_[0-9]+/g, '')
+                                      .replace(/\s/gi, '')
+                                      .replace(
+                                          /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                          ''
+                                      )
+                                      .replace(
+                                          /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                          ''
+                                      )
+                                      .replace(/:[0-9]+/gi, ' ')
+                                      .replace(/:/gi, '')
+                                      .substring(
+                                          alignedData[idx].Tooltip.replace(
+                                              /(<([^>]+)>)/g,
+                                              ''
+                                          )
+                                              .replace(/Element_[0-9]+/g, '')
+                                              .replace(/\s/gi, '')
+                                              .replace(
+                                                  /[\{\}\[\]\/?.,;|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                                  ''
+                                              )
+                                              .replace(
+                                                  /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\0-9]/gi,
+                                                  ''
+                                              )
+                                              .replace(/:[0-9]+/gi, ' ')
+                                              .replace(/:/gi, '')
+                                              .indexOf('추가효과')
+                                      )
+                                      .replace(
+                                          /(특화\+[0-9]|치명\+[0-9]|신속\+[0-9]|제압\+[0-9]|숙련\+[0-9]|인내\+[0-9])/,
+                                          ''
+                                      )
+                                      .replace(/추가효과[0-9]/gi, '')
+                                      .replace(/[0-9]+/, '')
+                                      .replace(/활성도/gi, '')
+                                      .replace(/무작위각인효과.*$/gi, '')
+                                      .split(' ')[5]}
+                        </span>
+                    </div>
+                </>
+            )
+        } else if (alignedData[idx].Tooltip.includes('연마 효과')) {
+            if (
                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
                     .replace(
@@ -697,10 +1251,181 @@ const Profile = () => {
                     .replace(/\s+/g, '')
                     .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
                     .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[2]
-            )
-        ) : (
-            ''
-        )
+                    .includes('아크패시브포인트효과깨달음')
+            ) {
+                return ''
+            } else if (
+                alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[2]
+            ) {
+                let effectString = ''
+                if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[2]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') ==
+                    '무기 공격력 %'
+                ) {
+                    effectString = '무기 공격력%'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[2]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') == '공격력 %'
+                ) {
+                    effectString = '공격력%'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[2]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\+\s]/g, '') ==
+                    '공격력 +'
+                ) {
+                    effectString = '공격력+'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[2]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\+\s]/g, '') ==
+                    '무기 공격력 +'
+                ) {
+                    effectString = '무기 공격력+'
+                } else if (
+                    alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[2]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\s]/g, '')
+                        .trim()
+                ) {
+                    effectString = alignedData[idx].Tooltip.replace(
+                        /(<([^>]+)>)/g,
+                        ''
+                    )
+                        .replace(/Element_[0-9]+/g, '')
+                        .replace(
+                            /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                            ''
+                        )
+                        .replace('Element', '')
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                        .replace(/\s+/g, ' ')
+                        .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                        .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[2]
+                        .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\s]/g, '')
+                        .trim()
+                }
+
+                const effectName = effectString
+
+                const effectValue = alignedData[idx].Tooltip.replace(
+                    /(<([^>]+)>)/g,
+                    ''
+                )
+                    .replace(/Element_[0-9]+/g, '')
+                    .replace(
+                        /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                        ''
+                    )
+                    .replace('Element', '')
+                    .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                    .replace(/\s+/g, '')
+                    .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                    .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[2]
+                    // .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
+                    .replace(/[^0-9\.]/g, '')
+                return (
+                    <>
+                        {
+                            alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                                .replace(/\s+/g, ' ')
+                                .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
+                                .match(
+                                    /([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g
+                                )[2]
+                                // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '')
+                                .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
+                        }{' '}
+                        <span
+                            style={{ color: getColor(effectName, effectValue) }}
+                        >
+                            {alignedData[idx].Tooltip.replace(
+                                /(<([^>]+)>)/g,
+                                ''
+                            )
+                                .replace(/Element_[0-9]+/g, '')
+                                .replace(
+                                    /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
+                                    ''
+                                )
+                                .replace('Element', '')
+                                .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
+                                .replace(/\s+/g, '')
+                                .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
+                                .match(
+                                    /([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g
+                                )[2]
+                                .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')}
+                        </span>
+                    </>
+                )
+            }
+        }
     }
 
     function stonestat(idx) {
@@ -4225,181 +4950,19 @@ const Profile = () => {
                                                             ? 'linear-gradient(135deg, #341a09, #a24006)'
                                                             : 'linear-gradient(135deg, #3d3325, #dcc999)',
                                                     borderBottomLeftRadius:
-                                                        alignedData[11]
-                                                            .Grade === '고대'
-                                                            ? '0px'
-                                                            : '8px',
+                                                        '8px',
+                                                    // alignedData[11]
+                                                    //     .Grade === '고대'
+                                                    //     ? '0px'
+                                                    //     : '8px',
                                                     borderBottomRightRadius:
-                                                        alignedData[11]
-                                                            .Grade === '고대'
-                                                            ? '0px'
-                                                            : '8px',
+                                                        '8px',
+                                                    // alignedData[11]
+                                                    //     .Grade === '고대'
+                                                    //     ? '0px'
+                                                    //     : '8px',
                                                 }}
                                             />
-                                            <div
-                                                className="qualityValue"
-                                                style={{
-                                                    // width: '48px',
-                                                    backgroundColor:
-                                                        'rgb(255, 255, 0)',
-                                                    fontWeight: '600',
-                                                    fontSize: '12px',
-                                                    textAlign: 'center',
-                                                }}
-                                            >
-                                                {alignedData[11].Tooltip.replace(
-                                                    /(<([^>]+)>)/g,
-                                                    ''
-                                                )
-                                                    .replace(
-                                                        /Element_[0-9]+/g,
-                                                        ''
-                                                    )
-                                                    .replace(/\s/gi, '')
-                                                    .replace(
-                                                        /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                        ''
-                                                    )
-                                                    .replace(/[^\w]/gi, '')
-                                                    // .replace(/:[0-9]+/gi, '')
-                                                    // .replace(/:/gi, '')
-                                                    .substring(
-                                                        alignedData[11].Tooltip.replace(
-                                                            /(<([^>]+)>)/g,
-                                                            ''
-                                                        )
-                                                            .replace(
-                                                                /Element_[0-9]+/g,
-                                                                ''
-                                                            )
-                                                            .replace(/\s/gi, '')
-                                                            .replace(
-                                                                /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                                ''
-                                                            )
-                                                            .indexOf('value')
-                                                    )
-                                                    .slice(0, 8)
-                                                    .replace(/[a-z]*/g, '') ==
-                                                'I' ? (
-                                                    <>LV. 1</>
-                                                ) : alignedData[11].Tooltip.replace(
-                                                      /(<([^>]+)>)/g,
-                                                      ''
-                                                  )
-                                                      .replace(
-                                                          /Element_[0-9]+/g,
-                                                          ''
-                                                      )
-                                                      .replace(/\s/gi, '')
-                                                      .replace(
-                                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                          ''
-                                                      )
-                                                      .replace(/[^\w]/gi, '')
-                                                      .substring(
-                                                          alignedData[11].Tooltip.replace(
-                                                              /(<([^>]+)>)/g,
-                                                              ''
-                                                          )
-                                                              .replace(
-                                                                  /Element_[0-9]+/g,
-                                                                  ''
-                                                              )
-                                                              .replace(
-                                                                  /\s/gi,
-                                                                  ''
-                                                              )
-                                                              .replace(
-                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                                  ''
-                                                              )
-                                                              .indexOf('value')
-                                                      )
-                                                      .slice(0, 8)
-                                                      .replace(/[a-z]*/g, '') ==
-                                                  'II' ? (
-                                                    <>Lv. 2</>
-                                                ) : alignedData[11].Tooltip.replace(
-                                                      /(<([^>]+)>)/g,
-                                                      ''
-                                                  )
-                                                      .replace(
-                                                          /Element_[0-9]+/g,
-                                                          ''
-                                                      )
-                                                      .replace(/\s/gi, '')
-                                                      .replace(
-                                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                          ''
-                                                      )
-                                                      .replace(/[^\w]/gi, '')
-                                                      .substring(
-                                                          alignedData[11].Tooltip.replace(
-                                                              /(<([^>]+)>)/g,
-                                                              ''
-                                                          )
-                                                              .replace(
-                                                                  /Element_[0-9]+/g,
-                                                                  ''
-                                                              )
-                                                              .replace(
-                                                                  /\s/gi,
-                                                                  ''
-                                                              )
-                                                              .replace(
-                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                                  ''
-                                                              )
-                                                              .indexOf('value')
-                                                      )
-                                                      .slice(0, 8)
-                                                      .replace(/[a-z]*/g, '') ==
-                                                  'III' ? (
-                                                    <>Lv. 3</>
-                                                ) : alignedData[11].Tooltip.replace(
-                                                      /(<([^>]+)>)/g,
-                                                      ''
-                                                  )
-                                                      .replace(
-                                                          /Element_[0-9]+/g,
-                                                          ''
-                                                      )
-                                                      .replace(/\s/gi, '')
-                                                      .replace(
-                                                          /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                          ''
-                                                      )
-                                                      .replace(/[^\w]/gi, '')
-                                                      // .replace(/:[0-9]+/gi, '')
-                                                      // .replace(/:/gi, '')
-                                                      .substring(
-                                                          alignedData[11].Tooltip.replace(
-                                                              /(<([^>]+)>)/g,
-                                                              ''
-                                                          )
-                                                              .replace(
-                                                                  /Element_[0-9]+/g,
-                                                                  ''
-                                                              )
-                                                              .replace(
-                                                                  /\s/gi,
-                                                                  ''
-                                                              )
-                                                              .replace(
-                                                                  /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-                                                                  ''
-                                                              )
-                                                              .indexOf('value')
-                                                      )
-                                                      .slice(0, 8)
-                                                      .replace(/[a-z]*/g, '') ==
-                                                  'IV' ? (
-                                                    <>Lv. 4</>
-                                                ) : (
-                                                    ''
-                                                )}
-                                            </div>
                                         </div>
                                         <div className="nametag">
                                             <div className="equip-name">

@@ -866,18 +866,32 @@
                         }
                     }
                     .arkacc-info {
+                        margin-left: 5px;
+                        margin-top: 3px;
                         font-size: 1.1rem;
                         font-family: 'jua';
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2px;
+                        span {
+                            font-size: 1.1rem;
+                            font-family: 'jua';
+                        }
                         .stat-info {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 2px;
                             .accstat {
-                                line-height: 1.8rem;
+                                // line-height: 1.8rem;
                                 font-size: 1.1rem;
                                 font-family: 'jua';
+                                // text-decoration: underline;
                             }
                         }
                         .engraving-info {
                             font-size: 1.1rem;
                             font-family: 'jua';
+                            // text-decoration: underline;
                         }
                     }
 
