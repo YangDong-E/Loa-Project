@@ -224,10 +224,9 @@ const Profile = () => {
             if (
                 gem.Tooltip.replace(/(<([^>]+)>)/g, '')
                     .replace(/Element_[0-9]+/g, '')
-                    // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
-                    .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용)/g)[0]
+                    .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용|지원 효과)/g)[0]
                     .replace(/\s/gi, '')
                     .replace(/\[\D{2,6}\]/g, '')
                     .replace(/(피해|재사용)/g, '') === newSkill.Name
@@ -3289,10 +3288,10 @@ const Profile = () => {
                     // .replace(/\s/gi, '')
                     .replace(/[\{\}\/?,;|*~`!^\-_>?@\#$&\\\=\'\"]/gi, '')
                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\:\(\)\[\]\.\0-9]/gi, '')
-                    .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용)/g)[0]
+                    .match(/\[\D{2,6}\]\s\D{2,12}\s(피해|재사용|지원 효과)/g)[0]
                     .replace(/\s/gi, '')
                     .replace(/\[\D{2,6}\]/g, '')
-                    .replace(/(피해|재사용)/g, '')}
+                    .replace(/(피해|재사용|지원 효과)/g, '')}
             </>
         ) : (
             ''
@@ -3366,7 +3365,7 @@ const Profile = () => {
                                         .replace(/\=/g, ' ')
                                         .indexOf('[')
                                 )
-                                .match(/지원\s*효과\s*\d+\.\d+\s*%?\s*증가/g)}
+                                .match(/피해\s*\d+\.\d+\s*%?\s*증가/g)}
                             <div>
                                 {tooltipText
                                     .substring(damageIndex)
@@ -5028,21 +5027,8 @@ const Profile = () => {
                 </div>
             </section>
             <section
-                // style={{
-                //     marginTop: '10px',
-                //     width: '70%',
-                //     marginLeft: '30%',
-                //     display: 'flex',
-                //     flex: 'row',
-                //     gap: '5px',
-                //     padding: '10px 0px',
-                //     background: '#fff',
-                //     boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
-                //     borderRadius: '8px',
-                //     flexWrap: 'wrap',
-                //     justifyContent: 'flex-start',
-                // }}
                 className="gem-set"
+                style={{ position: 'relative', zIndex: '9999' }}
             >
                 {gemData ? (
                     sortedGemData.map((item, index) => (
