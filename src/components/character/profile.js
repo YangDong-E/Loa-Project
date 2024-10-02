@@ -183,6 +183,12 @@ const Profile = () => {
         일반: General,
     }
 
+    const effectMapping = {
+        진화: 'evolution',
+        깨달음: 'enlightenment',
+        도약: 'leap',
+    }
+
     const data = useSelector((state) => state.character.characterProfile)
     const profileData = data?.ArmoryProfile
     const equipData = data?.ArmoryEquipment
@@ -656,106 +662,6 @@ const Profile = () => {
                 )
             }
         }
-        // return alignedData[idx].Tooltip.includes('추가 효과') ? (
-        //     <>
-        //         {alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-        //             .replace(/Element_[0-9]+/g, '')
-        //             .replace(
-        //                 /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-        //                 ''
-        //             )
-        //             .replace('Element', '')
-        //             .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-        //             .replace(/\s/gi, '')
-        //             .substring(
-        //                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-        //                     .replace(/Element_[0-9]+/g, '')
-        //                     .replace(
-        //                         /[\{\}\[\]\/?.,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-        //                         ''
-        //                     )
-        //                     .replace('Element', '')
-        //                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9]/gi, '')
-        //                     .replace(/\s/gi, '')
-        //                     .indexOf('추가효과')
-        //             )
-        //             .slice(4, 10)}
-        //     </>
-        // ) : alignedData[idx].Tooltip.includes('연마 효과') ? (
-        //     alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-        //         .replace(/Element_[0-9]+/g, '')
-        //         .replace(
-        //             /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-        //             ''
-        //         )
-        //         .replace('Element', '')
-        //         .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
-        //         .replace(/\s+/g, '')
-        //         .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
-        //         .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0]
-        //         .includes('아크패시브포인트효과깨달음') ? (
-        //         ''
-        //     ) : alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-        //           .replace(/Element_[0-9]+/g, '')
-        //           .replace(
-        //               /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-        //               ''
-        //           )
-        //           .replace('Element', '')
-        //           .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
-        //           .replace(/\s+/g, '')
-        //           .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
-        //           .match(/([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g)[0] ? (
-        //         <>
-        //             {
-        //                 alignedData[idx].Tooltip.replace(/(<([^>]+)>)/g, '')
-        //                     .replace(/Element_[0-9]+/g, '')
-        //                     .replace(
-        //                         /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-        //                         ''
-        //                     )
-        //                     .replace('Element', '')
-        //                     .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi, '')
-        //                     .replace(/\s+/g, ' ')
-        //                     .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
-        //                     .match(
-        //                         /([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g
-        //                     )[0]
-        //                     // .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '')
-        //                     .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
-        //             }{' '}
-        //             <span>
-        //                 {
-        //                     alignedData[idx].Tooltip.replace(
-        //                         /(<([^>]+)>)/g,
-        //                         ''
-        //                     )
-        //                         .replace(/Element_[0-9]+/g, '')
-        //                         .replace(
-        //                             /[\{\}\[\]\/?,;:|\)*~`!^\-_>?@\#$&\\\=\(\'\"]/gi,
-        //                             ''
-        //                         )
-        //                         .replace('Element', '')
-        //                         .replace(
-        //                             /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\+\0-9%]/gi,
-        //                             ''
-        //                         )
-        //                         .replace(/\s+/g, '')
-        //                         .match(/연마효과\s*(.*?)(?:\s+|$)/)[1]
-        //                         .match(
-        //                             /([\uAC00-\uD7A3]+\+\d+(?:\.\d+)?%?)/g
-        //                         )[0]
-        //                         .replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi, '')
-        //                     // .replace(/[^0-9\.]/g, '')
-        //                 }
-        //             </span>
-        //         </>
-        //     ) : (
-        //         ''
-        //     )
-        // ) : (
-        //     ''
-        // )
     }
     function accsecondstat(idx) {
         if (alignedData[idx].Tooltip.includes('추가 효과')) {
@@ -857,7 +763,6 @@ const Profile = () => {
                         .replace(/\s+/g, ' ')
                         .match(/연마 효과\s*(.*\s?)(?:\s+|$)/)[1]
                         .match(/([\uAC00-\uD7A3.\s?]+\+\d+(?:\.\d+)?%?)/g)[1]
-                        .match(/([\uAC00-\uD7A3.\s?]+)(\+\d+)(%?)/)[1]
                         .replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣\%\s]/g, '') ==
                     '무기 공격력 %'
                 ) {
@@ -3719,6 +3624,51 @@ const Profile = () => {
                             <></>
                         )}
                     </div>
+                    {arkpassiveData.IsArkPassive == true ? (
+                        <div className="arkpassiveeffect">
+                            {arkpassiveData.Points.map((point) => {
+                                const relatedEffects =
+                                    arkpassiveData.Effects.filter(
+                                        (effect) =>
+                                            effect.Name ===
+                                            effectMapping[point.Name]
+                                    )
+
+                                return (
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                        }}
+                                        key={point.Name}
+                                    >
+                                        <div className="arkpassiveeffect-point">
+                                            {point.Name} {point.Value}
+                                        </div>
+                                        <div className="arkpassiveeffect-effect">
+                                            {relatedEffects.map((effect) => (
+                                                <div key={effect.Name}>
+                                                    <img src={effect.Icon} />
+                                                    <div>
+                                                        {effect.Description.replace(
+                                                            /(진화|깨달음|도약)/g,
+                                                            ''
+                                                        ).replace(
+                                                            /(<([^>]+)>)/g,
+                                                            ''
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    ) : (
+                        <div>no</div>
+                    )}
                 </div>
                 <div className="equip">
                     <div className="equip-inner">
@@ -5082,22 +5032,7 @@ const Profile = () => {
                     </>
                 )}
             </section>
-            <section
-                // style={{
-                //     marginTop: '10px',
-                //     position: 'relative',
-                //     width: '70%',
-                //     marginLeft: '30%',
-                //     display: 'grid',
-                //     gap: '3px',
-                //     padding: '10px 0px',
-                //     background: '#fff',
-                //     boxShadow: '0 0 15px 2px rgba(0, 0, 0,0.2)',
-                //     borderRadius: '8px',
-                //     gridTemplateColumns: 'repeat(6,minmax(0,1fr))',
-                // }}
-                className="card-set"
-            >
+            <section className="card-set">
                 <div
                     className="card-setname"
                     onClick={() => handleAccordionClick(0)}
