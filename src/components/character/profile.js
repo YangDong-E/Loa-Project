@@ -3624,51 +3624,6 @@ const Profile = () => {
                             <></>
                         )}
                     </div>
-                    {arkpassiveData.IsArkPassive == true ? (
-                        <div className="arkpassiveeffect">
-                            {arkpassiveData.Points.map((point) => {
-                                const relatedEffects =
-                                    arkpassiveData.Effects.filter(
-                                        (effect) =>
-                                            effect.Name ===
-                                            effectMapping[point.Name]
-                                    )
-
-                                return (
-                                    <div
-                                        style={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                        }}
-                                        key={point.Name}
-                                    >
-                                        <div className="arkpassiveeffect-point">
-                                            {point.Name} {point.Value}
-                                        </div>
-                                        <div className="arkpassiveeffect-effect">
-                                            {relatedEffects.map((effect) => (
-                                                <div key={effect.Name}>
-                                                    <img src={effect.Icon} />
-                                                    <div>
-                                                        {effect.Description.replace(
-                                                            /(진화|깨달음|도약)/g,
-                                                            ''
-                                                        ).replace(
-                                                            /(<([^>]+)>)/g,
-                                                            ''
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    ) : (
-                        <div>no</div>
-                    )}
                 </div>
                 <div className="equip">
                     <div className="equip-inner">
@@ -4976,6 +4931,55 @@ const Profile = () => {
                     </div>
                 </div>
             </section>
+            {arkpassiveData.IsArkPassive == true ? (
+                <section>
+                    <div className="arkpassive">
+                        <div className="arkpassiveeffect">
+                            {arkpassiveData.Points.map((point) => {
+                                const relatedEffects =
+                                    arkpassiveData.Effects.filter(
+                                        (effect) =>
+                                            effect.Name ===
+                                            effectMapping[point.Name]
+                                    )
+
+                                return (
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                        }}
+                                        key={point.Name}
+                                    >
+                                        <div className="arkpassiveeffect-point">
+                                            {point.Name} {point.Value} 포인트
+                                        </div>
+                                        <div className="arkpassiveeffect-effect">
+                                            {relatedEffects.map((effect) => (
+                                                <div key={effect.Name}>
+                                                    <img src={effect.Icon} />
+                                                    <span>
+                                                        {effect.Description.replace(
+                                                            /(진화|깨달음|도약)/g,
+                                                            ''
+                                                        ).replace(
+                                                            /(<([^>]+)>)/g,
+                                                            ''
+                                                        )}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </section>
+            ) : (
+                ''
+            )}
             <section
                 className="gem-set"
                 style={{ position: 'relative', zIndex: '9999' }}
