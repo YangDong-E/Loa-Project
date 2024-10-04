@@ -987,6 +987,11 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.75rem;
 
+        &-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         &-point {
             font-size: 15px;
             margin-bottom: 5px;
@@ -994,17 +999,42 @@
         &-effect {
             display: flex;
             flex-direction: column;
+            position: relative;
             div {
                 display: flex;
                 align-items: center;
                 margin-top: 2px;
                 gap: 5px;
                 font-weight: 600;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -15px;
+                    width: 1px;
+                    height: 189px;
+                    background-color: #d3d3d3b5;
+                }
                 img {
                     width: 25px;
                     border-radius: 5px;
                 }
             }
+        }
+        .point-evolution {
+            color: rgb(216, 152, 4);
+        }
+
+        .point-enlightenment {
+            color: rgb(31, 147, 255);
+        }
+
+        .point-leap {
+            color: rgb(51, 205, 8);
+        }
+
+        .point-default {
+            color: black;
         }
     }
 }

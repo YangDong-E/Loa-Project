@@ -4945,21 +4945,40 @@ const Profile = () => {
 
                                 return (
                                     <div
-                                        style={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                        }}
+                                        className="arkpassiveeffect-inner"
                                         key={point.Name}
                                     >
-                                        <div className="arkpassiveeffect-point">
+                                        <div
+                                            className={`arkpassiveeffect-point ${
+                                                point.Name === '진화'
+                                                    ? 'point-evolution'
+                                                    : point.Name === '깨달음'
+                                                    ? 'point-enlightenment'
+                                                    : point.Name === '도약'
+                                                    ? 'point-leap'
+                                                    : 'point-default'
+                                            }`}
+                                        >
                                             {point.Name} {point.Value} 포인트
                                         </div>
                                         <div className="arkpassiveeffect-effect">
                                             {relatedEffects.map((effect) => (
                                                 <div key={effect.Name}>
                                                     <img src={effect.Icon} />
-                                                    <span>
+                                                    <span
+                                                        className={`${
+                                                            point.Name ===
+                                                            '진화'
+                                                                ? 'point-evolution'
+                                                                : point.Name ===
+                                                                  '깨달음'
+                                                                ? 'point-enlightenment'
+                                                                : point.Name ===
+                                                                  '도약'
+                                                                ? 'point-leap'
+                                                                : 'point-default'
+                                                        }`}
+                                                    >
                                                         {effect.Description.replace(
                                                             /(진화|깨달음|도약)/g,
                                                             ''
