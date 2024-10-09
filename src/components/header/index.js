@@ -30,6 +30,9 @@ const Header = () => {
                         <NavMenu path={'/auctions'} className="menu-name">
                             실시간 가격
                         </NavMenu>
+                        <NavMenu path={'/raid'} className="menu-name">
+                            레이드 보상
+                        </NavMenu>
                     </div>
                 </nav>
             </div>

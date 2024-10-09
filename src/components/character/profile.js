@@ -5136,7 +5136,7 @@ const Profile = () => {
                                   flexDirection: 'row',
                                   alignItems: 'center',
                                   justifyContent: 'center',
-                                  marginTop: '10px',
+                                  marginTop: '17px',
                               }}
                               key={index}
                               onClick={() => handleAccordionClick(index)}

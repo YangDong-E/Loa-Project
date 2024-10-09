@@ -199,6 +199,7 @@
         // margin-right: 10px;
         top: 4px;
         right: 11px;
+        margin-top: 2px;
         img {
             width: 15px;
             height: 15px;
@@ -1040,13 +1041,24 @@
     }
 }
 
+@media (max-width: 2400px) {
+    .character {
+        &-area {
+            width: 810px;
+        }
+    }
+    .equip-inner {
+        padding-left: 20px;
+    }
+}
+
 @media (max-width: 1200px) {
     .character {
         &-inner {
             gap: 0 30px;
         }
         &-area {
-            width: 820px;
+            width: 90%;
         }
     }
 
@@ -1228,13 +1240,6 @@
         .skill-sub {
             display: flex;
             flex-direction: column;
-            // display: flex;
-            // flex-direction: row;
-            // position: relative;
-            // width: 100%;
-            // border-bottom: 1px solid #d3d3d3b5;
-            // margin-bottom: 15px;
-            // gap: 10px;
             &-info {
                 height: 40px;
                 border: none;
