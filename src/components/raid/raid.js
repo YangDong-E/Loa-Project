@@ -77,13 +77,7 @@ const Raid = () => {
                     <h2>
                         {difficulty.title} / 입장 레벨 {difficulty.level}
                     </h2>
-                    <table
-                    // style={{
-                    //     width: '100%',
-                    //     borderCollapse: 'collapse',
-                    //     color: 'black',
-                    // }}
-                    >
+                    <table>
                         <thead>
                             <tr>
                                 <th>관문</th>
@@ -242,6 +236,7 @@ const Raid = () => {
                                                               )
                                                           )
                                                         : '-'}
+                                                    {/* 기본 기타아이템 */}
                                                     {showOtherRewards &&
                                                         row.otherRewards &&
                                                         row.otherRewards
@@ -324,7 +319,6 @@ const Raid = () => {
                                                             .length > 0 && (
                                                             <span>
                                                                 {' '}
-                                                                (
                                                                 {row.otherExtraRewards2.map(
                                                                     (
                                                                         reward,
@@ -388,6 +382,7 @@ const Raid = () => {
                                                               )
                                                           )
                                                         : '-'}
+                                                    {/* 더보기 기타아이템 */}
                                                     {showOtherRewards &&
                                                         row.otherExtraRewards &&
                                                         row.otherExtraRewards

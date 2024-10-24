@@ -61,12 +61,16 @@ body {
             border-bottom: 2px solid $secondary-color;
             color: $white;
             font-size: $font-size;
+            display: table-cell;
+            vertical-align: middle;
         }
 
         td {
             padding: 10px;
             border-bottom: 1px solid $secondary-color;
             text-align: center;
+            display: table-cell;
+            vertical-align: middle;
 
             img {
                 width: 25px;
@@ -75,6 +79,12 @@ body {
             }
         }
     }
+}
+
+.rewards-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
 }
 
 // 반응형 디자인
