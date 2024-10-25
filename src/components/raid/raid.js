@@ -139,40 +139,43 @@ const Raid = () => {
                                             row.rewards2 &&
                                             row.rewards ? (
                                                 <>
-                                                    {row.rewards2 &&
-                                                    row.rewards2.length > 0
-                                                        ? row.rewards2.map(
-                                                              (
-                                                                  reward,
-                                                                  index
-                                                              ) => (
-                                                                  <span
-                                                                      key={
-                                                                          index
-                                                                      }
-                                                                  >
-                                                                      <img
-                                                                          src={
-                                                                              reward.image
+                                                    <span className="Rewards">
+                                                        {row.rewards2 &&
+                                                        row.rewards2.length > 0
+                                                            ? row.rewards2.map(
+                                                                  (
+                                                                      reward,
+                                                                      index
+                                                                  ) => (
+                                                                      <span
+                                                                          key={
+                                                                              index
                                                                           }
-                                                                          alt={
+                                                                          className="Rewards-item"
+                                                                      >
+                                                                          <img
+                                                                              src={
+                                                                                  reward.image
+                                                                              }
+                                                                              alt={
+                                                                                  reward.reward
+                                                                              }
+                                                                          />
+                                                                          {
                                                                               reward.reward
                                                                           }
-                                                                      />
-                                                                      {
-                                                                          reward.reward
-                                                                      }
-                                                                  </span>
+                                                                      </span>
+                                                                  )
                                                               )
-                                                          )
-                                                        : '-'}
+                                                            : '-'}
+                                                    </span>
+
                                                     {showOtherRewards &&
                                                         row.otherRewards2 &&
                                                         row.otherRewards2
                                                             .length > 0 && (
-                                                            <span>
+                                                            <span className="otherRewards">
                                                                 {' '}
-                                                                (
                                                                 {row.otherRewards2.map(
                                                                     (
                                                                         reward,
@@ -182,6 +185,7 @@ const Raid = () => {
                                                                             key={
                                                                                 index
                                                                             }
+                                                                            className="otherRewards-item"
                                                                         >
                                                                             <img
                                                                                 src={
@@ -203,39 +207,42 @@ const Raid = () => {
                                                                         </span>
                                                                     )
                                                                 )}
-                                                                )
                                                             </span>
                                                         )}
                                                 </>
                                             ) : (
                                                 <>
-                                                    {row.rewards &&
-                                                    row.rewards.length > 0
-                                                        ? row.rewards.map(
-                                                              (
-                                                                  reward,
-                                                                  index
-                                                              ) => (
-                                                                  <span
-                                                                      key={
-                                                                          index
-                                                                      }
-                                                                  >
-                                                                      <img
-                                                                          src={
-                                                                              reward.image
+                                                    <span className="Rewards">
+                                                        {row.rewards &&
+                                                        row.rewards.length > 0
+                                                            ? row.rewards.map(
+                                                                  (
+                                                                      reward,
+                                                                      index
+                                                                  ) => (
+                                                                      <span
+                                                                          key={
+                                                                              index
                                                                           }
-                                                                          alt={
+                                                                          className="Rewards-item"
+                                                                      >
+                                                                          <img
+                                                                              src={
+                                                                                  reward.image
+                                                                              }
+                                                                              alt={
+                                                                                  reward.reward
+                                                                              }
+                                                                          />
+                                                                          {
                                                                               reward.reward
                                                                           }
-                                                                      />
-                                                                      {
-                                                                          reward.reward
-                                                                      }
-                                                                  </span>
+                                                                      </span>
+                                                                  )
                                                               )
-                                                          )
-                                                        : '-'}
+                                                            : '-'}
+                                                    </span>
+
                                                     {/* 기본 기타아이템 */}
                                                     {showOtherRewards &&
                                                         row.otherRewards &&
@@ -243,7 +250,6 @@ const Raid = () => {
                                                             .length > 0 && (
                                                             <span className="otherRewards">
                                                                 {' '}
-                                                                (
                                                                 {row.otherRewards.map(
                                                                     (
                                                                         reward,
@@ -262,12 +268,6 @@ const Raid = () => {
                                                                                 alt={
                                                                                     reward.reward
                                                                                 }
-                                                                                // style={{
-                                                                                //     width: '25px',
-                                                                                //     height: '25px',
-                                                                                //     marginRight:
-                                                                                //         '10px',
-                                                                                // }}
                                                                             />
                                                                             {
                                                                                 reward.reward
@@ -275,7 +275,6 @@ const Raid = () => {
                                                                         </span>
                                                                     )
                                                                 )}
-                                                                )
                                                             </span>
                                                         )}
                                                 </>
@@ -286,38 +285,42 @@ const Raid = () => {
                                             row.extraRewards2 &&
                                             row.extraRewards ? (
                                                 <>
-                                                    {row.extraRewards2 &&
-                                                    row.extraRewards2.length > 0
-                                                        ? row.extraRewards2.map(
-                                                              (
-                                                                  reward,
-                                                                  index
-                                                              ) => (
-                                                                  <span
-                                                                      key={
-                                                                          index
-                                                                      }
-                                                                  >
-                                                                      <img
-                                                                          src={
-                                                                              reward.image
+                                                    <span className="Rewards">
+                                                        {row.extraRewards2 &&
+                                                        row.extraRewards2
+                                                            .length > 0
+                                                            ? row.extraRewards2.map(
+                                                                  (
+                                                                      reward,
+                                                                      index
+                                                                  ) => (
+                                                                      <span
+                                                                          key={
+                                                                              index
                                                                           }
-                                                                          alt={
+                                                                          className="Rewards-item"
+                                                                      >
+                                                                          <img
+                                                                              src={
+                                                                                  reward.image
+                                                                              }
+                                                                              alt={
+                                                                                  reward.reward
+                                                                              }
+                                                                          />
+                                                                          {
                                                                               reward.reward
                                                                           }
-                                                                      />
-                                                                      {
-                                                                          reward.reward
-                                                                      }
-                                                                  </span>
+                                                                      </span>
+                                                                  )
                                                               )
-                                                          )
-                                                        : '-'}
+                                                            : '-'}
+                                                    </span>
                                                     {showOtherRewards &&
                                                         row.otherExtraRewards2 &&
                                                         row.otherExtraRewards2
                                                             .length > 0 && (
-                                                            <span>
+                                                            <span className="otherRewards">
                                                                 {' '}
                                                                 {row.otherExtraRewards2.map(
                                                                     (
@@ -328,6 +331,7 @@ const Raid = () => {
                                                                             key={
                                                                                 index
                                                                             }
+                                                                            className="otherRewards-item"
                                                                         >
                                                                             <img
                                                                                 src={
@@ -349,47 +353,49 @@ const Raid = () => {
                                                                         </span>
                                                                     )
                                                                 )}
-                                                                )
                                                             </span>
                                                         )}
                                                 </>
                                             ) : (
                                                 <>
-                                                    {row.extraRewards &&
-                                                    row.extraRewards.length > 0
-                                                        ? row.extraRewards.map(
-                                                              (
-                                                                  reward,
-                                                                  index
-                                                              ) => (
-                                                                  <span
-                                                                      key={
-                                                                          index
-                                                                      }
-                                                                  >
-                                                                      <img
-                                                                          src={
-                                                                              reward.image
+                                                    <span className="Rewards">
+                                                        {row.extraRewards &&
+                                                        row.extraRewards
+                                                            .length > 0
+                                                            ? row.extraRewards.map(
+                                                                  (
+                                                                      reward,
+                                                                      index
+                                                                  ) => (
+                                                                      <span
+                                                                          key={
+                                                                              index
                                                                           }
-                                                                          alt={
+                                                                          className="Rewards-item"
+                                                                      >
+                                                                          <img
+                                                                              src={
+                                                                                  reward.image
+                                                                              }
+                                                                              alt={
+                                                                                  reward.reward
+                                                                              }
+                                                                          />
+                                                                          {
                                                                               reward.reward
                                                                           }
-                                                                      />
-                                                                      {
-                                                                          reward.reward
-                                                                      }
-                                                                  </span>
+                                                                      </span>
+                                                                  )
                                                               )
-                                                          )
-                                                        : '-'}
+                                                            : '-'}
+                                                    </span>
                                                     {/* 더보기 기타아이템 */}
                                                     {showOtherRewards &&
                                                         row.otherExtraRewards &&
                                                         row.otherExtraRewards
                                                             .length > 0 && (
-                                                            <span>
+                                                            <span className="otherRewards">
                                                                 {' '}
-                                                                (
                                                                 {row.otherExtraRewards.map(
                                                                     (
                                                                         reward,
@@ -399,6 +405,7 @@ const Raid = () => {
                                                                             key={
                                                                                 index
                                                                             }
+                                                                            className="otherRewards-item"
                                                                         >
                                                                             <img
                                                                                 src={
@@ -420,7 +427,6 @@ const Raid = () => {
                                                                         </span>
                                                                     )
                                                                 )}
-                                                                )
                                                             </span>
                                                         )}
                                                 </>
@@ -432,7 +438,10 @@ const Raid = () => {
                                                 row.clearReward.length > 0
                                                     ? row.clearReward.map(
                                                           (reward, index) => (
-                                                              <span key={index}>
+                                                              <span
+                                                                  key={index}
+                                                                  className="Rewards-item"
+                                                              >
                                                                   <img
                                                                       src={
                                                                           reward.image
@@ -440,12 +449,6 @@ const Raid = () => {
                                                                       alt={
                                                                           reward.reward
                                                                       }
-                                                                      style={{
-                                                                          width: '25px',
-                                                                          height: '25px',
-                                                                          marginRight:
-                                                                              '10px',
-                                                                      }}
                                                                   />
                                                                   {
                                                                       reward.reward
@@ -474,6 +477,7 @@ const Raid = () => {
                                                                           key={
                                                                               index
                                                                           }
+                                                                          className="Rewards-item"
                                                                       >
                                                                           <img
                                                                               src={
@@ -482,12 +486,6 @@ const Raid = () => {
                                                                               alt={
                                                                                   reward.reward
                                                                               }
-                                                                              style={{
-                                                                                  width: '25px',
-                                                                                  height: '25px',
-                                                                                  marginRight:
-                                                                                      '10px',
-                                                                              }}
                                                                           />
                                                                           {
                                                                               reward.reward
@@ -511,6 +509,7 @@ const Raid = () => {
                                                                           key={
                                                                               index
                                                                           }
+                                                                          className="Rewards-item"
                                                                       >
                                                                           <img
                                                                               src={
@@ -519,12 +518,6 @@ const Raid = () => {
                                                                               alt={
                                                                                   reward.reward
                                                                               }
-                                                                              style={{
-                                                                                  width: '25px',
-                                                                                  height: '25px',
-                                                                                  marginRight:
-                                                                                      '10px',
-                                                                              }}
                                                                           />
                                                                           {
                                                                               reward.reward
