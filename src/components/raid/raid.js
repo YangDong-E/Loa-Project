@@ -34,15 +34,6 @@ const Raid = () => {
                     <button
                         key={raid}
                         onClick={() => handleRaidSelect(raid)}
-                        // style={{
-                        //     padding: '10px 20px',
-                        //     borderRadius: '5px',
-                        //     border: 'none',
-                        //     cursor: 'pointer',
-                        //     backgroundColor:
-                        //         selectedRaid === raid ? '#333' : '#555',
-                        //     color: 'white',
-                        // }}
                         className={selectedRaid === raid ? 'active' : ''}
                     >
                         {raid}
@@ -50,15 +41,25 @@ const Raid = () => {
                 ))}
             </div>
 
-            <div style={{ marginBottom: '20px' }}>
+            <div style={{ marginBottom: '20px' }} className="rewardsbutton">
                 <button onClick={toggleAuctionRewards}>
-                    {showAuctionRewards ? '숨기기' : '경매 보상 보기'}
+                    {showAuctionRewards ? '경매 보상 숨기기' : '경매 보상 보기'}
                 </button>
-                <button onClick={toggleClearRewards}>
-                    {showClearRewards ? '숨기기' : '최초 클리어 보상 보기'}
+                <button
+                    onClick={toggleClearRewards}
+                    style={{ marginLeft: '5px' }}
+                >
+                    {showClearRewards
+                        ? '최초 클리어 보상 숨기기'
+                        : '최초 클리어 보상 보기'}
                 </button>
-                <button onClick={toggleOtherRewards}>
-                    {showOtherRewards ? '숨기기' : '재료 아이템 보기'}
+                <button
+                    onClick={toggleOtherRewards}
+                    style={{ marginLeft: '5px' }}
+                >
+                    {showOtherRewards
+                        ? '재료 아이템 숨기기'
+                        : '재료 아이템 보기'}
                 </button>
                 {(selectedRaid === '카멘' || selectedRaid === '아브렐슈드') && (
                     <label style={{ marginLeft: '20px' }}>
@@ -75,7 +76,7 @@ const Raid = () => {
             {raidData[selectedRaid].map((difficulty) => (
                 <div key={difficulty.title} className="table-container">
                     <h2>
-                        {difficulty.title} / 입장 레벨 {difficulty.level}
+                        난이도 : {difficulty.title} / 레벨 : {difficulty.level}
                     </h2>
                     <table>
                         <thead>
@@ -104,19 +105,14 @@ const Raid = () => {
                                     <tr key={index}>
                                         <td>{row.section}</td>
                                         <td>
-                                            {/* {row.gold.toLocaleString()} 🪙 */}
                                             {showFourthGateRewards &&
                                             row.gold2 &&
                                             row.gold ? (
                                                 <>
                                                     {row.gold2.toLocaleString()}
-                                                    🪙
                                                 </>
                                             ) : (
-                                                <>
-                                                    {row.gold.toLocaleString()}
-                                                    🪙
-                                                </>
+                                                <>{row.gold.toLocaleString()}</>
                                             )}
                                         </td>
                                         <td>
@@ -125,12 +121,10 @@ const Raid = () => {
                                             row.extraGold ? (
                                                 <>
                                                     {row.extraGold2.toLocaleString()}
-                                                    🪙
                                                 </>
                                             ) : (
                                                 <>
                                                     {row.extraGold.toLocaleString()}
-                                                    🪙
                                                 </>
                                             )}
                                         </td>
