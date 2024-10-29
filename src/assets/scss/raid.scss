@@ -16,6 +16,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    font-weight: bold;
 }
 
 .container {
@@ -32,6 +33,7 @@ body {
 
     button {
         padding: 10px 20px;
+        font-weight: bold;
         border-radius: 5px;
         border: none;
         cursor: pointer;
@@ -58,10 +60,12 @@ body {
         background-color: #7f7e7e;
         color: $white;
         transition: background-color 0.3s;
+        font-weight: bold;
     }
 
     label {
         font-size: 17px;
+        font-weight: bold;
         input[type='checkbox'] {
             width: 2rem;
             height: 2rem;
