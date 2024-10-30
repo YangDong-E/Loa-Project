@@ -123,15 +123,15 @@ const Raid = () => {
                                             {showFourthGateRewards &&
                                             row.extraGold2 &&
                                             row.extraGold ? (
-                                                <>
+                                                <div className="extragold">
                                                     {row.extraGold2.toLocaleString()}
                                                     💰
-                                                </>
+                                                </div>
                                             ) : (
-                                                <>
+                                                <div className="extragold">
                                                     {row.extraGold.toLocaleString()}
                                                     💰
-                                                </>
+                                                </div>
                                             )}
                                         </td>
                                         <td className="rewards-inner">
