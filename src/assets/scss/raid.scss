@@ -78,6 +78,10 @@ body {
 
 .table-container {
     margin-bottom: 20px;
+    .gatename {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
 
     h2 {
         font-size: 24px;
@@ -87,8 +91,6 @@ body {
     table {
         width: 100%;
         border-collapse: collapse;
-        // background-color: #cccfe0;
-
         th {
             background-color: $table-header-bg;
             padding: 10px;

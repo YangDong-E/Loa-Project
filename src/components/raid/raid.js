@@ -75,6 +75,12 @@ const Raid = () => {
 
             {raidData[selectedRaid].map((difficulty) => (
                 <div key={difficulty.title} className="table-container">
+                    <h2 className="gatename">
+                        {difficulty.firstgate}{' '}
+                        {difficulty.secondgate && (
+                            <>/ {difficulty.secondgate}</>
+                        )}
+                    </h2>
                     <h2>
                         난이도 : {difficulty.title} / 레벨 : {difficulty.level}
                     </h2>

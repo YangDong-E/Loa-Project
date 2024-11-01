@@ -4,6 +4,8 @@
             "title": "하드",
             "level": 1690,
             "tier": 4,
+            "firstgate": "사무친 절규의 협곡",
+            "secondgate": "몽환의 아페이론",
             "data": [
                 {
                     "section": "1관문",
@@ -427,6 +429,8 @@
             "title": "하드",
             "level": 1680,
             "tier": 4,
+            "firstgate": "무명의 요새",
+            "secondgate": "맥동하는 융해의 동굴",
             "data": [
                 {
                     "section": "1관문",
@@ -853,6 +857,8 @@
             "title": "노말",
             "level": 1640,
             "tier": 4,
+            "firstgate": "발길이 끊긴 고대유적",
+            "secondgate": "베히모스의 은신처",
             "data": [
                 {
                     "section": "1관문",
@@ -1081,6 +1087,8 @@
             "title": "하드",
             "level": 1640,
             "tier": 4,
+            "firstgate": "붉게 찢어진 고원",
+            "secondgate": "희락의 성전 아타락시움",
             "data": [
                 {
                     "section": "1관문",
@@ -1503,6 +1511,7 @@
             "title": "하드",
             "level": 1630,
             "tier": 3,
+            "firstgate": "어둠의 바라트론",
             "data": [
                 {
                     "section": "1관문",
@@ -2218,6 +2227,7 @@
             "title": "하드",
             "level": 1620,
             "tier": 3,
+            "firstgate": "짓밟힌 정원",
             "data": [
                 {
                     "section": "1관문",
@@ -2682,6 +2692,7 @@
             "title": "하드",
             "level": 1600,
             "tier": 3,
+            "firstgate": "부패한 군주의 판데모니움",
             "data": [
                 {
                     "section": "1관문",
@@ -3138,6 +3149,7 @@
             "title": "하드",
             "level": 1580,
             "tier": 3,
+            "firstgate": "영원한 빛의 요람",
             "data": [
                 {
                     "section": "1관문",
@@ -3626,6 +3638,7 @@
             "title": "하드",
             "level": 1540,
             "tier": 3,
+            "firstgate": "몽환의 아스탤지어",
             "data": [
                 {
                     "section": "1관문",
@@ -4296,6 +4309,7 @@
             "title": "노말",
             "level": 1475,
             "tier": 3,
+            "firstgate": "한밤중의 서커스",
             "data": [
                 {
                     "section": "1관문",
@@ -4513,6 +4527,7 @@
             "title": "하드",
             "level": 1460,
             "tier": 3,
+            "firstgate": "목마른 쾌락의 정원",
             "data": [
                 {
                     "section": "1관문",
@@ -4823,6 +4838,7 @@
             "title": "하드",
             "level": 1445,
             "tier": 3,
+            "firstgate": "부활한 마수의 심장",
             "data": [
                 {
                     "section": "1관문",
