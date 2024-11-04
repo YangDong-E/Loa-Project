@@ -116,13 +116,9 @@ const Raid = () => {
                                             row.gold ? (
                                                 <>
                                                     {row.gold2.toLocaleString()}
-                                                    💰
                                                 </>
                                             ) : (
-                                                <>
-                                                    {row.gold.toLocaleString()}
-                                                    💰
-                                                </>
+                                                <>{row.gold.toLocaleString()}</>
                                             )}
                                         </td>
                                         <td>
@@ -131,12 +127,10 @@ const Raid = () => {
                                             row.extraGold ? (
                                                 <div className="extragold">
                                                     {row.extraGold2.toLocaleString()}
-                                                    💰
                                                 </div>
                                             ) : (
                                                 <div className="extragold">
                                                     {row.extraGold.toLocaleString()}
-                                                    💰
                                                 </div>
                                             )}
                                         </td>
