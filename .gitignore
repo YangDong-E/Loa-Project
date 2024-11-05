@@ -1,6 +1,7 @@
 # node_modules
 .env
 config.json
+src/
 public/
 build/
 node_modules
