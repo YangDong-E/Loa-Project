@@ -1,0 +1,9 @@
+# node_modules
+/src/
+.env
+config.json
+public/
+build/
+node_modules
+
+!build/
