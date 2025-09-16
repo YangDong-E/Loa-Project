@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'jua'; // 이름 선언
+    src: url('../font/Jua-Regular.ttf'); // 내가 저장한 경로!
+}
+
+#header {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 15rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav {
+    &-wrap {
+        display: flex;
+        gap: 600px;
+        justify-content: center;
+    }
+}
