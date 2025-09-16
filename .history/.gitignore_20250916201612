@@ -1,5 +1,5 @@
 # node_modules
-# /src/
+/src/
 .env
 config.json
 public/
@@ -8,4 +8,3 @@ node_modules
 
 # build/ 제외
 !build/
-

@@ -1,0 +1,219 @@
+$primary-color: #333;
+$secondary-color: #555;
+$white: #fff;
+$font-size: 16px;
+$table-header-bg: #333;
+$table-cell-bg: #fff;
+@mixin boxStyle($paddingV: 0, $paddingH: 0, $shadowOpacity: 0.02) {
+    padding: $paddingV $paddingH;
+    background: #cccfe0;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, $shadowOpacity);
+    border-radius: 8px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    button {
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: $secondary-color;
+        color: $white;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $primary-color;
+        }
+
+        &.active {
+            background-color: $primary-color;
+        }
+    }
+}
+
+.rewardsbutton {
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #7f7e7e;
+        color: $white;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    label {
+        font-size: 17px;
+        font-weight: bold;
+        input[type='checkbox'] {
+            width: 2rem;
+            height: 2rem;
+            transform: scale(1.5);
+            margin-right: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.table-container {
+    margin-bottom: 20px;
+    .gatename {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+            background-color: $table-header-bg;
+            padding: 10px;
+            border-bottom: 2px solid $secondary-color;
+            color: $white;
+            font-size: $font-size;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid $secondary-color;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.8rem;
+
+            img {
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.extragold {
+    color: rgb(236, 29, 29);
+}
+
+.otherRewards {
+    display: flex;
+    flex-wrap: wrap; // 넘칠 때 줄바꿈 허용
+    gap: 10px; // 아이템 간격
+    align-items: center;
+}
+
+.Rewards {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.Rewards-item {
+    @include boxStyle(5px, 5px, 0.1);
+    align-items: center;
+    display: flex;
+    white-space: nowrap;
+    padding: 5px;
+    max-width: fit-content;
+}
+.otherRewards-item {
+    @include boxStyle(5px, 5px, 0.1);
+    display: flex;
+    align-items: center;
+    white-space: nowrap; // 텍스트 줄바꿈 방지
+    // border: 1px solid red;
+    max-width: fit-content;
+    padding: 5px;
+    color: #3636b4;
+}
+
+// 반응형 디자인
+@media (max-width: 1200px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    .table-container {
+        h2 {
+            font-size: 20px;
+        }
+
+        th,
+        td {
+            font-size: 14px;
+            padding: 8px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    .table-container {
+        h2 {
+            font-size: 18px;
+        }
+
+        th,
+        td {
+            font-size: 12px;
+            padding: 6px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .table-container {
+        h2 {
+            font-size: 16px;
+        }
+
+        th,
+        td {
+            font-size: 10px;
+            padding: 4px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+}
