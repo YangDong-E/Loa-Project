@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+/build
+/dist
+
+# VSCode/IDE
+.vscode/
+.history/
+
+# Cache
+node_modules/.cache/
+
+.DS_Store

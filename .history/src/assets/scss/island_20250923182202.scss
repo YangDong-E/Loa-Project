@@ -1,0 +1,53 @@
+.island-inner {
+    h3 {
+        text-align: left;
+        margin-bottom: 15px;
+        font-size: 2.2rem;
+        font-weight: 700;
+    }
+
+    .island-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+
+            .island-info {
+                display: flex;
+                align-items: center;
+
+                img {
+                    height: 26px;
+                    border-radius: 3px;
+                }
+
+                .title {
+                    margin-left: 8px;
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                }
+            }
+
+            .island-time {
+                display: flex;
+                gap: 6px;
+                margin-top: 8px;
+
+                p {
+                    padding: 5px 0;
+                    width: 46px;
+                    text-align: center;
+                    background: #eee;
+                    border-radius: 3px;
+
+                    &.over {
+                        opacity: 0.3;
+                    }
+                }
+            }
+        }
+    }
+}
