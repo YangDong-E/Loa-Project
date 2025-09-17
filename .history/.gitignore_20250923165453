@@ -1,9 +1,0 @@
-# 모든 파일 무시
-*
-
-# build 폴더만 추적
-!build/
-!build/**
-
-# gitignore 자체는 유지
-!.gitignore
