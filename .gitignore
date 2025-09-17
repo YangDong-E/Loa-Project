@@ -1,11 +1,19 @@
-# node_modules
-/src/
-.env
-config.json
-public/
-build/
-node_modules
+# Node modules
+node_modules/
 
-# build/ 제외
+# 환경 변수
+.env
+
+# 소스 코드
+/src/
+
+# public 폴더 (index.html 등도 있지만 빌드 후에는 필요없다면 제외)
+public/
+
+# build 폴더는 올릴 것이므로 제외 처리
+build/
 !build/
 
+# 임시/백업 파일
+.DS_Store
+.history/
